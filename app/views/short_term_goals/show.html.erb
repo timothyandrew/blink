@@ -1,0 +1,10 @@
+<h1><%= @short_term_goal.name %><h1>
+<h3>Short-Term Goal for <%= link_to @long_term_goal.name, student_long_term_goal_path(@student, @long_term_goal) %></h3>
+
+<%= link_to "Edit", edit_student_long_term_goal_short_term_goal_path(@student, @long_term_goal, @short_term_goal) %>
+
+<% if @short_term_goal.start && @short_term_goal.end %>
+  <h3><%= "From #{@short_term_goal.start} to #{@short_term_goal.end}" %></h3>
+<% end %>
+
+<p><%= @short_term_goal.description %></p>

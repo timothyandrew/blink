@@ -1,0 +1,15 @@
+<%= form_for [@student, @long_term_goal, @short_term_goal] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :start, "Start Date" %>
+  <%= f.text_field :start, data: {provide: "datepicker"} %>
+
+  <%= f.label :end, "End Date" %>
+  <%= f.text_field :end, data: {provide: "datepicker"} %>
+
+  <%= f.submit %>
+<% end %>
