@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'draper'
 gem 'thin'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug'

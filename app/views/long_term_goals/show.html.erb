@@ -1,0 +1,11 @@
+<h1>Long-Term Goal for <%= link_to @student.name, student_path(@student) %></h1>
+
+<%= link_to "Edit", edit_student_long_term_goal_path(@student, @long_term_goal) %>
+
+<h2><%= @long_term_goal.name %></h2>
+
+<% if @long_term_goal.start && @long_term_goal.end %>
+  <h3><%= "From #{@long_term_goal.start} to #{@long_term_goal.end}" %></h3>
+<% end %>
+
+<p><%= @long_term_goal.description %></p>

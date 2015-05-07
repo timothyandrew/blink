@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507074137) do
+ActiveRecord::Schema.define(version: 20150507075125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "long_term_goals", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start"
+    t.date     "end"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "long_term_goals", ["student_id"], name: "index_long_term_goals_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -40,4 +52,5 @@ ActiveRecord::Schema.define(version: 20150507074137) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "long_term_goals", "students"
 end
