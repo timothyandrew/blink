@@ -12,6 +12,7 @@ gem 'devise'
 gem 'draper'
 gem 'thin'
 gem 'bootstrap-datepicker-rails'
+gem 'exceptiontrap'
 
 group :development, :test do
   gem 'byebug'
