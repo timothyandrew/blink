@@ -5,4 +5,29 @@
 <%= link_to "Edit", edit_student_path(@student) %>
 <%= link_to "Long-Term Goals", student_long_term_goals_path(@student) %>
 
-This is the student profile. Nothing to see here yet.
+
+<% if @student.long_term_goals.present? %>
+  <ul class="student_long_term_goals list-group">
+    <h2>Long Term Goals</h2>
+
+    <% student.long_term_goals.each do |long_term_goal| %>
+      <li class="student_long_term_goal list-group-item">
+        <h3><%= link_to long_term_goal.name, student_long_term_goal_path(@student, long_term_goal) %></h3>
+        <span class="goal-date"><%= long_term_goal.date_range %></span>
+        <p><%= long_term_goal.description %></p>
+
+        <h4>Short Term Goals</h4>
+        <ul class="student_short_term_goals list-group">
+          <% long_term_goal.short_term_goals.each do |short_term_goal| %>
+            <li class="student_short_term_goal list-group-item">
+              <h4><%= link_to short_term_goal.name, student_long_term_goal_short_term_goal_path(@student, long_term_goal, short_term_goal) %></h4>
+              <span class="goal-date"><%= short_term_goal.date_range %></span>
+              <p><%= short_term_goal.description %></p>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+
+    <% end %>
+  </ul>
+<% end %>

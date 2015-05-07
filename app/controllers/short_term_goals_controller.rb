@@ -20,8 +20,10 @@ class ShortTermGoalsController < ApplicationController
   def create
     @short_term_goal = @long_term_goal.short_term_goals.new(short_term_goal_params)
     if @short_term_goal.save
+      flash[:notice] = "Short term goal was created"
       redirect_to student_long_term_goal_short_term_goal_path(@student, @long_term_goal, @short_term_goal)
     else
+      flash[:alert] = @short_term_goal.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -29,8 +31,10 @@ class ShortTermGoalsController < ApplicationController
   def update
     @short_term_goal = @long_term_goal.short_term_goals.find(params[:id])
     if @short_term_goal.update_attributes(short_term_goal_params)
+      flash[:notice] = "Short term goal was updated"
       redirect_to student_long_term_goal_short_term_goal_path(@student, @long_term_goal, @short_term_goal)
     else
+      flash[:alert] = @short_term_goal.errors.full_messages.to_sentence
       render :edit
     end
   end

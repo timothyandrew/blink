@@ -18,10 +18,15 @@ class LongTermGoalsController < ApplicationController
   end
 
   def create
-    @long_term_goal = @student.long_term_goals.new(long_term_goal_params)
+    @long_term_goal = @student.long_term_goals.new
+    @long_term_goal.assign_attributes(long_term_goal_params)
+    puts long_term_goal_params
+    puts @long_term_goal.attributes
     if @long_term_goal.save
+      flash[:notice] = "Long term goal was created"
       redirect_to student_long_term_goal_path(@student, @long_term_goal)
     else
+      flash[:alert] = @long_term_goal.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -29,8 +34,10 @@ class LongTermGoalsController < ApplicationController
   def update
     @long_term_goal = @student.long_term_goals.find(params[:id])
     if @long_term_goal.update_attributes(long_term_goal_params)
+      flash[:notice] = "Long term goal was edited"
       redirect_to student_long_term_goal_path(@student, @long_term_goal)
     else
+      flash[:alert] = @long_term_goal.errors.full_messages.to_sentence
       render :edit
     end
   end

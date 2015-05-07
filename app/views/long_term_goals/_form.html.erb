@@ -6,10 +6,10 @@
   <%= f.text_area :description %>
 
   <%= f.label :start, "Start Date" %>
-  <%= f.text_field :start, data: {provide: "datepicker"} %>
+  <%= f.text_field :start, class: "datepicker" %>
 
   <%= f.label :end, "End Date" %>
-  <%= f.text_field :end, data: {provide: "datepicker"} %>
+  <%= f.text_field :end, class: "datepicker" %>
 
   <%= f.submit %>
 <% end %>

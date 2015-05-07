@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  decorates_assigned :student
+
   def index
     @students = Student.all
   end
@@ -18,8 +20,10 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
+      flash[:notice] = "Student was created"
       redirect_to student_path(@student)
     else
+      flash[:alert] = @student.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -27,8 +31,10 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update_attributes(student_params)
+      flash[:notice] = "Student was updated"
       redirect_to student_path(@student)
     else
+      flash[:alert] = @student.errors.full_messages.to_sentence
       render :edit
     end
   end
