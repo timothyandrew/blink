@@ -13,6 +13,7 @@ gem 'draper'
 gem 'thin'
 gem 'bootstrap-datepicker-rails'
 gem 'exceptiontrap'
+gem "gretel"
 
 group :development, :test do
   gem 'byebug'

@@ -1,3 +1,5 @@
+<% breadcrumb :short_term_goal, @student, @long_term_goal, @short_term_goal %>
+
 <h1><%= @short_term_goal.name %><h1>
 <h3>Short-Term Goal for <%= link_to @long_term_goal.name, student_long_term_goal_path(@student, @long_term_goal) %></h3>
 
