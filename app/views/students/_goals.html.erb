@@ -3,16 +3,24 @@
 
   <% if goals.present? %>
     <% goals.each_with_index do |goal, index| %>
-      <li class="student_goal list-group-item">
+      <li class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %>">
 
-        <h3><%= link_to "#{index + 1}. #{goal.title}", edit_student_goal_path(@student, goal), class: 'goal-name' %></h3>
-        <span class="goal-date"><%= goal.date_range %></span>
-        <p><%= goal.description %></p>
+        <h3>
+          <a data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>> > </a>
+          <%= link_to "#{index + 1}. #{goal.title}", edit_student_goal_path(@student, goal), class: 'goal-name' %>
+        </h3>
 
 
-        <% if depth < 4 %>
-          <%= render partial: "goals", locals: { goals: goal.children.decorate, depth: depth.next, parent_id: goal.id } %>
-        <% end %>
+        <div class="collapse in" id=<%= "goal-body-#{goal.id}" %>>
+          <span class="goal-date"><%= goal.date_range %></span>
+          <p><%= goal.description %></p>
+
+
+          <% if depth < 4 %>
+            <%= render partial: "goals", locals: { goals: goal.children.decorate, depth: depth.next, parent_id: goal.id } %>
+          <% end %>
+        </div>
+
       </li>
     <% end %>
   <% end %>
