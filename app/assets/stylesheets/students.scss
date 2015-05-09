@@ -1,21 +1,56 @@
+.student-name-header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.student-actions {
+    display: inline;
+    margin-bottom: 10px;
+}
+
 .student_long_term_goals {
     margin: 30px;
+    clear: right;
 }
 
 .student_long_term_goal {
-    border: 1px solid black;
 }
 
 .student_short_term_goals {
-
+    margin-top: 20px;
+    margin-bottom: 10px !important;
 }
 
 .student_short_term_goal {
-    border: 1px solid black;
+
 }
 
 .goal-date {
     float: right;
     font-weight: 600;
     font-style: oblique;
+}
+
+.student_long_term_goals {
+    h2 {
+        color: #F39C12;
+    }
+
+    h3 {
+        margin-top: 5px;
+        color: #9B59B6;
+    }
+
+    h4 {
+        color: #2980B9;
+    }
+
+    h5 {
+        color: #27AE60;
+    }
+}
+
+
+.edit-student {
+    margin-top: 20px;
 }

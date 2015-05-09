@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507085319) do
+ActiveRecord::Schema.define(version: 20150509140302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goals", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "start"
+    t.date     "end"
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "goals", ["lft"], name: "index_goals_on_lft", using: :btree
+  add_index "goals", ["parent_id"], name: "index_goals_on_parent_id", using: :btree
+  add_index "goals", ["rgt"], name: "index_goals_on_rgt", using: :btree
 
   create_table "long_term_goals", force: :cascade do |t|
     t.integer  "student_id"

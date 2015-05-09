@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Blink</title>
+    <script src="//use.typekit.net/rru0vth.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -10,11 +12,11 @@
 
     <%= render "navbar" %>
 
-    <%= flash_messages %>
+    <div class="container">
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
 
-    <%= breadcrumbs separator: " &rsaquo; " %>
-
-    <%= yield %>
 
     <script type="text/javascript">
      $('.datepicker').datepicker({

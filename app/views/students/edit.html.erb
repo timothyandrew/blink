@@ -1,3 +1,5 @@
-<h1>Edit <%= @student.name %></h1>
+<h1>Editing <%= link_to @student.name, student_path(@student) %></h1>
 
-<%= render "form" %>
+<div class="edit-student">
+  <%= render "form" %>
+</div>
