@@ -9,6 +9,10 @@ module GoalsHelper
       "Monthly Objective"
     when 3
       "Weekly Objective"
+    when 4
+      "Activity"
+    else
+      "Goal"
     end
   end
 end

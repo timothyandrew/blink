@@ -19,5 +19,7 @@
     <%= f.text_field :end, class: "datepicker" %>
   </fieldset>
 
+  <%= f.hidden_field :parent_id, value: params[:parent_id] %>
+
   <%= f.submit "Save", class: "btn btn-success" %>
 <% end %>

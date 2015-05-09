@@ -1,0 +1,6 @@
+<% if @parent %>
+  <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @parent.title %></span> </h1>
+  <h2 class="new-goal-subheader"><%= goal_name_for_depth(@parent.depth + 1) %></h2>
+<% else %>
+  <h2 class="new-goal-subheader">Long-Term Goal </h2>
+<% end %>
