@@ -12,7 +12,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @parent = @student.goals.find_by_id(params[:goal][:parent_id])
+    @parent = @student.goals.find_by_id(params[:parent_id])
     @goal = @student.goals.new
     @goal.assign_attributes(goal_params)
     if @goal.save
