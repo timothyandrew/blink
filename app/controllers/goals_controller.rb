@@ -1,5 +1,6 @@
 class GoalsController < ApplicationController
   before_filter :assign_student
+  decorates_assigned :goal
 
   def new
     @parent = @student.goals.find_by_id(params[:parent_id])
@@ -9,6 +10,10 @@ class GoalsController < ApplicationController
   def edit
     @goal = @student.goals.find(params[:id])
     @parent = @goal.parent
+  end
+
+  def show
+    @goal = @student.goals.find(params[:id])
   end
 
   def create
