@@ -14,7 +14,7 @@ gem 'thin'
 gem 'bootstrap-datepicker-rails'
 gem 'exceptiontrap'
 gem "gretel"
-gem 'awesome_nested_set'}
+gem 'awesome_nested_set'
 
 group :development, :test do
   gem 'byebug'

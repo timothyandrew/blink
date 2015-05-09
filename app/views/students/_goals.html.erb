@@ -1,0 +1,15 @@
+<ul class="student_goals list-group">
+  <h2><%= goal_name_for_depth(depth).pluralize %></h2>
+  <% goals.each_with_index do |goal, index| %>
+    <li class="student_goal list-group-item">
+
+      <h3><%= "#{index + 1}. #{goal.title}" %></h3>
+      <span class="goal-date"><%= goal.date_range %></span>
+      <p><%= goal.description %></p>
+
+      <% if goal.children.present? %>
+        <%= render partial: "goals", locals: { goals: goal.children.decorate, depth: depth.next } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

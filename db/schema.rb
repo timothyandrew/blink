@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150509140302) do
   enable_extension "plpgsql"
 
   create_table "goals", force: :cascade do |t|
+    t.integer  "student_id"
     t.string   "title"
     t.text     "description"
     t.date     "start"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150509140302) do
   add_index "goals", ["lft"], name: "index_goals_on_lft", using: :btree
   add_index "goals", ["parent_id"], name: "index_goals_on_parent_id", using: :btree
   add_index "goals", ["rgt"], name: "index_goals_on_rgt", using: :btree
+  add_index "goals", ["student_id"], name: "index_goals_on_student_id", using: :btree
 
   create_table "long_term_goals", force: :cascade do |t|
     t.integer  "student_id"
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150509140302) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "goals", "students"
   add_foreign_key "long_term_goals", "students"
   add_foreign_key "short_term_goals", "long_term_goals"
 end

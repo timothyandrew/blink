@@ -1,0 +1,23 @@
+<%= form_for [@student, @goal] do |f| %>
+  <fieldset>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :start, "Start Date" %>
+    <%= f.text_field :start, class: "datepicker" %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :end, "End Date" %>
+    <%= f.text_field :end, class: "datepicker" %>
+  </fieldset>
+
+  <%= f.submit "Save", class: "btn btn-success" %>
+<% end %>

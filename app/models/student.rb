@@ -1,4 +1,4 @@
 class Student < ActiveRecord::Base
-  has_many :long_term_goals
+  has_many :goals
   validates_presence_of :name
 end

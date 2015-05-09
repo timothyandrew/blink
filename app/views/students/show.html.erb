@@ -1,5 +1,3 @@
-<% breadcrumb :student, @student %>
-
 <h1 class="student-name-header"><%= @student.name %></h1>
 
 <div class="student-actions pull-right">
@@ -7,30 +5,7 @@
 </div>
 
 
-<% if @student.long_term_goals.present? %>
-  <ul class="student_long_term_goals list-group">
-    <h2>Long Term Goals</h2>
 
-    <% student.long_term_goals.each_with_index do |long_term_goal, index| %>
-      <li class="student_long_term_goal list-group-item">
-        <h3><%= "#{index + 1}. #{long_term_goal.name}" %></h3>
-        <span class="goal-date"><%= long_term_goal.date_range %></span>
-        <p><%= long_term_goal.description %></p>
-
-        <% if long_term_goal.short_term_goals.present? %>
-          <ul class="student_short_term_goals list-group">
-            <h4>Short Term Goals</h4>
-            <% long_term_goal.short_term_goals.each_with_index do |short_term_goal, index| %>
-              <li class="student_short_term_goal list-group-item">
-                <h5><%= "#{index + 1}. #{short_term_goal.name}" %></h5>
-                <span class="goal-date"><%= short_term_goal.date_range %></span>
-                <p><%= short_term_goal.description %></p>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </li>
-
-    <% end %>
-  </ul>
+<% if @student.goals.present? %>
+  <%= render partial: "goals", locals: {goals: @student.goals.decorate, depth: 0} %>
 <% end %>
