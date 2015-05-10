@@ -9,6 +9,10 @@
     <%= f.text_area :description %>
   </fieldset>
 
+  <% if @parent %>
+    <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
+  <% end %>
+
   <fieldset>
     <%= f.label :start, "Start Date" %>
     <%= f.text_field :start, class: "datepicker" %>
