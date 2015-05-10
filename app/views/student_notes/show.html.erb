@@ -1,0 +1,16 @@
+<% breadcrumb :student_notes, @student %>
+
+<h1 class="student-notes-header">Notes for <%= @student.name  %></h1>
+<div class="student-actions pull-right">
+  <%= link_to "Edit Notes", edit_student_notes_path(@student), class: "btn btn-primary" %>
+</div>
+
+<% if @student.notes.present? %>
+  <div class="show-notes">
+    <%= raw @student.notes %>
+  </div>
+<% else %>
+  <div class="alert alert-warning">
+    You need to add some notes before anything shows up here.
+  </div>
+<% end %>

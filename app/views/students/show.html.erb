@@ -2,6 +2,7 @@
 
 <div class="student-actions pull-right">
   <%= link_to "Add Goal", new_student_goal_path(@student), class: "btn btn-info" %>
+  <%= link_to "Notes", student_notes_path(@student), class: "btn btn-danger" %>
   <%= link_to "Edit Student", edit_student_path(@student), class: "btn btn-primary" %>
   <div class="btn-group">
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
@@ -16,7 +17,7 @@
   <%= render partial: "goals", locals: {goals: Goal.roots.where(student_id: @student.id).decorate, depth: 0, parent_id: nil} %>
 
   <%= render "goal_toggle_js" %>
-  <% else %>
+<% else %>
   <div class="alert alert-warning student-goals-alert">
     You need to add some goals before you see anything here.
   </div>

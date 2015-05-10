@@ -35,3 +35,14 @@ crumb :new_goal do |student, parent_goal|
     parent :goals, student
   end
 end
+
+
+crumb :student_notes do |student|
+  link "Notes", student_notes_path(student)
+  parent :student, student
+end
+
+crumb :edit_student_notes do |student|
+  link "Edit", edit_student_notes_path(student)
+  parent :student_notes, student
+end

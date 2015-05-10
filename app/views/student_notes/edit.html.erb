@@ -1,0 +1,11 @@
+<% breadcrumb :edit_student_notes, @student %>
+
+<h1 class="student-notes-header">Edit Notes for <%= @student.name  %></h1>
+
+<%= form_for @student, url: url_for(controller: "student_notes", action: :update), method: "put" do |f| %>
+  <fieldset>
+    <%= f.cktext_area :notes %>
+  </fieldset>
+
+  <%= f.submit "Save", class: "btn btn-success" %>
+<% end %>
