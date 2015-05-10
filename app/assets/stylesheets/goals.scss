@@ -26,3 +26,25 @@
     margin-left: 25px;
     margin-top: 10px;
 }
+
+.goal-type-title {
+    &.depth-0 {
+        font-size: 30px;
+    }
+
+    &.depth-1 {
+        font-size: 25px;
+    }
+
+    &.depth-2 {
+        font-size: 20px;
+    }
+
+    &.depth-3 {
+        font-size: 18px;
+    }
+
+    &.depth-4 {
+        font-size: 16px;
+    }
+}
