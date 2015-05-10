@@ -14,16 +14,7 @@
 
   <%= render partial: "goals", locals: {goals: Goal.roots.where(student_id: @student.id).decorate, depth: 0, parent_id: nil} %>
 
-  <script type="text/javascript">
-   $(".hide-all").click(function() {
-     $(".goal-body").collapse('hide');
-     event.stopPropagation();
-   });
-
-   $(".show-all").click(function() {
-     $(".goal-body").collapse('show');
-   });
-  </script>
+  <%= render "goal_toggle_js" %>
 <% else %>
   <div class="alert alert-warning student-goals-alert">
     You need to add some goals before you see anything here.
