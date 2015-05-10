@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     if @student.save
       flash[:notice] = "Student was created"
-      redirect_to student_path(@student)
+      redirect_to students_path
     else
       flash[:alert] = @student.errors.full_messages.to_sentence
       render :new
@@ -32,7 +32,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.update_attributes(student_params)
       flash[:notice] = "Student was updated"
-      redirect_to student_path(@student)
+      redirect_to students_path
     else
       flash[:alert] = @student.errors.full_messages.to_sentence
       render :edit
