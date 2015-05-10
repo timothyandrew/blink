@@ -15,7 +15,7 @@
 
 
         <div class="collapse in goal-body" id=<%= "goal-body-#{goal.id}" %>>
-          <p class="goal-description"><%= goal.description %></p>
+          <div class="goal-description"><%= goal.description.html_safe %></div>
 
           <% if depth < 4 %>
             <%= render partial: "goals", locals: { goals: goal.children.decorate, depth: depth.next, parent_id: goal.id } %>

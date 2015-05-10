@@ -8,7 +8,10 @@
     <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
   </div>
 </div>
+
+<% if goal.start && goal.end %>
 <h2 class="new-goal-subheader"><%= goal.expanded_date_range %></h2>
+<% end %>
 
 <%= render partial: "goals", locals: {goals: [goal], depth: @goal.depth, parent_id: nil} %>
 

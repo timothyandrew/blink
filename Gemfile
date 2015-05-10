@@ -15,6 +15,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'exceptiontrap'
 gem "gretel"
 gem 'awesome_nested_set'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'byebug'

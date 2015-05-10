@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require bootstrap-sprockets
+//= require ckeditor/init
 //= require_tree .

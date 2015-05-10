@@ -6,10 +6,10 @@
 
   <fieldset>
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.cktext_area :description %>
   </fieldset>
 
-  <% if @parent %>
+  <% if @parent && @parent.start && @parent.end %>
     <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
   <% end %>
 
@@ -27,3 +27,7 @@
 
   <%= f.submit "Save", class: "btn btn-success" %>
 <% end %>
+
+<script type="text/javascript">
+
+</script>
