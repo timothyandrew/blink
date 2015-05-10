@@ -35,3 +35,21 @@ form input[type='submit'] {
 fieldset {
     margin: 20px 0 !important;
 }
+
+
+$disclosure-color: #16A085;
+
+.disclosure {
+    color: $disclosure-color;
+}
+
+.disclosure:hover {
+    color: $disclosure-color;
+    text-decoration: none;
+}
+
+.disclosure:focus {
+    color: $disclosure-color;
+    outline:  0;
+    text-decoration: none;
+}

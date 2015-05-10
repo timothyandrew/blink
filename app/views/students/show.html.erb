@@ -1,12 +1,27 @@
 <h1 class="student-name-header"><%= @student.name %></h1>
 
 <div class="student-actions pull-right">
-  <%= link_to "Add Goal", new_student_goal_path(@student), class: "btn btn-info" %>
   <%= link_to "Edit Student", edit_student_path(@student), class: "btn btn-primary" %>
+  <div class="btn-group">
+    <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
+    <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
+  </div>
 </div>
 
 
 
 <% if @student.goals.present? %>
+
   <%= render partial: "goals", locals: {goals: Goal.roots.where(student_id: @student.id).decorate, depth: 0, parent_id: nil} %>
+
+  <script type="text/javascript">
+   $(".hide-all").click(function() {
+     $(".goal-body").collapse('hide');
+     event.stopPropagation();
+   });
+
+   $(".show-all").click(function() {
+     $(".goal-body").collapse('show');
+   });
+  </script>
 <% end %>
