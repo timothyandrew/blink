@@ -7,22 +7,31 @@ crumb :student do |student|
   parent :students
 end
 
-crumb :long_term_goals do |student|
-  link "Long-Term Goals", student_long_term_goals_path(student)
+crumb :goals do |student|
+  link "Goals", student_path(student)
   parent :student, student
 end
 
-crumb :long_term_goal do |student, long_term_goal|
-  link long_term_goal.name, student_long_term_goal_path(student, long_term_goal)
-  parent :long_term_goals, student
+crumb :goal do |student, goal|
+  link goal.title, student_goal_path(student, goal)
+  if goal.root?
+    parent :goals, student
+  else
+    parent :goal, student, goal.parent
+  end
 end
 
-crumb :short_term_goals do |student, long_term_goal|
-  link "Short-Term Goals", student_long_term_goal_short_term_goals_path(student, long_term_goal)
-  parent :long_term_goal, student, long_term_goal
+crumb :edit_goal do |student, goal|
+  link "Edit", edit_student_goal_path(student, goal)
+  parent :goal, student, goal
 end
 
-crumb :short_term_goal do |student, long_term_goal, short_term_goal|
-  link short_term_goal.name, student_long_term_goal_short_term_goal_path(student, long_term_goal, short_term_goal)
-  parent :short_term_goals, student, long_term_goal
+crumb :new_goal do |student, parent_goal|
+  if parent_goal
+    link "New Goal", new_student_goal_path(student, parent_id: parent_goal.id)
+    parent :goal, student, parent_goal
+  else
+    link "New Long-Term Goal", new_student_goal_path(student)
+    parent :goals, student
+  end
 end
