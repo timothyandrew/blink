@@ -13,4 +13,8 @@ class GoalDecorator < Draper::Decorator
       "#{start} - #{e}"
     end
   end
+
+  def expanded_date_range
+    "#{model.start.strftime("%d %b %Y")} - #{model.end.strftime("%d %b %Y")}"
+  end
 end
