@@ -11,7 +11,7 @@ class StudentNotesController < ApplicationController
   def update
     if @student.update_attributes(notes_params)
       flash[:notice] = "Updated notes."
-      redirect_to student_path(@student)
+      redirect_to student_notes_path(@student)
     else
       flash[:alert] = @student.errors.full_messages.to_sentence
       render :edit
