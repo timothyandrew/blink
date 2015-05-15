@@ -14,7 +14,7 @@
 
 <% if @student.goals.present? %>
 
-  <%= render partial: "goals", locals: {goals: Goal.roots.where(student_id: @student.id).decorate, depth: 0, parent_id: nil} %>
+  <%= render partial: "goals", locals: {goals: Goal.sort(Goal.roots.where(student_id: @student.id).decorate), depth: 0, parent_id: nil} %>
 
   <%= render "goal_toggle_js" %>
 <% else %>
