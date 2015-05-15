@@ -42,6 +42,13 @@ class GoalsController < ApplicationController
     end
   end
 
+  def destroy
+    @goal = @student.goals.find(params[:id])
+    @goal.destroy
+    flash[:notice] = "Goal was destroyed! Take that, Rakshitha!"
+    redirect_to student_path(@student)
+  end
+
   def uncomplete
     @goal = @student.goals.find(params[:id])
     @goal.uncomplete!

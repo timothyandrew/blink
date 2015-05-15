@@ -15,6 +15,9 @@
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
     <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
   </div>
+
+  <%= link_to "Delete", student_goal_path(@student, @goal), method: :delete, class: "btn btn-danger",
+    data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 </div>
 
 <% if goal.start && goal.end %>
