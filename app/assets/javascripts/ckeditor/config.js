@@ -117,3 +117,5 @@ CKEDITOR.editorConfig = function( config )
   config.disableNativeSpellChecker = false;
   config.removePlugins = 'contextmenu,liststyle,tabletools';
 };
+
+CKEDITOR.env.isCompatible = true;
