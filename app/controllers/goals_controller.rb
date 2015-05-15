@@ -42,6 +42,18 @@ class GoalsController < ApplicationController
     end
   end
 
+  def uncomplete
+    @goal = @student.goals.find(params[:id])
+    @goal.uncomplete!
+    redirect_to student_path(@student), notice: "Goal was uncompleted!"
+  end
+
+  def complete
+    @goal = @student.goals.find(params[:id])
+    @goal.complete!
+    redirect_to student_path(@student), notice: "Goal was completed!"
+  end
+
   private
 
   def assign_student

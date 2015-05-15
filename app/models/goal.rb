@@ -1,5 +1,5 @@
 class Goal < ActiveRecord::Base
-  acts_as_nested_set
+  acts_as_nested_set dependent: :destroy
   validates_presence_of :title
 
   def self.sort(goals)
@@ -11,5 +11,19 @@ class Goal < ActiveRecord::Base
 
   def sorted_children
     GoalDecorator.decorate_collection(Goal.sort(self.children))
+  end
+
+  def complete!
+    transaction do
+      self.update(completed: true)
+      self.children.update_all(completed: true)
+    end
+  end
+
+  def uncomplete!
+    transaction do
+      self.update(completed: false)
+      self.children.update_all(completed: false)
+    end
   end
 end

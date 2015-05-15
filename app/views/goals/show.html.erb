@@ -3,6 +3,14 @@
 <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
   <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
+
+  <% if @goal.completed? %>
+    <%= link_to "Uncomplete", uncomplete_student_goal_path(@student, @goal), method: :put, class: "btn btn-danger" %>
+  <% else %>
+    <%= link_to "Complete", complete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
+  <% end %>
+
+
   <div class="btn-group">
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
     <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>

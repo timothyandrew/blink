@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :students do
     resource :notes, controller: "student_notes"
-    resources :goals
+    resources :goals do
+      member do
+        put :complete
+        put :uncomplete
+      end
+    end
   end
 
   resource :notes, controller: "general_notes"
