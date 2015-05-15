@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :goals, controller: "goals_summary"
   resource :notes, controller: "general_notes"
 end

@@ -1,0 +1,26 @@
+.student-goals-summary-wrapper {
+    margin-left: 20px;
+    tr {
+        vertical-align: top;
+    }
+}
+
+.student-goals-summary {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0 10px;
+}
+
+.student-goals-summary > div {
+    width: 300px;
+}
+
+.student-goals-summary .header {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.student-goals-summary ul {
+    padding-left: 15px;
+    font-size: 14px;
+}

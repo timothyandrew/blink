@@ -1,0 +1,12 @@
+<table class="student-goals-summary-wrapper">
+  <tr>
+    <% @students.each do |student| %>
+      <td class="student-goals-summary">
+        <div>
+          <div class="header"><%= student.name %></div>
+          <%= render partial: "goals", locals: {goals: Goal.sort(Goal.roots.where(student_id: student.id).decorate), student: student, depth: 0} %>
+        </div>
+      </td>
+    <% end %>
+  </tr>
+</table>
