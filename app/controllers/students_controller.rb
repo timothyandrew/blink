@@ -2,23 +2,23 @@ class StudentsController < ApplicationController
   decorates_assigned :student
 
   def index
-    @students = Student.all
+    @students = current_user.students.all
   end
 
   def new
-    @student = Student.new
+    @student = current_user.students.new
   end
 
   def edit
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = current_user.students.new(student_params)
     if @student.save
       flash[:notice] = "Student was created"
       redirect_to students_path
@@ -29,7 +29,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
     if @student.update_attributes(student_params)
       flash[:notice] = "Student was updated"
       redirect_to students_path

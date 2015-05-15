@@ -4,8 +4,14 @@
   <%= link_to "New Student", new_student_path, class: "btn btn-primary" %>
 </div>
 
-<ul class="students-list list-group">
-  <% @students.each do |student| %>
-    <li class="students-list-item list-group-item"><%= link_to student.name, student_path(student) %></li>
-  <% end %>
-</ul>
+<% if @students.present? %>
+  <ul class="students-list list-group">
+    <% @students.each do |student| %>
+      <li class="students-list-item list-group-item"><%= link_to student.name, student_path(student) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-warning">
+    You need to add students before anything shows up here.
+  </div>
+<% end %>
