@@ -45,7 +45,7 @@ class GoalsController < ApplicationController
   private
 
   def assign_student
-    @student = Student.find(params[:student_id])
+    @student = current_user.students.find(params[:student_id])
   end
 
   def goal_params
