@@ -1,14 +1,14 @@
 class GeneralNotesController < ApplicationController
   def edit
-    @note = GeneralNote.first_or_initialize
+    @note = current_user.general_note_or_build
   end
 
   def show
-    @note = GeneralNote.first_or_initialize
+    @note = current_user.general_note_or_build
   end
 
   def update
-    @note = GeneralNote.first_or_initialize
+    @note = current_user.general_note_or_build
     if @note.update_attributes(note_params)
       flash[:notice] = "Updated general notes."
       redirect_to notes_path
