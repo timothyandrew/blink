@@ -19,7 +19,8 @@ form .cke {
     margin-top: 10px;
 }
 
-form input[type='text'] {
+form input[type='text'], form input[type='email'], form input[type='password'] {
+    margin-top: 10px;
     width: 300px;
     border-radius: 2px;
     font-size: 20px;
@@ -27,9 +28,14 @@ form input[type='text'] {
     border: 1px solid #ddd;
 }
 
+label[for='user_remember_me'] {
+    width: 200px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
 form input[type='submit'] {
-    display: block;
-    margin-top: 50px;
+    margin-top: 20px;
     font-weight: 200;
     font-size: 18px;
     padding: 6px 22px;
@@ -66,4 +72,17 @@ $disclosure-color: #ECF0F1;
 h1 {
     font-size: 46px !important;
     color: black !important;
+}
+
+.sign-up-button {
+    margin-left: 40px;
+    font-size: 18px !important;
+    margin-top: 20px;
+    font-weight: 200 !important;
+}
+
+.new_user {
+    border: 1px solid black;
+    padding: 20px;
+    width: 500px;
 }
