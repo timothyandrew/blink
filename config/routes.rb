@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resource :notes, controller: "student_notes"
     resources :goals
   end
+
+  resource :notes, controller: "general_notes"
 end

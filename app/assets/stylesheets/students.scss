@@ -3,7 +3,7 @@
     margin-bottom: 10px;
 }
 
-.student-actions {
+.student-actions, .actions {
     display: inline;
     margin-bottom: 10px;
 }
@@ -66,11 +66,6 @@ form.new_student {
 
 .student-goals-alert {
     margin-top: 20px;
-}
-
-.student-notes-header {
-    font-size: 46px !important;
-    color: black;
 }
 
 .show-notes {

@@ -1,0 +1,16 @@
+<% breadcrumb :general_notes %>
+
+<h1>General Notes</h1>
+<div class="actions pull-right">
+  <%= link_to "Edit General Notes", edit_notes_path, class: "btn btn-primary" %>
+</div>
+
+<% if @note.text.present? %>
+  <div class="show-notes">
+    <%= raw @note.text %>
+  </div>
+<% else %>
+  <div class="alert alert-warning">
+    You need to add some general notes before anything shows up here.
+  </div>
+<% end %>

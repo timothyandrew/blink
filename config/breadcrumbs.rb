@@ -46,3 +46,12 @@ crumb :edit_student_notes do |student|
   link "Edit", edit_student_notes_path(student)
   parent :student_notes, student
 end
+
+crumb :general_notes do
+  link "General Notes", notes_path
+end
+
+crumb :edit_general_notes do
+  link "Edit", edit_notes_path
+  parent :general_notes
+end

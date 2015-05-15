@@ -1,0 +1,11 @@
+<% breadcrumb :edit_general_notes %>
+
+<h1>Edit General Notes</h1>
+
+<%= form_for @note, url: url_for(controller: "general_notes", action: :update), method: "put" do |f| %>
+  <fieldset>
+    <%= f.cktext_area :text %>
+  </fieldset>
+
+  <%= f.submit "Save", class: "btn btn-success" %>
+<% end %>
