@@ -1,0 +1,34 @@
+<%= form_for [@lesson_plan, @lesson_plan_item], url: lesson_plan_items_path do |f| %>
+  <fieldset>
+    <%= f.label :start, "Start Time" %>
+    <%= f.text_field :start, class: "timepicker", value: (@lesson_plan_item.start.strftime("%-l:%M%P") if @lesson_plan_item.start.present?) %>
+
+    <%= f.label :end, "End Time" %>
+    <%= f.text_field :end, class: "timepicker", value: (@lesson_plan_item.end.strftime("%-l:%M%P") if @lesson_plan_item.end.present?) %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :goals %>
+    <%= f.cktext_area :goals %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :teaching_method %>
+    <%= f.cktext_area :teaching_method %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :teaching_aids %>
+    <%= f.cktext_area :teaching_aids %>
+  </fieldset>
+
+  <%= f.submit "Save", class: "btn btn-success" %>
+<% end %>

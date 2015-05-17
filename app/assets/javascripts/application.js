@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require bootstrap-sprockets
+//= require jquery.timepicker.js
 //= require ckeditor/init
 //= require_tree .

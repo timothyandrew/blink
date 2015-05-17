@@ -16,6 +16,7 @@ gem 'exceptiontrap'
 gem "gretel"
 gem 'awesome_nested_set'
 gem 'ckeditor'
+gem 'jquery-timepicker-rails'
 
 group :development, :test do
   gem 'byebug'

@@ -13,6 +13,7 @@ class LessonPlansController < ApplicationController
 
   def show
     @lesson_plan = current_user.lesson_plans.find(params[:id])
+    @items = @lesson_plan.items.order(start: :asc)
   end
 
   def create

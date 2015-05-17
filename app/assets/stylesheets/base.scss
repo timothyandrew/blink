@@ -15,7 +15,7 @@ form label {
     color: #9B59B6;
     margin-right: 25px;
     font-size: 18px;
-    width: 120px;
+    width: 150px;
     font-weight: 400;
 }
 
@@ -48,7 +48,7 @@ form input[type='submit'] {
 }
 
 fieldset {
-    margin: 20px 0 !important;
+    margin: 30px 0 !important;
 }
 
 
@@ -90,4 +90,8 @@ h1 {
     border: 1px solid black;
     padding: 20px;
     width: 500px;
+}
+
+fieldset label:nth-of-type(2) {
+    margin-left: 60px;
 }

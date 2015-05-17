@@ -1,5 +1,6 @@
 <h1>Lesson Plan for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
 <div class="student-actions pull-right">
+  <%= link_to "Add Item", new_lesson_plan_item_path(@lesson_plan), class: "btn btn-info" %>
   <%= link_to "Edit Lesson Plan", edit_lesson_plan_path(@lesson_plan), class: "btn btn-primary" %>
 
   <%= link_to "Delete", lesson_plan_path(@lesson_plan), method: :delete, class: "btn btn-danger",
@@ -8,3 +9,49 @@
 
 
 <h2 class="new-goal-subheader"></h2>
+
+<table class="lesson-plan-display table table-hover table-bordered">
+  <% @items.each do |item| %>
+    <tr>
+      <td class="lesson-plan-item-time">
+        <%= link_to "#{item.start.strftime('%-l:%M%P')} - #{item.end.strftime('%-l:%M%P')}", edit_lesson_plan_item_path(@lesson_plan, item) %>
+      </td>
+      <td class="lesson-plan-item-body">
+        <% if item.subject.present? %>
+          <div class="lesson-plan-item-attribute-value">
+            <span class="lesson-plan-item-attribute">Subject</span>
+            <%= item.subject %>
+          </div>
+        <% end %>
+
+        <% if item.topic.present? %>
+          <div class="lesson-plan-item-attribute-value">
+            <span class="lesson-plan-item-attribute">Topic</span>
+            <%= item.topic %>
+          </div>
+        <% end %>
+
+        <% if item.goals.present? %>
+          <div class="lesson-plan-item-attribute-value">
+            <span class="lesson-plan-item-attribute">Goals</span>
+            <%= raw item.goals %>
+          </div>
+        <% end %>
+
+        <% if item.teaching_method.present? %>
+          <div class="lesson-plan-item-attribute-value">
+            <span class="lesson-plan-item-attribute">Teaching Method</span>
+            <%= raw item.teaching_method %>
+          </div>
+        <% end %>
+
+        <% if item.teaching_aids.present? %>
+          <div class="lesson-plan-item-attribute-value">
+            <span class="lesson-plan-item-attribute">Teaching Aids</span>
+            <%= raw item.teaching_aids %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
