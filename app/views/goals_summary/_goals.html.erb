@@ -2,7 +2,7 @@
   <% goals.each do |goal, children| %>
     <li>
       <%= link_to goal.title, student_goal_path(student, goal),
-      class: "goal-name #{'complete' if goal.completed?} #{'highlight' if goal.in?(@goals_matching_filter)}",
+      class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
         title: "Date: #{goal.date_range}" %>
 
       <% if(depth < 4) && children.present? %>

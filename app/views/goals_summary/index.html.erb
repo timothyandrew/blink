@@ -11,8 +11,8 @@
     <% @students.each do |student| %>
       <td class="student-goals-summary">
         <div>
-          <div class="header"><%= student.name %></div>
-          <%= render partial: "goals", locals: {goals: Goal.build_tree(@goals_matching_filter.where(student_id: student.id)), student: student, depth: 0} %>
+          <div class="header"><%= link_to student.name, student_path(student) %></div>
+          <%= render partial: "goals", locals: {goals: @goals.find_all { |goal, children| goal.student_id == student.id }, student: student, depth: 0} %>
         </div>
       </td>
     <% end %>

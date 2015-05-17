@@ -2,10 +2,19 @@ class GoalsSummaryController < ApplicationController
   def index
     @skip_container = true
     @students = current_user.students
-    @goals_matching_filter = apply_filters(Goal.where(student_id: @students))
+    if filters_present?
+      @goals_matching_filter = apply_filters(Goal.where(student_id: @students))
+      @goals = Goal.build_tree_containing(@goals_matching_filter.where(student_id: @students.pluck(:id)))
+    else
+      @goals = Goal.build_tree(Goal.roots.where(student_id: @students.pluck(:id)))
+    end
   end
 
   private
+
+  def filters_present?
+    params[:start].present? || params[:end].present?
+  end
 
   def apply_filters(goals)
     if params[:start].present?

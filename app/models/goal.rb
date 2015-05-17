@@ -33,16 +33,21 @@ class Goal < ActiveRecord::Base
     goals.any? { |goal| goal.id == self.id }
   end
 
-  def self.build_tree(goals)
+  def self.build_tree(roots)
+    Goal.sort(roots).map do |root|
+      grouped_goals = root.descendants.decorate.group_by(&:parent_id)
+      [root.decorate, root._children(grouped_goals)]
+    end
+  end
+
+  def self.build_tree_containing(goals)
     goals = goals.reduce([]) do |acc, goal|
       acc + (goal.self_and_descendants.decorate) + (goal.ancestors.decorate)
     end
 
     grouped_goals = goals.uniq(&:id).group_by(&:parent_id)
     roots = Goal.sort(grouped_goals[nil])
-    roots.map do |root|
-      [root.decorate, root._children(grouped_goals)]
-    end
+    Goal.build_tree(roots)
   end
 
   def _children(grouped_goals)
