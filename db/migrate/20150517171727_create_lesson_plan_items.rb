@@ -8,8 +8,6 @@ class CreateLessonPlanItems < ActiveRecord::Migration
       t.text :goals
       t.text :teaching_method
       t.text :teaching_aids
-      t.boolean :span
-      t.text :span_text
       t.references :lesson_plan, index: true, foreign_key: true
 
       t.timestamps null: false

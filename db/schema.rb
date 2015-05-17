@@ -52,8 +52,6 @@ ActiveRecord::Schema.define(version: 20150517171727) do
     t.text     "goals"
     t.text     "teaching_method"
     t.text     "teaching_aids"
-    t.boolean  "span"
-    t.text     "span_text"
     t.integer  "lesson_plan_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
