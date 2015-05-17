@@ -26,4 +26,14 @@ class Goal < ActiveRecord::Base
       self.children.update_all(completed: false)
     end
   end
+
+  def in_tree_of?(others)
+    others.any? do |other|
+      self.is_ancestor_of?(other) || self.is_descendant_of?(other) || self.id == other.id
+    end
+  end
+
+  def in?(goals)
+    goals.any? { |goal| goal.id == self.id }
+  end
 end

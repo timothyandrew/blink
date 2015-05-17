@@ -10,7 +10,7 @@ def create_sub_goals(goal, student)
   2.times do
     Goal.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: Faker::Time.forward(23, :morning), end: Faker::Time.forward(23, :morning), parent: goal, student: student)
   end
-  if goal.depth < 4
+  if goal.depth < 3
     goal.children.each { |goal| create_sub_goals(goal, student) }
   end
 end

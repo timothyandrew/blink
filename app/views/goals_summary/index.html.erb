@@ -1,3 +1,12 @@
+<%= form_tag '/goals', method: :get, class: "student-goals-summary-filters" %>
+
+  Goals starting after
+  <%= text_field_tag "start", params[:start], placeholder: "Start Date", class: "datepicker" %>
+  and ending before
+  <%= text_field_tag "end", params[:end], placeholder: "End Date", class: "datepicker" %>
+  <%= submit_tag %>
+</form>
+
 <table class="student-goals-summary-wrapper">
   <tr>
     <% @students.each do |student| %>
