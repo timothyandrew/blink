@@ -12,7 +12,7 @@
       <td class="student-goals-summary">
         <div>
           <div class="header"><%= student.name %></div>
-          <%= render partial: "goals", locals: {goals: Goal.sort(Goal.roots.where(student_id: student.id).decorate), student: student, depth: 0} %>
+          <%= render partial: "goals", locals: {goals: Goal.build_tree(@goals_matching_filter.where(student_id: student.id)), student: student, depth: 0} %>
         </div>
       </td>
     <% end %>

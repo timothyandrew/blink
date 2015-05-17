@@ -1,16 +1,14 @@
 <ul>
-  <% goals.each do |goal| %>
-    <% if goal.in_tree_of?(@goals_matching_filter) %>
-      <li>
-        <%= link_to goal.title, student_goal_path(student, goal),
-                    class: "goal-name #{'complete' if goal.completed?} #{'highlight' if goal.in?(@goals_matching_filter)}",
-                    title: "Date: #{goal.date_range}" %>
+  <% goals.each do |goal, children| %>
+    <li>
+      <%= link_to goal.title, student_goal_path(student, goal),
+      class: "goal-name #{'complete' if goal.completed?} #{'highlight' if goal.in?(@goals_matching_filter)}",
+        title: "Date: #{goal.date_range}" %>
 
-        <% if depth < 4 %>
-          <%= render partial: "goals", locals: { goals: goal.sorted_children, depth: depth.next, student: student } %>
-        <% end %>
+      <% if(depth < 4) && children.present? %>
+        <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
+      <% end %>
 
-      </li>
-    <% end %>
+    </li>
   <% end %>
 </ul>

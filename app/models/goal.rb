@@ -3,6 +3,7 @@ class Goal < ActiveRecord::Base
   validates_presence_of :title
 
   def self.sort(goals)
+    return if goals.nil?
     goals.sort_by do |goal|
       # Doing `to_s` here because ruby refuses to sort booleans
       [goal.completed?.to_s, (goal.start || Date.new)]
@@ -27,13 +28,29 @@ class Goal < ActiveRecord::Base
     end
   end
 
-  def in_tree_of?(others)
-    others.any? do |other|
-      self.is_ancestor_of?(other) || self.is_descendant_of?(other) || self.id == other.id
-    end
-  end
 
   def in?(goals)
     goals.any? { |goal| goal.id == self.id }
+  end
+
+  def self.build_tree(goals)
+    goals = goals.reduce([]) do |acc, goal|
+      acc + (goal.self_and_descendants.decorate) + (goal.ancestors.decorate)
+    end
+
+    grouped_goals = goals.uniq(&:id).group_by(&:parent_id)
+    roots = Goal.sort(grouped_goals[nil])
+    roots.map do |root|
+      [root.decorate, root._children(grouped_goals)]
+    end
+  end
+
+  def _children(grouped_goals)
+    children = Goal.sort(grouped_goals[self.id])
+    if children
+      children.map { |child| [child, child._children(grouped_goals)] }
+    else
+      []
+    end
   end
 end
