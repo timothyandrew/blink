@@ -19,13 +19,13 @@
 }
 
 .goal-name.highlight {
-    background-color: red;
+    background-color: rgba(26, 188, 156, 0.3);
 }
 
 .goal-name.complete {
     position: relative;
     font-style: oblique;
-    color: lighten(#9B59B6, 30%) !important;
+    color: lighten(#9B59B6, 25%) !important;
 }
 
 .goal-name.complete::after {

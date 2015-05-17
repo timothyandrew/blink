@@ -1,5 +1,5 @@
 .student-goals-summary-wrapper {
-    margin-left: 20px;
+    margin: 20px;
     tr {
         vertical-align: top;
     }
@@ -9,6 +9,11 @@
     border: 1px solid black;
     padding: 20px;
     margin: 0 10px;
+}
+
+.student-goals-summary .goal-name {
+    line-height: 26px;
+    padding: 2px 5px;
 }
 
 .student-goals-summary > div {
@@ -23,4 +28,45 @@
 .student-goals-summary ul {
     padding-left: 15px;
     font-size: 14px;
+}
+
+.student-goals-summary > div > ul {
+    list-style-type: decimal;
+
+    > li > ul {
+        list-style-type: lower-alpha;
+
+        > li > ul {
+            list-style-type: lower-roman;
+
+            > li > ul {
+                list-style-type: disc;
+
+                > li > ul {
+                    list-style-type: circle;
+                }
+            }
+        }
+    }
+}
+
+.student-goals-summary li {
+    margin: 2px 0;
+}
+
+.student-goals-summary-filters {
+    margin: 20px 0 20px 20px;
+
+    input[type='submit'] {
+        margin-left: 20px;
+        margin-bottom: 4px;
+        margin-top: 0;
+    }
+
+    input[type='text'] {
+        width: 150px;
+        text-align: center;
+        font-weight: 200;
+        margin: 0 10px;
+    }
 }
