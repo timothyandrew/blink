@@ -7,7 +7,7 @@
 <% if @lesson_plans.present? %>
   <ul class="lesson-plans-list list-group">
     <% @lesson_plans.each do |lesson_plan| %>
-      <li class="lesson-plans-list-item list-group-item"><%= link_to lesson_plan.date, lesson_plan_path(lesson_plan) %></li>
+      <li class="lesson-plans-list-item list-group-item"><%= link_to lesson_plan.date.strftime("%A - %-d %B %Y"), lesson_plan_path(lesson_plan) %></li>
     <% end %>
   </ul>
 <% else %>
