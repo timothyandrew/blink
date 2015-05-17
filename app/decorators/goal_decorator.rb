@@ -4,17 +4,17 @@ class GoalDecorator < Draper::Decorator
   def strftime_for_depth
     case model.depth
     when 0
-      "%b %y"
+      "%b %Y"
     when 1
-      "%b %y"
+      "%b %Y"
     when 2
-      "%b %y"
+      "%b %Y"
     when 3
-      "%a, %-d %B %y"
+      "%a, %-d %B %Y"
     when 4
-      "%d %b %y"
+      "%d %b %Y"
     else
-      "%d %b %y"
+      "%d %b %Y"
     end
   end
 

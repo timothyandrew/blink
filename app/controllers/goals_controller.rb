@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
     @goal.assign_attributes(goal_params)
     if @goal.save
       @goal.move_to_child_of(@parent) if @parent
-      flash[:notice] = "Long term goal was created"
+      flash[:notice] = "Goal was created"
       redirect_to student_path(@student)
     else
       flash[:alert] = @goal.errors.full_messages.to_sentence
@@ -34,7 +34,7 @@ class GoalsController < ApplicationController
   def update
     @goal = @student.goals.find(params[:id])
     if @goal.update_attributes(goal_params)
-      flash[:notice] = "Long term goal was edited"
+      flash[:notice] = "Goal was edited"
       redirect_to student_goal_path(@student, @goal)
     else
       flash[:alert] = @goal.errors.full_messages.to_sentence
