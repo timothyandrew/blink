@@ -1,4 +1,4 @@
-<%= form_for [@lesson_plan, @lesson_plan_item], url: lesson_plan_items_path do |f| %>
+<%= form_for [@lesson_plan, @lesson_plan_item], url: @lesson_plan_item.persisted? ? lesson_plan_item_path : lesson_plan_items_path do |f| %>
   <fieldset>
     <%= f.label :start, "Start Time" %>
     <%= f.text_field :start, class: "timepicker", value: (@lesson_plan_item.start.strftime("%-l:%M%P") if @lesson_plan_item.start.present?) %>
