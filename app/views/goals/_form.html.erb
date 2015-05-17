@@ -15,12 +15,12 @@
 
   <fieldset>
     <%= f.label :start, "Start Date" %>
-    <%= f.text_field :start, value: @goal.start.strftime("%b %-d, %Y"), class: "datepicker" %>
+    <%= f.text_field :start, value: (@goal.start.strftime("%b %-d, %Y") if @goal.start.present?), class: "datepicker" %>
   </fieldset>
 
   <fieldset>
     <%= f.label :end, "End Date" %>
-    <%= f.text_field :end, value: @goal.end.strftime("%b %-d, %Y"), class: "datepicker" %>
+    <%= f.text_field :end, value: (@goal.end.strftime("%b %-d, %Y") if @goal.end.present?), class: "datepicker" %>
   </fieldset>
 
   <%= hidden_field_tag :parent_id, params[:parent_id] %>

@@ -1,0 +1,6 @@
+<%= form_for @lesson_plan do |f| %>
+  <%= f.label :date %>
+  <%= f.text_field :date, class: "datepicker", value: (@lesson_plan.date.strftime("%b %-d, %Y") if @lesson_plan.date.present?) %>
+
+  <%= f.submit "Save", class: "btn btn-success" %>
+<% end %>

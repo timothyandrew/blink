@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resources :goals, controller: "goals_summary"
   resource :notes, controller: "general_notes"
+  resources :lesson_plans
 end

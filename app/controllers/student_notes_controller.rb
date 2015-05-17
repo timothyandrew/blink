@@ -20,10 +20,6 @@ class StudentNotesController < ApplicationController
 
   private
 
-  def assign_student
-    @student = current_user.students.find(params[:student_id])
-  end
-
   def notes_params
     params.require(:student).permit(:notes)
   end

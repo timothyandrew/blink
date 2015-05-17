@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def current_user
     devise_current_user.decorate if devise_current_user
   end
+
+  def assign_student
+    @student = current_user.students.find(params[:student_id])
+  end
 end

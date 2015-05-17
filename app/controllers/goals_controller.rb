@@ -63,10 +63,6 @@ class GoalsController < ApplicationController
 
   private
 
-  def assign_student
-    @student = current_user.students.find(params[:student_id])
-  end
-
   def goal_params
     params.require(:goal).permit(:title, :description, :start, :end)
   end

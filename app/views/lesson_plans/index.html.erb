@@ -1,0 +1,17 @@
+<h1>Lesson Plans</h1>
+
+<div class="student-actions pull-right">
+  <%= link_to "New Lesson Plan", new_lesson_plan_path, class: "btn btn-primary" %>
+</div>
+
+<% if @lesson_plans.present? %>
+  <ul class="lesson-plans-list list-group">
+    <% @lesson_plans.each do |lesson_plan| %>
+      <li class="lesson-plans-list-item list-group-item"><%= link_to lesson_plan.date, lesson_plan_path(lesson_plan) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-warning">
+    You need to add lesson plans before anything shows up here.
+  </div>
+<% end %>

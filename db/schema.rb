@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515160718) do
+ActiveRecord::Schema.define(version: 20150517171727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,32 @@ ActiveRecord::Schema.define(version: 20150515160718) do
   add_index "goals", ["parent_id"], name: "index_goals_on_parent_id", using: :btree
   add_index "goals", ["rgt"], name: "index_goals_on_rgt", using: :btree
   add_index "goals", ["student_id"], name: "index_goals_on_student_id", using: :btree
+
+  create_table "lesson_plan_items", force: :cascade do |t|
+    t.time     "start"
+    t.time     "end"
+    t.string   "subject"
+    t.string   "topic"
+    t.text     "goals"
+    t.text     "teaching_method"
+    t.text     "teaching_aids"
+    t.boolean  "span"
+    t.text     "span_text"
+    t.integer  "lesson_plan_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "lesson_plan_items", ["lesson_plan_id"], name: "index_lesson_plan_items_on_lesson_plan_id", using: :btree
+
+  create_table "lesson_plans", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lesson_plans", ["user_id"], name: "index_lesson_plans_on_user_id", using: :btree
 
   create_table "long_term_goals", force: :cascade do |t|
     t.integer  "student_id"
@@ -95,6 +121,8 @@ ActiveRecord::Schema.define(version: 20150515160718) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "goals", "students"
+  add_foreign_key "lesson_plan_items", "lesson_plans"
+  add_foreign_key "lesson_plans", "users"
   add_foreign_key "long_term_goals", "students"
   add_foreign_key "short_term_goals", "long_term_goals"
 end
