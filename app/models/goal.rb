@@ -52,7 +52,7 @@ class Goal < ActiveRecord::Base
 
     grouped_goals = goals.uniq(&:id).group_by(&:parent_id)
     roots = Goal.sort(grouped_goals[nil])
-    Goal.build_tree(roots)
+    roots.map { |root| [root.decorate, root._children(grouped_goals)] }
   end
 
   # In-memory version of `goal-children`. Requires a data-structure of pre-loaded

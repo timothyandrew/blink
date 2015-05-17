@@ -4,7 +4,7 @@ class GoalsSummaryController < ApplicationController
     @students = current_user.students
     if filters_present?
       @goals_matching_filter = apply_filters(Goal.where(student_id: @students))
-      @goals = Goal.build_tree_containing(@goals_matching_filter.where(student_id: @students.pluck(:id)))
+      @goals = Goal.build_tree_containing(@goals_matching_filter.where(student_id: @students))
     else
       @goals = Goal.build_tree(Goal.roots.where(student_id: @students.pluck(:id)))
     end
