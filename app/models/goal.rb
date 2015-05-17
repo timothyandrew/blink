@@ -33,6 +33,8 @@ class Goal < ActiveRecord::Base
     goals.any? { |goal| goal.id == self.id }
   end
 
+  # Build a tree of all goals under the given `roots`.
+  # Goals will be returned in the format: [goal, [child_goal, [grandchild_goal, [...]]]]
   def self.build_tree(roots)
     Goal.sort(roots).map do |root|
       grouped_goals = root.descendants.decorate.group_by(&:parent_id)
@@ -40,6 +42,9 @@ class Goal < ActiveRecord::Base
     end
   end
 
+  # Find the smallest possible tree of goals containing all the given goals, all their
+  # ancestors, and all their descendants.
+  # Goals will be returned in the format: [goal, [child_goal, [grandchild_goal, [...]]]]
   def self.build_tree_containing(goals)
     goals = goals.reduce([]) do |acc, goal|
       acc + (goal.self_and_descendants.decorate) + (goal.ancestors.decorate)
@@ -50,6 +55,8 @@ class Goal < ActiveRecord::Base
     Goal.build_tree(roots)
   end
 
+  # In-memory version of `goal-children`. Requires a data-structure of pre-loaded
+  # goals, in the format {1 => [goals with parent_id 1], 2 => [goals with parent_id 2]}
   def _children(grouped_goals)
     children = Goal.sort(grouped_goals[self.id])
     if children
