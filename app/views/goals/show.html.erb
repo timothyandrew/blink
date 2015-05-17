@@ -20,10 +20,15 @@
     data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 </div>
 
-<% if goal.start && goal.end %>
-<h2 class="new-goal-subheader"><%= goal.expanded_date_range %></h2>
-<% end %>
 
-<%= render partial: "goals", locals: {goals: [goal], depth: @goal.depth, parent_id: nil} %>
+<h2 class="new-goal-subheader">
+  <% if(goal.start && goal.end) %>
+    <%= goal_name_for_depth(goal.depth) %>
+    |
+    <%= goal.expanded_date_range %>
+  <% end %>
+</h2>
+
+<%= render partial: "goals", locals: {goals: [goal], depth: @goal.depth, parent_id: nil, skip_header: true} %>
 
 <%= render "goal_toggle_js" %>
