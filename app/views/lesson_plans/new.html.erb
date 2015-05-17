@@ -1,3 +1,8 @@
-<h1>Create a Lesson Plan</h1>
+<% if @duplicate_from %>
+  <h1>Duplicating a Lesson Plan<h1>
+<% else %>
+  <h1>Create a Lesson Plan</h1>
+<% end %>
+
 
 <%= render "form" %>

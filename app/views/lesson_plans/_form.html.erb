@@ -2,5 +2,9 @@
   <%= f.label :date %>
   <%= f.text_field :date, class: "datepicker", value: (@lesson_plan.date.strftime("%b %-d, %Y") if @lesson_plan.date.present?) %>
 
+  <% if @duplicate_from %>
+    <%= hidden_field_tag :duplicate_from, @duplicate_from %>
+  <% end %>
+
   <%= f.submit "Save", class: "btn btn-success" %>
 <% end %>

@@ -4,6 +4,7 @@ class LessonPlansController < ApplicationController
   end
 
   def new
+    @duplicate_from = params[:duplicate_from]
     @lesson_plan = current_user.lesson_plans.new
   end
 
@@ -20,6 +21,10 @@ class LessonPlansController < ApplicationController
     @lesson_plan = current_user.lesson_plans.new
     @lesson_plan.assign_attributes(lesson_plan_params)
     if @lesson_plan.save
+      if params[:duplicate_from]
+        duplicate_from = current_user.lesson_plans.find(params[:duplicate_from])
+        @lesson_plan.duplicate!(duplicate_from)
+      end
       flash[:notice] = "Lesson plan was created"
       redirect_to lesson_plan_path(@lesson_plan)
     else
