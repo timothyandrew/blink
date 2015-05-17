@@ -22,8 +22,8 @@
 
 
 <h2 class="new-goal-subheader">
+  <%= goal_name_for_depth(goal.depth) %>
   <% if(goal.start && goal.end) %>
-    <%= goal_name_for_depth(goal.depth) %>
     |
     <%= goal.expanded_date_range %>
   <% end %>

@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      goal:
+        start: Start Date
+        end: End Date

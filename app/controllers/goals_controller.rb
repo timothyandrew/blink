@@ -35,7 +35,7 @@ class GoalsController < ApplicationController
     @goal = @student.goals.find(params[:id])
     if @goal.update_attributes(goal_params)
       flash[:notice] = "Long term goal was edited"
-      redirect_to student_path(@student)
+      redirect_to student_goal_path(@student, @goal)
     else
       flash[:alert] = @goal.errors.full_messages.to_sentence
       render :edit

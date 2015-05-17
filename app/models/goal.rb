@@ -1,6 +1,21 @@
 class Goal < ActiveRecord::Base
   acts_as_nested_set dependent: :destroy
   validates_presence_of :title
+  validate :presence_of_start_and_end_date, :start_date_before_end_date
+
+  def presence_of_start_and_end_date
+    # Up to the level of a weekly objective
+    if self.depth < 4
+      errors.add(:start, "can't be blank") if self.start.blank?
+      errors.add(:end, "can't be blank") if self.end.blank?
+    end
+  end
+
+  def start_date_before_end_date
+    if self.start.present? && self.end.present?
+      errors.add(:start, "can't be after end date") if self.start > self.end
+    end
+  end
 
   def self.sort(goals)
     return if goals.nil?
