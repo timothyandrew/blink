@@ -17,6 +17,7 @@ gem "gretel"
 gem 'awesome_nested_set'
 gem 'ckeditor'
 gem 'jquery-timepicker-rails'
+gem 'week_of_month'
 
 group :development, :test do
   gem 'byebug'

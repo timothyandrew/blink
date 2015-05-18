@@ -6,12 +6,33 @@
   <%= link_to "New Lesson Plan", new_lesson_plan_path, class: "btn btn-primary" %>
 </div>
 
-<% if @lesson_plans.present? %>
+<% if @grouped_lesson_plans.present? %>
   <ul class="lesson-plans-list list-group">
-    <% @lesson_plans.each do |lesson_plan| %>
-      <li class="lesson-plans-list-item list-group-item"><%= link_to lesson_plan.long_date, lesson_plan_path(lesson_plan) %></li>
+    <% @grouped_lesson_plans.each do |month, lesson_plans_by_week| %>
+      <h2>
+        <a class="disclosure glyphicon glyphicon-triangle-bottom" data-toggle="collapse" href="#month-<%= month.strftime('%B') %>"></a>
+        <%= month.strftime("%B %Y") %>
+      </h2>
+      <ul class="lesson-plans-list list-group collapse in" id="month-<%= month.strftime('%B') %>">
+        <% lesson_plans_by_week.each do |week, lesson_plans| %>
+          <h3>
+            <a class="disclosure glyphicon glyphicon-triangle-bottom" data-toggle="collapse" href="#week-<%= week.week_of_month %>"></a>
+            Week <%= week.week_of_month %>
+          </h3>
+          <ul class="lesson-plans-list list-group collapse in" id="week-<%= week.week_of_month %>">
+            <% lesson_plans.each do |lesson_plan| %>
+              <li class="lesson-plans-list-item list-group-item"><%= link_to lesson_plan.long_date, lesson_plan_path(lesson_plan) %></li>
+            <% end %>
+          </ul>
+
+          <%= render partial: "disclosure_js", locals: { id: "week-#{week.week_of_month}" } %>
+        <% end %>
+      </ul>
+
+      <%= render partial: "disclosure_js", locals: { id: "month-#{month.strftime('%B')}" } %>
     <% end %>
   </ul>
+
 <% else %>
   <div class="alert alert-warning">
     You need to add lesson plans before anything shows up here.

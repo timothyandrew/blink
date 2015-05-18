@@ -18,4 +18,13 @@ class LessonPlan < ActiveRecord::Base
   def long_date
     self.date.strftime("%A - %-d %B %Y")
   end
+
+  def self.grouped_by_month_and_week
+    lesson_plans_grouped_by_month = all.group_by { |lp| lp.date.beginning_of_month }
+    lesson_plans_grouped_by_month_and_week = lesson_plans_grouped_by_month.map do |month, lesson_plans|
+      [month, lesson_plans.group_by { |lp| lp.date.beginning_of_week }]
+    end
+
+    Hash[lesson_plans_grouped_by_month_and_week]
+  end
 end

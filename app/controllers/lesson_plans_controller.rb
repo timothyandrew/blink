@@ -1,6 +1,6 @@
 class LessonPlansController < ApplicationController
   def index
-    @lesson_plans = current_user.lesson_plans.order(date: :desc)
+    @grouped_lesson_plans = current_user.lesson_plans.order(date: :desc).grouped_by_month_and_week
   end
 
   def new
