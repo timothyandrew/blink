@@ -1,5 +1,17 @@
+.container {
+    $bg: rgba(244, 171, 72, 0.5);
+    padding: 30px 40px !important;
+    background: $bg;
+    border: 2px solid lighten($bg, 10%);
+}
+
+table {
+    background-color: white !important;
+}
+
 body {
     font-weight: 200;
+    background: url('/assets/bg.jpg');
 }
 
 .navbar-brand {
