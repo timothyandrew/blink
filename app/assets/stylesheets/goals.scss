@@ -28,7 +28,13 @@
     color: lighten(#9B59B6, 25%) !important;
 }
 
-.goal-name.complete::after {
+.new-goal-parent-name.complete {
+    position: relative;
+    font-style: oblique;
+    color: lighten(#000, 65%) !important;
+}
+
+.new-goal-parent-name.complete::after, .goal-name.complete::after {
     border-bottom: 2px solid #C0392B;
     content: "";
     left: 0;
