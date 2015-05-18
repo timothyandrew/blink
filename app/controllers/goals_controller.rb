@@ -20,6 +20,7 @@ class GoalsController < ApplicationController
   def create
     @parent = @student.goals.find_by_id(params[:parent_id])
     @goal = @student.goals.new
+    @goal.parent = @parent if @parent
     @goal.assign_attributes(goal_params)
     if @goal.save
       @goal.move_to_child_of(@parent) if @parent

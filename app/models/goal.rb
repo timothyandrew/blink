@@ -19,7 +19,7 @@ class Goal < ActiveRecord::Base
   end
 
   def start_and_end_dates_must_be_within_those_of_parent
-    return if self.depth == 0
+    return if self.parent.blank?
     errors.add(:start, "can't be before parent's start date") if self.start.present? && self.start < self.parent.start
     errors.add(:end, "can't be after parent's end date") if self.end.present? && self.end > self.parent.end
   end
