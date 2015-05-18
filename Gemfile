@@ -18,6 +18,7 @@ gem 'awesome_nested_set'
 gem 'ckeditor'
 gem 'jquery-timepicker-rails'
 gem 'week_of_month'
+gem 'rmagick', require: 'rmagick'
 
 group :development, :test do
   gem 'byebug'

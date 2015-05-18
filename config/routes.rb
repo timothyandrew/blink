@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :lesson_plans do
     resources :items, controller: "lesson_plan_items"
   end
+
+  get '/bingo', controller: 'bingo', action: 'generate'
 end
