@@ -1,5 +1,6 @@
 class LessonPlanItemsController < ApplicationController
   before_filter :assign_lesson_plan
+  decorates_assigned :lesson_plan_item
 
   def index
     @lesson_plan_items = @lesson_plan.items.order(date: :desc)

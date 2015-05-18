@@ -14,4 +14,8 @@ class LessonPlan < ActiveRecord::Base
       self
     end
   end
+
+  def long_date
+    self.date.strftime("%A - %-d %B %Y")
+  end
 end

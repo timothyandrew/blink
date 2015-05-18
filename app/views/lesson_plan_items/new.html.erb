@@ -1,3 +1,5 @@
+<% breadcrumb :new_lesson_plan_item, @lesson_plan %>
+
 <h1>Creating a Lesson Plan Item for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
 
 <%= render "form" %>

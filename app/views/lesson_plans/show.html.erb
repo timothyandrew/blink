@@ -1,3 +1,5 @@
+<% breadcrumb :lesson_plan, @lesson_plan %>
+
 <h1>Lesson Plan for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
 <div class="student-actions pull-right">
   <%= link_to "Add Item", new_lesson_plan_item_path(@lesson_plan), class: "btn btn-info" %>
@@ -16,7 +18,7 @@
     <% @items.decorate.each do |item| %>
       <tr>
         <td class="lesson-plan-item-time">
-          <%= link_to "#{item.start.strftime('%-l:%M%P')} - #{item.end.strftime('%-l:%M%P')}", edit_lesson_plan_item_path(@lesson_plan, item) %>
+          <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
         </td>
         <td class="lesson-plan-item-body">
           <% if item.span? %>

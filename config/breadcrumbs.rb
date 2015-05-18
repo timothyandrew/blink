@@ -55,3 +55,37 @@ crumb :edit_general_notes do
   link "Edit", edit_notes_path
   parent :general_notes
 end
+
+crumb :lesson_plans do
+  link "Lesson Plans", lesson_plans_path
+end
+
+crumb :lesson_plan do |lesson_plan|
+  link lesson_plan.long_date, lesson_plan_path(lesson_plan)
+  parent :lesson_plans
+end
+
+crumb :new_lesson_plan do
+  link "New", new_lesson_plan_path
+  parent :lesson_plans
+end
+
+crumb :edit_lesson_plan do |lesson_plan|
+  link "Edit", new_lesson_plan_path
+  parent :lesson_plan, lesson_plan
+end
+
+crumb :lesson_plan_item do |lesson_plan, item|
+  link item.range, lesson_plan_path(lesson_plan)
+  parent :lesson_plan, lesson_plan
+end
+
+crumb :new_lesson_plan_item do |lesson_plan|
+  link "New Item", new_lesson_plan_item_path(lesson_plan)
+  parent :lesson_plan, lesson_plan
+end
+
+crumb :edit_lesson_plan_item do |lesson_plan, item|
+  link "Edit", edit_lesson_plan_item_path(lesson_plan, item)
+  parent :lesson_plan_item, lesson_plan, item
+end
