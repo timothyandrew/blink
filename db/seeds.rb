@@ -1,26 +1,39 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 def create_sub_goals(goal, student)
   2.times do
-    Goal.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: Faker::Time.forward(23, :morning), end: Faker::Time.forward(23, :morning), parent: goal, student: student)
+    Goal.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: goal.start + 1.day, end: goal.end - 1.day, parent: goal, student_id: student.id)
   end
+
   if goal.depth < 3
-    goal.children.each { |goal| create_sub_goals(goal, student) }
+    goal.children.each { |sub_goal| create_sub_goals(sub_goal, student) }
   end
 end
 
-10.times { Student.create(name: Faker::Name.name) }
+def random_time(ordinal)
+  hour = sprintf("%02d", (rand * 11).to_i + 1)
+  minute = sprintf("%02d", (rand * 59).to_i + 1)
+  "#{hour}:#{minute}#{ordinal}"
+end
+
+user = User.create(email: "test@example.com", password: "testtest")
+10.times { Student.create(name: Faker::Name.name, user: user) }
+
+puts "=> Creating Goals"
 Student.all.each do |student|
   2.times do
-    student.goals.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: Faker::Time.forward(23, :morning), end: Faker::Time.forward(23, :morning))
+    start_date = Faker::Date.forward(50)
+    student.goals.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: start_date, end: Faker::Date.between(start_date + 15.days, start_date + 50.days))
     student.goals.each do |goal|
       create_sub_goals(goal, student)
     end
+  end
+end
+
+puts "=> Creating Lesson Plans"
+((Date.today + 10.days) .. (Date.today + 25.days)).each do |date|
+  lesson_plan = LessonPlan.create(date: date, user_id: user.id)
+  10.times do
+    lesson_plan.items.create(start: random_time("am"), end: random_time("pm"), subject: Faker::Commerce.department,
+                             topic: Faker::Company.catch_phrase, goals: Faker::Lorem.paragraph,
+                             teaching_method: Faker::Lorem.paragraph, teaching_aids: Faker::Lorem.paragraph)
   end
 end
