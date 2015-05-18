@@ -1,0 +1,13 @@
+<script type="text/javascript">
+ $("#<%= id %>").on("shown.bs.collapse", function(event) {
+   $("<%= ".disclosure[href='##{id}']".html_safe %>").removeClass("glyphicon-triangle-right");
+   $("<%= ".disclosure[href='##{id}']".html_safe %>").addClass("glyphicon-triangle-bottom");
+   event.stopPropagation();
+ });
+
+ $("#<%= id %>").on("hidden.bs.collapse", function(event) {
+   $("<%= ".disclosure[href='##{id}']".html_safe %>").removeClass("glyphicon-triangle-bottom");
+   $("<%= ".disclosure[href='##{id}']".html_safe %>").addClass("glyphicon-triangle-right");
+   event.stopPropagation();
+ });
+</script>

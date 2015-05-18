@@ -1,14 +1,25 @@
 <ul>
   <% goals.each do |goal, children| %>
     <li>
-      <%= link_to goal.title, student_goal_path(student, goal),
-      class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
-        title: "Date: #{goal.date_range}" %>
-
       <% if(depth < 4) && children.present? %>
-        <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
+        <a href="#goal-<%= goal.id %>" data-toggle="collapse" class="disclosure glyphicon glyphicon-triangle-bottom"></a>
       <% end %>
 
+      <%= link_to goal.title, student_goal_path(student, goal),
+                  class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
+                  title: "Date: #{goal.date_range}" %>
+
+      <div id="goal-<%= goal.id %>" class="collapse in">
+
+        <% if(depth < 4) && children.present? %>
+          <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
+        <% end %>
+
+      </div>
+
     </li>
+
+    <%= render partial: "disclosure_js", locals: { id: "goal-#{goal.id}" } %>
+
   <% end %>
 </ul>

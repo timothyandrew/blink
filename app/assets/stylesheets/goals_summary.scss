@@ -33,16 +33,16 @@
 .student-goals-summary > div > ul {
     list-style-type: decimal;
 
-    > li > ul {
+    > li > div > ul {
         list-style-type: lower-alpha;
 
-        > li > ul {
+        > li > div > ul {
             list-style-type: lower-roman;
 
-            > li > ul {
+            > li > div > ul {
                 list-style-type: disc;
 
-                > li > ul {
+                > li > div > ul {
                     list-style-type: circle;
                 }
             }

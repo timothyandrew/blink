@@ -24,20 +24,7 @@
           <% end %>
         </div>
 
-        <script type="text/javascript">
-         $("<%= "#goal-body-#{goal.id}" %>").on("shown.bs.collapse", function(event) {
-           $("<%= ".disclosure[href='#goal-body-#{goal.id}']".html_safe %>").removeClass("glyphicon-triangle-right");
-           $("<%= ".disclosure[href='#goal-body-#{goal.id}']".html_safe %>").addClass("glyphicon-triangle-bottom");
-           event.stopPropagation();
-         });
-
-         $("<%= "#goal-body-#{goal.id}" %>").on("hidden.bs.collapse", function(event) {
-           $("<%= ".disclosure[href='#goal-body-#{goal.id}']".html_safe %>").removeClass("glyphicon-triangle-bottom");
-           $("<%= ".disclosure[href='#goal-body-#{goal.id}']".html_safe %>").addClass("glyphicon-triangle-right");
-           event.stopPropagation();
-         });
-        </script>
-
+        <%= render partial: "disclosure_js", locals: { id: "goal-body-#{goal.id}" } %>
 
       </li>
     <% end %>
