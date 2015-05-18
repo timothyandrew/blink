@@ -7,15 +7,15 @@
 .new-goal-subheader {
     font-size: 20px;
     margin-top: 10px;
-    color: #aaa;
+    color: #666;
     font-weight: 600;
-    border-bottom: 1px solid #D35400;
+    border-bottom: 1px solid #a63e66;
     padding-bottom: 10px;
     margin-bottom: 40px;
 }
 
 .goal-name {
-    color: #9B59B6 !important;
+    color: lighten(#8E3557, 10%) !important;
 }
 
 .goal-name.highlight {
@@ -47,23 +47,5 @@
 }
 
 .goal-type-title {
-    &.depth-0 {
-        font-size: 30px;
-    }
-
-    &.depth-1 {
-        font-size: 25px;
-    }
-
-    &.depth-2 {
-        font-size: 20px;
-    }
-
-    &.depth-3 {
-        font-size: 18px;
-    }
-
-    &.depth-4 {
-        font-size: 16px;
-    }
+    font-size: 20px !important;
 }

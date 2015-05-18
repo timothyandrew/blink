@@ -1,5 +1,5 @@
 .container {
-    $bg: rgba(244, 171, 72, 0.5);
+    $bg: rgba(255, 255, 255, 0.9);
     padding: 30px 40px !important;
     background: $bg;
     border: 2px solid lighten($bg, 10%);
@@ -64,7 +64,7 @@ fieldset {
 }
 
 
-$disclosure-color: #ECF0F1;
+$disclosure-color: #A3A3A3;
 
 .disclosure {
     color: $disclosure-color;
@@ -106,4 +106,9 @@ h1 {
 
 fieldset label:nth-of-type(2) {
     margin-left: 60px;
+}
+
+.breadcrumb {
+    background-color: #fff;
+    border: 1px solid #bbb;
 }
