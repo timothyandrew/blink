@@ -1,5 +1,9 @@
 <% breadcrumb :edit_lesson_plan, @lesson_plan %>
 
-<h1>Edit Lesson Plan for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
+<h1>Edit Lesson Plan</h1>
+
+<h2 class="new-goal-subheader">
+  <%= @lesson_plan.date.strftime("%A | %-d %B %Y") %>
+</h2>
 
 <%= render "form" %>

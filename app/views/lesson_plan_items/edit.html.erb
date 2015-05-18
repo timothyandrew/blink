@@ -1,6 +1,12 @@
 <% breadcrumb :edit_lesson_plan_item, @lesson_plan, lesson_plan_item %>
 
-<h1>Editing a Lesson Plan Item for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
+<h1>Editing a Lesson Plan Item</h1>
+
+<h2 class="new-goal-subheader">
+  <%= lesson_plan_item.range %>
+  —
+  <%= @lesson_plan.date.strftime("%A | %-d %B %Y") %>
+</h2>
 
 <div class="student-actions pull-right">
   <%= link_to "Delete", lesson_plan_item_path(@lesson_plan, @lesson_plan_item), method: :delete, class: "btn btn-danger",

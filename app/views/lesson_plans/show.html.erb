@@ -1,6 +1,6 @@
 <% breadcrumb :lesson_plan, @lesson_plan %>
 
-<h1>Lesson Plan for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
+<h1>Lesson Plan</h1>
 <div class="student-actions pull-right">
   <%= link_to "Add Item", new_lesson_plan_item_path(@lesson_plan), class: "btn btn-info" %>
   <%= link_to "Edit Date", edit_lesson_plan_path(@lesson_plan), class: "btn btn-primary" %>
@@ -10,7 +10,9 @@
 </div>
 
 
-<h2 class="new-goal-subheader"></h2>
+<h2 class="new-goal-subheader">
+  <%= @lesson_plan.date.strftime("%A | %-d %B %Y") %>
+</h2>
 
 <% if @items.present? %>
 
