@@ -1,0 +1,59 @@
+body {
+
+}
+
+h1 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+h2 {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    color: #888 !important;
+}
+
+.container {
+    margin: 0;
+    width: 100%;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+a[href]:after {
+    content: none;
+}
+
+.lesson-plan-print {
+    display: table;
+    th {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+}
+
+.lesson-plan-display {
+    display: none;
+}
+
+.student-actions {
+    display: none;
+}
+
+.lesson-plan-item-attribute-value.span {
+    vertical-align: middle;
+    text-align: center;
+    background-color: transparent;
+    font-size: 20px;
+    .letter {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
+.lesson-plan-item-time {
+    font-weight: 400;
+    text-align: center;
+}
