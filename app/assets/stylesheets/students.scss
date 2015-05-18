@@ -5,7 +5,16 @@
 
 .student-actions, .actions {
     display: inline;
-    margin-bottom: 10px;
+    a, .btn-group {
+        margin-left: 10px;
+    }
+}
+
+.student-actions .second-row, .actions .second-row {
+    margin-top: 15px;
+    > a {
+        float: right;
+    }
 }
 
 .container > .student_goals {

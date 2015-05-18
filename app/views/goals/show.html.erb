@@ -2,18 +2,7 @@
 
 <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
-  <% if @goal.not_final_level? %>
-    <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
-  <% end %>
-
   <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
-
-  <% if @goal.completed? %>
-    <%= link_to "Uncomplete", uncomplete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
-  <% else %>
-    <%= link_to "Complete", complete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
-  <% end %>
-
 
   <div class="btn-group">
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
@@ -22,6 +11,18 @@
 
   <%= link_to "Delete", student_goal_path(@student, @goal), method: :delete, class: "btn btn-danger",
     data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
+
+  <div class="second-row">
+    <% if @goal.not_final_level? %>
+      <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
+    <% end %>
+
+    <% if @goal.completed? %>
+      <%= link_to "Uncomplete", uncomplete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
+    <% else %>
+      <%= link_to "Complete", complete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
+    <% end %>
+  </div>
 </div>
 
 
