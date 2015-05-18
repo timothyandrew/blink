@@ -39,14 +39,14 @@ class Goal < ActiveRecord::Base
   def complete!
     transaction do
       self.update(completed: true)
-      self.children.update_all(completed: true)
+      self.descendants.update_all(completed: true)
     end
   end
 
   def uncomplete!
     transaction do
       self.update(completed: false)
-      self.children.update_all(completed: false)
+      self.descendants.update_all(completed: false)
     end
   end
 
