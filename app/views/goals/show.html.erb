@@ -2,10 +2,14 @@
 
 <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
+  <% if @goal.depth < 4 %>
+    <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
+  <% end %>
+
   <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
 
   <% if @goal.completed? %>
-    <%= link_to "Uncomplete", uncomplete_student_goal_path(@student, @goal), method: :put, class: "btn btn-danger" %>
+    <%= link_to "Uncomplete", uncomplete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
   <% else %>
     <%= link_to "Complete", complete_student_goal_path(@student, @goal), method: :put, class: "btn btn-info" %>
   <% end %>
@@ -29,6 +33,8 @@
   <% end %>
 </h2>
 
-<%= render partial: "goals", locals: {goals: [goal], depth: @goal.depth, parent_id: nil, skip_header: true} %>
+<%= raw @goal.description %>
+
+<%= render partial: "goals", locals: {goals: goal.sorted_children, depth: @goal.depth.next, parent_id: nil, skip_header: false} %>
 
 <%= render "goal_toggle_js" %>

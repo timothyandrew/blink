@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   decorates_assigned :student
 
   def index
-    @students = current_user.students.all
+    @students = current_user.students.order(:name).all
   end
 
   def new

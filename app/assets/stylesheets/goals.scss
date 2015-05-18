@@ -1,11 +1,10 @@
 .new-goal-header {
-    font-size: 46px !important;
     color: black;
     margin: 0;
 }
 
 .new-goal-subheader {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
     color: #666;
     font-weight: 600;
@@ -15,7 +14,7 @@
 }
 
 .goal-name {
-    color: lighten(#8E3557, 10%) !important;
+    color: #8E3557;
 }
 
 .goal-name.highlight {
@@ -47,5 +46,13 @@
 }
 
 .goal-type-title {
+    color: #2C0043;
     font-size: 20px !important;
+}
+
+.add-sub-goal {
+    $bg: #F1AC47;
+    background-color: $bg;
+    color: darken($bg, 40%);
+    border: 1px solid lighten($bg, 10%);
 }

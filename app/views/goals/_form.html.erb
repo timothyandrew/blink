@@ -9,23 +9,21 @@
     <%= f.cktext_area :description %>
   </fieldset>
 
-  <% if @parent && @parent.start && @parent.end %>
-    <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
-  <% end %>
-
   <fieldset>
     <%= f.label :start, "Start Date" %>
     <%= f.text_field :start, value: (@goal.start.strftime("%b %-d, %Y") if @goal.start.present?), class: "datepicker" %>
-  </fieldset>
 
-  <fieldset>
     <%= f.label :end, "End Date" %>
     <%= f.text_field :end, value: (@goal.end.strftime("%b %-d, %Y") if @goal.end.present?), class: "datepicker" %>
   </fieldset>
 
+  <% if @parent && @parent.start && @parent.end %>
+    <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
+  <% end %>
+
   <%= hidden_field_tag :parent_id, params[:parent_id] %>
 
-  <%= f.submit "Save", class: "btn btn-success" %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

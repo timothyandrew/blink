@@ -29,7 +29,14 @@
     <script type="text/javascript">
       $('.datepicker').datepicker({
       format: "M d, yyyy",
-      orientation: "top auto"
+      orientation: "auto",
+      autoclose: true
+      });
+
+      $('.datepicker-bottom').datepicker({
+      format: "M d, yyyy",
+      orientation: "top auto",
+      autoclose: true
       });
 
       $('.timepicker').timepicker({

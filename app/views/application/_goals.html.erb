@@ -1,9 +1,11 @@
-<ul class="student_goals list-group">
-  <% unless local_assigns[:skip_header] %>
-    <h4 class="goal-type-title depth-<%= depth %>"><%= link_to goal_name_for_depth(depth).pluralize, new_student_goal_path(@student, parent_id: parent_id) %></h4>
-  <% end %>
+<% if goals.present? %>
+  <ul class="student_goals list-group">
+    <% unless local_assigns[:skip_header] %>
+      <h4 class="goal-type-title depth-<%= depth %>">
+        <%= goal_name_for_depth(depth).pluralize %>
+      </h4>
+    <% end %>
 
-  <% if goals.present? %>
     <% goals.each_with_index do |goal, index| %>
       <li class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %>">
 
@@ -28,6 +30,5 @@
 
       </li>
     <% end %>
-
-  <% end %>
-</ul>
+  </ul>
+<% end %>
