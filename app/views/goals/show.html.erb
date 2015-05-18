@@ -2,7 +2,7 @@
 
 <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
-  <% if @goal.depth < 4 %>
+  <% if @goal.not_final_level? %>
     <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
   <% end %>
 

@@ -1,7 +1,7 @@
 <ul>
   <% goals.each do |goal, children| %>
     <li>
-      <% if(depth < 4) && children.present? %>
+      <% if (goal.not_final_level?) && children.present? %>
         <a href="#goal-<%= goal.id %>" data-toggle="collapse" class="disclosure glyphicon glyphicon-triangle-bottom"></a>
       <% end %>
 
@@ -11,7 +11,7 @@
 
       <div id="goal-<%= goal.id %>" class="collapse in">
 
-        <% if(depth < 4) && children.present? %>
+        <% if(goal.not_final_level?) && children.present? %>
           <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
         <% end %>
 

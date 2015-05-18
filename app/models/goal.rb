@@ -4,9 +4,14 @@ class Goal < ActiveRecord::Base
   validate :presence_of_start_and_end_date, :start_date_before_end_date,
            :start_and_end_dates_must_be_within_those_of_parent
 
+  # Return true if this is not the final level (Activity)
+  def not_final_level?
+    self.depth < 4
+  end
+
   def presence_of_start_and_end_date
     # Up to the level of a weekly objective
-    if self.depth < 4
+    if self.not_final_level?
       errors.add(:start, "can't be blank") if self.start.blank?
       errors.add(:end, "can't be blank") if self.end.blank?
     end
