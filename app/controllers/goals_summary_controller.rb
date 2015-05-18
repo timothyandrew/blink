@@ -1,6 +1,6 @@
 class GoalsSummaryController < ApplicationController
   def index
-    @skip_container = true
+    @container_classes = "full-width"
     @students = current_user.students
     if filters_present?
       @goals_matching_filter = apply_filters(Goal.where(student_id: @students))

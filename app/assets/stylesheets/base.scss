@@ -5,6 +5,11 @@
     border: 2px solid lighten($bg, 10%);
 }
 
+.container.full-width {
+    padding: 0 !important;
+    width: 100% !important;
+}
+
 table {
     background-color: white !important;
 }
@@ -111,4 +116,8 @@ fieldset label:nth-of-type(2) {
 .breadcrumb {
     background-color: #fff;
     border: 1px solid #bbb;
+}
+
+.btn.inline {
+    display: inline;
 }

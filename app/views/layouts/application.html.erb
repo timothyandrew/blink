@@ -17,31 +17,27 @@
 
     <%= render "navbar" %>
 
-    <% unless @skip_container %>
-      <div class="container">
-    <% end %>
 
-    <%= breadcrumbs style: :bootstrap %>
-    <%= flash_messages %>
-    <%= yield %>
+    <div class="container <%= @container_classes if @container_classes.present? %>">
+      <%= breadcrumbs style: :bootstrap %>
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
 
-    <% unless @skip_container %>
-      </div>
-    <% end %>
 
 
     <script type="text/javascript">
-     $('.datepicker').datepicker({
-       format: "M d, yyyy",
-       orientation: "top auto"
-     });
+      $('.datepicker').datepicker({
+      format: "M d, yyyy",
+      orientation: "top auto"
+      });
 
-     $('.timepicker').timepicker({
+      $('.timepicker').timepicker({
       scrollDefault: "now",
       step: 15,
       minTime: '6:00am',
       maxTime: '10:00pm'
-     });
+      });
     </script>
 
   </body>
