@@ -2,7 +2,9 @@
 
 <h1 class="new-goal-header"> <span class="new-goal-parent-name"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
-  <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
+  <% unless @goal.completed? %>
+    <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
+  <% end %>
 
   <div class="btn-group">
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
@@ -13,7 +15,7 @@
     data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 
   <div class="second-row">
-    <% if @goal.not_final_level? %>
+    <% if @goal.not_final_level? && !@goal.completed? %>
       <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
     <% end %>
 
