@@ -89,3 +89,8 @@ crumb :edit_lesson_plan_item do |lesson_plan, item|
   link "Edit", edit_lesson_plan_item_path(lesson_plan, item)
   parent :lesson_plan_item, lesson_plan, item
 end
+
+crumb :audit_log do |student|
+  link "Audit Log", student_audits_path(student)
+  parent :student, student
+end

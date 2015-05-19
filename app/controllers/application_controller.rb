@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def assign_student
-    @student = current_user.students.find(params[:student_id])
+    @student = current_user.students.find(params[:student_id]).decorate
   end
 end

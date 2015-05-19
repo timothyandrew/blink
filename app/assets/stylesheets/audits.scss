@@ -1,0 +1,32 @@
+.audit-log {
+    font-size: 16px;
+}
+
+.audit-log .summary {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.audit-log .new {
+    background-color: #dff0d8;
+}
+
+.audit-log .old {
+    background-color: #f2dede;
+}
+
+.audit-log .list-group {
+    margin: 20px;
+    padding: 20px 0 20px 20px;
+}
+
+.audit-log .old, .audit-log .new {
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 2px;
+}
+
+.audit-log .changed-to-literal, .audit-log .changed-from-literal {
+    font-weight: 400;
+}

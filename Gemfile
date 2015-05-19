@@ -19,6 +19,7 @@ gem 'ckeditor'
 gem 'jquery-timepicker-rails'
 gem 'week_of_month'
 gem 'rmagick', require: 'rmagick'
+gem "audited-activerecord", "~> 4.0"
 
 group :development, :test do
   gem 'byebug'

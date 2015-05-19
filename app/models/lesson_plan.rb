@@ -4,6 +4,9 @@ class LessonPlan < ActiveRecord::Base
   validates_presence_of :date
   has_many :items, class_name: LessonPlanItem, dependent: :destroy
 
+  audited
+  has_associated_audits
+
   def duplicate!(from)
     transaction do
       from.items.each do |item|

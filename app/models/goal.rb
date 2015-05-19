@@ -1,8 +1,13 @@
 class Goal < ActiveRecord::Base
+  belongs_to :student
+
   acts_as_nested_set dependent: :destroy
   validates_presence_of :title
   validate :presence_of_start_and_end_date, :start_date_before_end_date,
            :start_and_end_dates_must_be_within_those_of_parent
+
+
+  audited associated_with: :student
 
   # Return true if this is not the final level (Activity)
   def not_final_level?

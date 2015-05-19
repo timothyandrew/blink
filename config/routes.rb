@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :students do
+    resources :audits, controller: "student_audits"
     resource :notes, controller: "student_notes"
     resources :goals do
       member do

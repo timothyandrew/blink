@@ -1,0 +1,39 @@
+<% breadcrumb :audit_log, @student %>
+
+<h1>Audit Log for <%= @student.short_name %></h1>
+
+<div class="student-actions pull-right">
+  <div class="btn-group">
+    <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
+    <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
+  </div>
+</div>
+
+<h2 class="new-goal-subheader"></h2>
+
+<% if @audits.present? %>
+
+  <ul class="audit-log list-group">
+    <% @audits.each do |audit| %>
+      <li class="list-group-item">
+        <a class="disclosure glyphicon glyphicon-triangle-right" data-toggle="collapse" href=<%= "#audit-#{audit.id}" %>></a>
+        <span class="summary"><%= raw audit.summary_sentence %></span>
+        <ul class="list-group collapse" id="audit-<%= audit.id %>">
+          <% audit.changes.each do |change| %>
+            <li class="list-group-item"><%= raw change %></li>
+          <% end %>
+        </ul>
+      </li>
+      <%= render partial: "disclosure_js", locals: { id: "audit-#{audit.id}" } %>
+    <% end %>
+  </ul>
+
+  <%= render "show_hide_all_js" %>
+
+<% else %>
+
+  <div class="alert alert-warning">
+    No activities to log yet.
+  </div>
+
+<% end %>

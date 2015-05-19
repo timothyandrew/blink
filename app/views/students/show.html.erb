@@ -8,6 +8,8 @@
     <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
     <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
   </div>
+
+  <%= link_to "Log", student_audits_path(@student), class: "btn btn-info" %>
 </div>
 
 
@@ -16,7 +18,7 @@
 
   <%= render partial: "goals", locals: {goals: Goal.sort(Goal.roots.where(student_id: @student.id).decorate), depth: 0, parent_id: nil} %>
 
-  <%= render "goal_toggle_js" %>
+  <%= render "show_hide_all_js" %>
 <% else %>
   <div class="alert alert-warning student-goals-alert">
     You need to add some goals before you see anything here.
