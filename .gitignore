@@ -13,3 +13,5 @@
 /tmp
 .DS_Store
 completer.hist
+# Ignore application configuration
+/config/application.yml

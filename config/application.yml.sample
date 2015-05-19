@@ -1,0 +1,2 @@
+SEGMENT_KEY: segment-key
+SECRET_KEY_BASE: secret
