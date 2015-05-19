@@ -6,6 +6,7 @@
 
  <% if current_user.present? %>
  analytics.identify({
+   name: '<%= current_user.name.presence || "<unknown>" %>',
    email: '<%= current_user.email %>'
  });
  <% end %>
