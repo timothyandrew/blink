@@ -11,5 +11,5 @@
  });
  <% end %>
 
- analytics.page('<%= controller_name.titleize %>', {url: '<%= request.fullpath %>'});
+ analytics.page('<%= "#{controller_name}##{action_name}" %>', {url: '<%= request.fullpath %>'});
 </script>
