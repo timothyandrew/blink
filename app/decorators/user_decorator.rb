@@ -2,6 +2,6 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def name
-    model.email
+    model.name.presence || model.email
   end
 end
