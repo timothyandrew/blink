@@ -18,14 +18,12 @@
   </fieldset>
 
   <% if @parent && @parent.start && @parent.end %>
-    <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
-  <% end %>
-
-  <%= hidden_field_tag :parent_id, params[:parent_id] %>
-
-  <%= f.submit "Save", class: "btn btn-primary" %>
+  <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
 <% end %>
 
-<script type="text/javascript">
+<%= hidden_field_tag :parent_id, params[:parent_id] %>
 
-</script>
+<%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+
+<%= render "dirty_onbeforeunload" %>

@@ -1,0 +1,23 @@
+<script type="text/javascript">
+ var dirty = false;
+
+ for (var i in CKEDITOR.instances) {
+   CKEDITOR.instances[i].on('change', function() {
+     dirty = true;
+   });
+ }
+
+ $('input').change(function() {
+   dirty = true;
+ });
+
+ $('form').submit(function() {
+   window.onbeforeunload = null;
+ });
+
+ window.onbeforeunload = function() {
+   if(dirty) {
+     return "You have unsaved changes. Do you really want to leave this page, Rakshitha?";
+   }
+ };
+</script>
