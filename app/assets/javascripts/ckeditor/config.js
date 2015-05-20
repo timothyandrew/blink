@@ -6,13 +6,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 CKEDITOR.editorConfig = function( config )
 {
   // Define changes to default configuration here. For example:
-  // config.language = 'fr';
+  config.defaultLanguage = 'en';
+  config.language = 'en';
   // config.uiColor = '#AADC6E';
 
   // The location of a script that handles file uploads in the Image dialog.
   config.filebrowserImageUploadUrl = "/pictures";
 
   config.allowedContent = true;
+
+  config.extraPlugins = 'autosave';
 
   // Rails CSRF token
   config.filebrowserParams = function(){
@@ -101,3 +104,4 @@ CKEDITOR.editorConfig = function( config )
 };
 
 CKEDITOR.env.isCompatible = true;
+CKEDITOR.config.autosave_delay = 5;
