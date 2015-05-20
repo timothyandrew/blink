@@ -15,8 +15,6 @@ CKEDITOR.editorConfig = function( config )
 
   config.allowedContent = true;
 
-  config.extraPlugins = 'autosave';
-
   // Rails CSRF token
   config.filebrowserParams = function(){
     var csrf_token, csrf_param, meta,
@@ -104,4 +102,3 @@ CKEDITOR.editorConfig = function( config )
 };
 
 CKEDITOR.env.isCompatible = true;
-CKEDITOR.config.autosave_delay = 5;
