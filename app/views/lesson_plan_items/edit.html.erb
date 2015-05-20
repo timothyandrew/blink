@@ -2,15 +2,15 @@
 
 <h1>Editing a Lesson Plan Item</h1>
 
+<div class="student-actions pull-right">
+  <%= link_to "Delete", lesson_plan_item_path(@lesson_plan, @lesson_plan_item), method: :delete, class: "btn btn-danger",
+    data: {confirm: "Are you sure? This will destroy this lesson plan item and all its contents. There is no undo!"} %>
+</div>
+
 <h2 class="new-goal-subheader">
   <%= lesson_plan_item.range %>
   —
   <%= @lesson_plan.date.strftime("%A | %-d %B %Y") %>
 </h2>
-
-<div class="student-actions pull-right">
-  <%= link_to "Delete", lesson_plan_item_path(@lesson_plan, @lesson_plan_item), method: :delete, class: "btn btn-danger",
-    data: {confirm: "Are you sure? This will destroy this lesson plan item and all its contents. There is no undo!"} %>
-</div>
 
 <%= render "form" %>
