@@ -1,2 +1,6 @@
 SEGMENT_KEY: segment-key
 SECRET_KEY_BASE: secret
+AWS_ACCESS_KEY: access
+AWS_SECRET_KEY: secret
+AWS_CARRIERWAVE_BUCKET: bucket
+AWS_REGION: region

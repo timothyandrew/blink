@@ -21,6 +21,8 @@ gem 'week_of_month'
 gem 'rmagick', require: 'rmagick'
 gem "audited-activerecord", "~> 4.0"
 gem "figaro"
+gem 'carrierwave'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
