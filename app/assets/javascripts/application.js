@@ -17,4 +17,6 @@
 //= require bootstrap-sprockets
 //= require jquery.timepicker.js
 //= require ckeditor/init
+//= require garlic
+//= require underscore
 //= require_tree .

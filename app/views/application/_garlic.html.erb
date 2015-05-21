@@ -1,0 +1,38 @@
+<script type="text/javascript">
+ function updateGarlicField(elem, id, old, event) {
+   // If CKEDITOR
+   var editor = CKEDITOR.instances[$(elem).attr('id')];
+   if(editor) { editor.setData(old); }
+
+   // If regular text field
+   $(elem).val(old);
+
+   $(elem).trigger('change');
+   $(elem).garlic('destroy');
+   $(".discard-" + id).remove();
+
+   event.preventDefault();
+   return false;
+ }
+
+ $("form").garlic({
+   onRetrieve: function(elem, storedValue) {
+     var old = $(elem).attr('value') || $(elem).text();
+     if(old === storedValue) { return; }
+     var id = Date.now();
+     var discard = $("<a class='discard-" + id + "'>Discard?</a>");
+     var unsavedMessage = $("<span class='discard-" + id + "'> You have unsaved changes.</span>");
+
+     discard.click(_.partial(updateGarlicField, elem, id, old));
+     $(discard).insertAfter($(unsavedMessage).insertAfter(elem));
+   }
+ });
+
+ _.each(CKEDITOR.instances, function(instance, id) {
+   instance.on('change', function() {
+     var elem = $(instance.element.$);
+     instance.updateElement();
+     elem.trigger('change');
+   });
+ });
+</script>
