@@ -14,7 +14,7 @@
             <a class="disclosure glyphicon glyphicon-triangle-bottom" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
             <%= link_to "#{index + 1}. #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
           </h3>
-          <span class="goal-date"><%= goal.date_range %></span>
+          <span class="goal-date"><%= goal.decorate.date_range %></span>
         </div>
 
 

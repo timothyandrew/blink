@@ -18,7 +18,7 @@
   </fieldset>
 
   <% if @parent && @parent.start && @parent.end %>
-  <span class="help-block">The parent goal duration is <%= parent.expanded_date_range %>.</span>
+  <span class="help-block">The parent goal duration is <%= parent.decorate.expanded_date_range %>.</span>
 <% end %>
 
 <%= hidden_field_tag :parent_id, params[:parent_id] %>

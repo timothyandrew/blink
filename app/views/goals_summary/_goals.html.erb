@@ -7,7 +7,7 @@
 
       <%= link_to goal.title, student_goal_path(student, goal),
                   class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
-                  title: "Date: #{goal.date_range}" %>
+                  title: "Date: #{goal.decorate.date_range}" %>
 
       <div id="goal-<%= goal.id %>" class="collapse in">
 

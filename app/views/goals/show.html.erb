@@ -32,7 +32,7 @@
   <%= goal_name_for_depth(goal.depth) %>
   <% if(goal.start && goal.end) %>
     |
-    <%= goal.expanded_date_range %>
+    <%= goal.decorate.expanded_date_range %>
   <% end %>
 </h2>
 

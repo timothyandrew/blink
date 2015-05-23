@@ -5,7 +5,7 @@ class GoalsController < ApplicationController
 
   def new
     @parent = @student.goals.find_by_id(params[:parent_id]) if params[:parent_id]
-    @goal= @student.goals.new
+    @goal = @student.goals.new
   end
 
   def edit
