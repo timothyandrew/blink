@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   decorates_assigned :parent
 
   def new
-    @parent = @student.goals.find_by_id(params[:parent_id])
+    @parent = @student.goals.find_by_id(params[:parent_id]) if params[:parent_id]
     @goal= @student.goals.new
   end
 
@@ -18,7 +18,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @parent = @student.goals.find_by_id(params[:parent_id])
+    @parent = @student.goals.find_by_id(params[:parent_id])  if params[:parent_id]
     @goal = @student.goals.new
     @goal.parent = @parent if @parent
     @goal.assign_attributes(goal_params)
