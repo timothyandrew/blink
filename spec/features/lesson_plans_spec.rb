@@ -81,4 +81,25 @@ describe "Lesson Plans", type: :feature do
     expect(page).to have_content "Teaching Aids Some aids"
     expect(page).to have_content "1:00pm - 2:00pm"
   end
+
+  describe "Deletions" do
+    it "allows deleting a lesson plan" do
+      lesson_plan = LessonPlan.last
+      accept_confirm { click_on "Delete" }
+      expect(page).to have_content("Lesson plan was destroyed")
+      expect(LessonPlan.find_by_id(lesson_plan.id)).to be_nil
+    end
+
+    it "allows deleting a lesson plan item" do
+      click_on "Add Item"
+      fill_in_lesson_plan_item(start: "2:00pm", end: "5:00pm")
+      click_on "Save"
+
+      item = LessonPlan.last.items.last
+      click_on "2:00pm - 5:00pm"
+      accept_confirm { click_on "Delete" }
+      expect(page).to have_content("Lesson plan item was destroyed")
+      expect(LessonPlanItem.find_by_id(item.id)).to be_nil
+    end
+  end
 end
