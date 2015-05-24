@@ -65,6 +65,11 @@ describe "A student and his/her goals", :type => :feature do
     click_on "Add Activity"
     goal_name = fill_in_goal("Jan 6, 2015", "Jan 6, 2015")
     goals << goal_name
+
+    visit("/students")
+    click_on "Goals for All Students"
+    goals.each { |goal| expect(page).to have_content(goal) }
+
     verify_goal_tree(goals, @student_name)
   end
 
