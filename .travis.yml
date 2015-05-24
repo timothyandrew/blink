@@ -1,4 +1,9 @@
 language: ruby
 rvm:
   - 2.2.0
-before_script: cp config/application.yml.sample config/application.yml
+script:
+  - bundle exec rake db:test:prepare
+  - bundle exec rake spec
+before_script:
+  - cp config/application.yml.sample config/application.yml
+  - psql -c 'create database blink_test;' -U postgres
