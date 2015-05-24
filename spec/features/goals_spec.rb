@@ -6,24 +6,6 @@ describe "A student and his/her goals", :type => :feature do
     click_on @student_name
   end
 
-  def create_student
-    name = Faker::Name.name
-    click_on "New Student"
-    fill_in "Name", with: name
-    click_on "Save"
-    name
-  end
-
-  def fill_in_goal(start_date, end_date)
-    name = Faker::Company.bs
-    fill_in "Title", with: name
-    fill_in_ckeditor "goal_description", with: Faker::Lorem.paragraph
-    fill_in "Start Date", with: start_date
-    fill_in "End Date", with: end_date
-    click_on "Save"
-    name
-  end
-
   def verify_goal_tree(goals, student_name)
     student = Student.find_by_name!(student_name)
     goals.map! { |goal| Goal.find_by_title!(goal) }
