@@ -19,8 +19,10 @@
         <a class="disclosure glyphicon glyphicon-triangle-right" data-toggle="collapse" href=<%= "#audit-#{audit.id}" %>></a>
         <span class="summary"><%= raw audit.summary_sentence %></span>
         <ul class="list-group collapse" id="audit-<%= audit.id %>">
-          <% audit.changes.each do |change| %>
-            <li class="list-group-item"><%= raw change %></li>
+          <% if audit.changes %>
+            <% audit.changes.each do |change| %>
+              <li class="list-group-item"><%= raw change %></li>
+            <% end %>
           <% end %>
         </ul>
       </li>

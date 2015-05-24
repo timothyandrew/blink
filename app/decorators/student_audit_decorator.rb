@@ -2,8 +2,15 @@ class StudentAuditDecorator < Draper::Decorator
   include Draper::LazyHelpers
   delegate_all
 
+  def verb
+    return "updated" if model.action == "update"
+    return "created" if model.action == "create"
+    return "deleted" if model.action == "destroy"
+    return "changed"
+  end
+
   def summary_sentence
-    "#{auditable_type_link} was changed on #{model.created_at.strftime('%d %b %Y')} at #{model.created_at.in_time_zone.strftime('%-l:%M%P')}."
+    "#{auditable_type_link} was #{verb} on #{model.created_at.strftime('%d %b %Y')} at #{model.created_at.in_time_zone.strftime('%-l:%M%P')}."
   end
 
   def changes
