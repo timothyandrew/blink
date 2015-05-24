@@ -17,7 +17,7 @@ describe "Notes", :type => :feature do
     expect(page).to have_content notes
   end
 
-  it "saves notes against each student", focus: true do
+  it "saves notes against each student" do
     notes = Faker::Lorem.paragraph
     click_on "Notes"
     expect(page).to have_content "You need to add some notes"
