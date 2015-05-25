@@ -123,3 +123,10 @@ fieldset label:nth-of-type(2) {
 .btn.inline {
     display: inline;
 }
+
+.btn-secondary {
+    $bg: #F1AC47;
+    background-color: $bg;
+    color: darken($bg, 40%);
+    border: 1px solid lighten($bg, 10%);
+}

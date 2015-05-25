@@ -16,7 +16,7 @@
 
   <div class="second-row">
     <% if @goal.not_final_level? && !@goal.completed? %>
-      <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn add-sub-goal" %>
+      <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn btn-secondary" %>
     <% end %>
 
     <% if @goal.completed? %>
