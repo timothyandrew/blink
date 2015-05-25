@@ -284,6 +284,7 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rmagick (2.15.0)
+    roman-numerals (0.3.0)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -374,6 +375,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_12factor
   rmagick
+  roman-numerals
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   selenium-webdriver

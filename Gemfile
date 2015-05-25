@@ -23,6 +23,7 @@ gem "figaro"
 gem 'carrierwave'
 gem 'fog'
 gem 'airbrake'
+gem 'roman-numerals'
 
 group :development, :test do
   gem 'byebug'

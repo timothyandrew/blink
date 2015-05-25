@@ -16,6 +16,7 @@ h2 {
 .container {
     margin: 0;
     width: 100%;
+    padding: 0 !important;
 }
 
 .breadcrumb {
@@ -56,4 +57,34 @@ a[href]:after {
 .lesson-plan-item-time {
     font-weight: 400;
     text-align: center;
+}
+
+.disclosure {
+    display: none;
+}
+
+.student-name-header {
+    font-size: 36px !important;
+}
+
+.student_goal {
+    //border: none;
+}
+
+.goal-date {
+    font-style: oblique;
+}
+
+.goal-type-title {
+    color: #CCC !important;
+    font-size: 16px !important;
+    margin-bottom: 5px;
+}
+
+.student_goals {
+    margin: 0;
+}
+
+.goal-description {
+    margin-top: 5px;
 }

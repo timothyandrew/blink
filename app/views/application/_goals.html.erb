@@ -7,12 +7,12 @@
     <% end %>
 
     <% goals.each_with_index do |goal, index| %>
-      <li class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %>">
+      <li class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %> depth-<%= depth %>">
 
         <div>
           <h3 class="goal-tree-goal-title">
             <a class="disclosure glyphicon glyphicon-triangle-bottom" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
-            <%= link_to "#{index + 1}. #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
+            <%= link_to "#{bullet_for_goal(goal, index)} #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
           </h3>
           <span class="goal-date"><%= goal.decorate.date_range %></span>
         </div>
