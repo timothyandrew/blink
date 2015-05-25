@@ -22,6 +22,7 @@ gem "audited-activerecord", "~> 4.0"
 gem "figaro"
 gem 'carrierwave'
 gem 'fog'
+gem 'airbrake'
 
 group :development, :test do
   gem 'byebug'
