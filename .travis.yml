@@ -18,3 +18,4 @@ deploy:
   on:
     repo: timothyandrew/blink
   run: "rake db:migrate"
+  strategy: git
