@@ -17,3 +17,4 @@ deploy:
   app: blink-ed
   on:
     repo: timothyandrew/blink
+  run: "rake db:migrate"
