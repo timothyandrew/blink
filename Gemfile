@@ -34,6 +34,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
+  gem "codeclimate-test-reporter"
 end
 
 group :production do

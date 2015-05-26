@@ -4,6 +4,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'capybara/rails'
 require 'capybara/rspec'
 require './spec/integration_test_helpers'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 Capybara.default_driver = :selenium
 Capybara.run_server = true
