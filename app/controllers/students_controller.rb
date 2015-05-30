@@ -39,6 +39,12 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    @student = current_user.students.find(params[:id])
+    @student.destroy
+    redirect_to students_path, notice: "Student deleted."
+  end
+
   private
 
   def student_params

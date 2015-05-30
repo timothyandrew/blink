@@ -10,6 +10,8 @@
   </div>
 
   <%= link_to "Log", student_audits_path(@student), class: "btn btn-secondary" %>
+  <%= link_to "Delete", student_path(@student), method: :delete, class: "btn btn-danger",
+    data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 </div>
 
 
