@@ -23,7 +23,13 @@ describe "A student and his/her goals", :type => :feature do
   it "allows creating a tree of goals" do
     goals = []
 
-    click_on "Add Goal"
+    click_on "Add Subject"
+    goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
+    goals << goal_name
+    click_on goal_name
+    expect(page).to have_content goal_name
+
+    click_on "Add Long Term Goal"
     goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     goals << goal_name
     click_on goal_name
@@ -56,11 +62,11 @@ describe "A student and his/her goals", :type => :feature do
   end
 
   it "allows editing a goal" do
-    click_on "Add Goal"
+    click_on "Add Subject"
 
     old_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     click_on old_name
-    click_on "Edit Goal"
+    click_on "Edit"
 
     fill_in "Title", with: "new name"
     click_on "Save"
@@ -71,11 +77,11 @@ describe "A student and his/her goals", :type => :feature do
   end
 
   it "allows completing a goal and it's sub goals" do
-    click_on "Add Goal"
+    click_on "Add Subject"
     long_term_goal = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     click_on long_term_goal
 
-    click_on "Add Short Term Goal"
+    click_on "Add Long Term Goal"
     short_term_goal = fill_in_goal("Jan 01, 2015", "Jan 21, 2015")
     click_on short_term_goal
 
@@ -92,7 +98,7 @@ describe "A student and his/her goals", :type => :feature do
   end
 
   it "allows deleting a goal" do
-    click_on "Add Goal"
+    click_on "Add Subject"
     goal = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     click_on goal
 

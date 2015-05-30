@@ -21,10 +21,10 @@ describe "An audit log of actions for a student", :type => :feature do
   end
 
   it "records changes made to a student's goals" do
-    click_on "Add Goal"
+    click_on "Add Subject"
     goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     click_on goal_name
-    click_on "Edit Goal"
+    click_on "Edit"
 
     fill_in "Title", with: "New Title"
     click_on "Save"
