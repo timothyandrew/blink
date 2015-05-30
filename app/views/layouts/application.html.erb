@@ -34,20 +34,23 @@
      $('.datepicker').datepicker({
        format: "M d, yyyy",
        orientation: "auto",
-       autoclose: true
+       autoclose: true,
+       disableTouchKeyboard: true
      });
 
      $('.datepicker-bottom').datepicker({
        format: "M d, yyyy",
        orientation: "top auto",
-       autoclose: true
+       autoclose: true,
+       disableTouchKeyboard: true
      });
 
      $('.timepicker').timepicker({
        scrollDefault: "now",
        step: 15,
        minTime: '6:00am',
-       maxTime: '10:00pm'
+       maxTime: '10:00pm',
+       disableTouchKeyboard: true
      });
     </script>
 
