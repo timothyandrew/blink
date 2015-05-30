@@ -3,8 +3,7 @@ class Goal < ActiveRecord::Base
 
   acts_as_nested_set dependent: :destroy
   validates_presence_of :title
-  validate :presence_of_start_and_end_date, :start_date_before_end_date,
-           :start_and_end_dates_must_be_within_those_of_parent
+  validate :start_date_before_end_date
 
 
   audited associated_with: :student
@@ -14,24 +13,10 @@ class Goal < ActiveRecord::Base
     self.depth < 5
   end
 
-  def presence_of_start_and_end_date
-    # Long term goal Up to the level of a weekly objective
-    if self.depth > 0 && self.not_final_level?
-      errors.add(:start, "can't be blank") if self.start.blank?
-      errors.add(:end, "can't be blank") if self.end.blank?
-    end
-  end
-
   def start_date_before_end_date
     if self.start.present? && self.end.present?
       errors.add(:start, "can't be after end date") if self.start > self.end
     end
-  end
-
-  def start_and_end_dates_must_be_within_those_of_parent
-    return if self.parent.blank?
-    errors.add(:start, "can't be before parent's start date") if self.start.present? && self.start < self.parent.start
-    errors.add(:end, "can't be after parent's end date") if self.end.present? && self.end > self.parent.end
   end
 
   def self.sort(goals)
