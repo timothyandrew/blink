@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'airbrake'
 gem 'roman-numerals'
+gem "skylight"
 
 group :development, :test do
   gem 'byebug'
