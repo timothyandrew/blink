@@ -10,8 +10,10 @@ class GoalDecorator < Draper::Decorator
     when 2
       "%b %Y"
     when 3
-      "%a, %-d %B %Y"
+      "%b %Y"
     when 4
+      "%a, %-d %B %Y"
+    when 5
       "%d %b %Y"
     else
       "%d %b %Y"

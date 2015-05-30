@@ -3,7 +3,7 @@
 <h1 class="new-goal-header"> <span class="new-goal-parent-name <%= 'complete' if goal.completed? %>"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">
   <% unless @goal.completed? %>
-    <%= link_to "Edit Goal", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_student_goal_path(@student, @goal), class: "btn btn-primary" %>
   <% end %>
 
   <div class="btn-group">

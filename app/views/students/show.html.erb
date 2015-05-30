@@ -1,7 +1,7 @@
 <h1 class="student-name-header"><%= @student.name %> - IEP</h1>
 
 <div class="student-actions pull-right">
-  <%= link_to "Add Goal", new_student_goal_path(@student), class: "btn btn-info" %>
+  <%= link_to "Add #{goal_name_for_depth(0)}", new_student_goal_path(@student), class: "btn btn-info" %>
   <%= link_to "Notes", student_notes_path(@student), class: "btn btn-danger" %>
   <%= link_to "Edit Student", edit_student_path(@student), class: "btn btn-primary" %>
   <div class="btn-group">

@@ -3,14 +3,16 @@ module GoalsHelper
   def goal_name_for_depth(depth)
     case depth
     when 0
-      "Long Term Goal"
+      "Subject"
     when 1
-      "Short Term Goal"
+      "Long Term Goal"
     when 2
-      "Monthly Objective"
+      "Short Term Goal"
     when 3
-      "Weekly Objective"
+      "Monthly Objective"
     when 4
+      "Weekly Objective"
+    when 5
       "Activity"
     else
       "Goal"
@@ -20,14 +22,16 @@ module GoalsHelper
   def bullet_for_goal(goal, index)
     case goal.depth
     when 0
-      "#{RomanNumerals.to_roman(index + 1)}."
+      ""
     when 1
-      "#{index + 1}."
+      "#{RomanNumerals.to_roman(index + 1)}."
     when 2
-      "#{RomanNumerals.to_roman(index + 1).downcase}."
+      "#{index + 1}."
     when 3
-      "#{('a'..'z').to_a[index] || '<unknown>'}."
+      "#{RomanNumerals.to_roman(index + 1).downcase}."
     when 4
+      "#{('a'..'z').to_a[index] || '<unknown>'}."
+    when 5
       "●"
     else
       "#{index + 1}."

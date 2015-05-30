@@ -11,12 +11,12 @@ class Goal < ActiveRecord::Base
 
   # Return true if this is not the final level (Activity)
   def not_final_level?
-    self.depth < 4
+    self.depth < 5
   end
 
   def presence_of_start_and_end_date
-    # Up to the level of a weekly objective
-    if self.not_final_level?
+    # Long term goal Up to the level of a weekly objective
+    if self.depth > 0 && self.not_final_level?
       errors.add(:start, "can't be blank") if self.start.blank?
       errors.add(:end, "can't be blank") if self.end.blank?
     end

@@ -3,7 +3,7 @@ def create_sub_goals(goal, student)
     Goal.create(title: Faker::Company.bs, description: Faker::Lorem.paragraph, start: goal.start + 1.day, end: goal.end - 1.day, parent: goal, student_id: student.id)
   end
 
-  if goal.depth < 3
+  if goal.depth < 4
     goal.children.each { |sub_goal| create_sub_goals(sub_goal, student) }
   end
 end
