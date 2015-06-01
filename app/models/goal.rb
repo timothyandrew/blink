@@ -23,7 +23,7 @@ class Goal < ActiveRecord::Base
     return if goals.nil?
     goals.sort_by do |goal|
       # Doing `to_s` here because ruby refuses to sort booleans
-      [goal.completed?.to_s, (goal.start || Date.new)]
+      [goal.completed?.to_s, (goal.start || Date.new), goal.title]
     end
   end
 
