@@ -25,7 +25,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'airbrake'
 gem 'roman-numerals'
-gem "skylight"
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'byebug'
