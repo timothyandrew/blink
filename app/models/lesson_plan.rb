@@ -1,6 +1,6 @@
 class LessonPlan < ActiveRecord::Base
   belongs_to :student
-  validates_uniqueness_of :date
+  validates_uniqueness_of :date, scope: :user_id
   validates_presence_of :date
   has_many :items, class_name: LessonPlanItem, dependent: :destroy
 
