@@ -46,6 +46,9 @@ form input[type='text'], form input[type='email'], form input[type='password'] {
     font-size: 20px;
     padding: 5px 10px;
     border: 1px solid #ddd;
+    &.full-width {
+        width: 100%;
+    }
 }
 
 label[for='user_remember_me'] {
