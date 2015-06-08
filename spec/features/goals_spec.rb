@@ -32,22 +32,26 @@ describe "A student and his/her goals", :type => :feature do
     click_on "Add Long Term Goal"
     goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
     goals << goal_name
+    click_on "Show All"
     click_on goal_name
     expect(page).to have_content goal_name
 
     click_on "Add Short Term Goal"
     goal_name = fill_in_goal("Jan 01, 2015", "Jan 21, 2015")
     goals << goal_name
+    click_on "Show All"
     click_on goal_name
 
     click_on "Add Monthly Objective"
     goal_name = fill_in_goal("Jan 02, 2015", "Jan 12, 2015")
     goals << goal_name
+    click_on "Show All"
     click_on goal_name
 
     click_on "Add Weekly Objective"
     goal_name = fill_in_goal("Jan 05, 2015", "Jan 10, 2015")
     goals << goal_name
+    click_on "Show All"
     click_on goal_name
 
     click_on "Add Activity"
@@ -79,13 +83,16 @@ describe "A student and his/her goals", :type => :feature do
   it "allows completing a goal and it's sub goals" do
     click_on "Add Subject"
     long_term_goal = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
+    click_on "Show All"
     click_on long_term_goal
 
     click_on "Add Long Term Goal"
     short_term_goal = fill_in_goal("Jan 01, 2015", "Jan 21, 2015")
+    click_on "Show All"
     click_on short_term_goal
 
     click_on "Goals"
+    click_on "Show All"
     click_on long_term_goal
     click_on "Complete"
 
