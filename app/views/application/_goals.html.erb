@@ -11,14 +11,14 @@
 
         <div>
           <h3 class="goal-tree-goal-title">
-            <a class="disclosure glyphicon glyphicon-triangle-bottom" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
+            <a class="disclosure glyphicon glyphicon-triangle-right" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
             <%= link_to "#{bullet_for_goal(goal, index)} #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
           </h3>
           <span class="goal-date"><%= goal.decorate.date_range %></span>
         </div>
 
 
-        <div class="collapse in goal-body" id=<%= "goal-body-#{goal.id}" %>>
+        <div class="collapse goal-body" id=<%= "goal-body-#{goal.id}" %>>
           <div class="goal-description"><%= goal.description.html_safe %></div>
 
           <% if goal.not_final_level? %>
