@@ -19,6 +19,18 @@
 
     <%= render "navbar" %>
 
+    <script type="text/javascript">
+     var initializeTimepicker = function() {
+       $('.timepicker').timepicker({
+         scrollDefault: "now",
+         step: 15,
+         minTime: '6:00am',
+         maxTime: '10:00pm',
+         disableTouchKeyboard: true
+       });
+     };
+    </script>
+
 
     <div class="container <%= @container_classes if @container_classes.present? %>">
       <%= breadcrumbs style: :bootstrap %>
@@ -45,15 +57,6 @@
        disableTouchKeyboard: true
      });
 
-     var initializeTimepicker = function() {
-       $('.timepicker').timepicker({
-         scrollDefault: "now",
-         step: 15,
-         minTime: '6:00am',
-         maxTime: '10:00pm',
-         disableTouchKeyboard: true
-       });
-     };
      initializeTimepicker();
     </script>
 

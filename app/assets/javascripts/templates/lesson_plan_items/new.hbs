@@ -2,11 +2,11 @@
   <label>{{index}}</label>
 
   <label for="lesson_plan[items][{{index}}][subject]" class="condensed">Subject</label>
-  <input type="text" name="lesson_plan[items][{{index}}][subject]"></input>
+  <input type="text" name="lesson_plan[items][{{index}}][subject]" value="{{subject}}"></input>
 
   <label for="lesson_plan[items][{{index}}][start]" class="condensed">Start Time</label>
-  <input type="text" name="lesson_plan[items][{{index}}][start]" class="timepicker"></input>
+  <input type="text" name="lesson_plan[items][{{index}}][start]" class="timepicker" value="{{start}}"></input>
 
   <label for="lesson_plan[items][{{index}}][end]" class="condensed">End Time</label>
-  <input type="text" name="lesson_plan[items][{{index}}][end]" class="timepicker"></input>
+  <input type="text" name="lesson_plan[items][{{index}}][end]" class="timepicker" value="{{end}}"></input>
 </fieldset>

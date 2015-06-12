@@ -27,6 +27,7 @@ gem 'airbrake'
 gem 'roman-numerals'
 gem 'newrelic_rpm'
 gem 'handlebars_assets'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'byebug'

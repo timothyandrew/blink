@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require handlebars.runtime
+//= require moment
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

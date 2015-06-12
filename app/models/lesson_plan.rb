@@ -34,12 +34,14 @@ class LessonPlan < ActiveRecord::Base
   def save_with_children(attributes, children_attributes)
     transaction do
       self.assign_attributes(attributes)
-      self.save
-      self.reload
-      children_attributes[:items].map do |_, child_attributes|
-        self.items.create(child_attributes)
-      end
+      children = children_attributes[:items].map { |_, child_attributes| self.items.build(child_attributes) }
+
+      self.save!
+      children.each(&:save!)
+
       self
     end
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
