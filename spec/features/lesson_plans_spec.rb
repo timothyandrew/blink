@@ -82,6 +82,70 @@ describe "Lesson Plans", type: :feature do
     expect(page).to have_content "1:00pm - 2:00pm"
   end
 
+  describe "Quick-add Lesson Plan" do
+    it "allows adding lesson plan items while creating a lesson plan" do
+      visit "/lesson_plans"
+      click_on "New Lesson Plan"
+      fill_in "Date", with: Faker::Date.forward(50)
+
+      2.times { click_on "Add Item" }
+      fill_in "lesson_plan[items][1][subject]", with: "First Subject"
+      fill_in "lesson_plan[items][1][start]", with: "10:00am"
+      fill_in "lesson_plan[items][1][end]", with: "10:00pm"
+
+      fill_in "lesson_plan[items][2][subject]", with: "Second Subject"
+      fill_in "lesson_plan[items][2][start]", with: "2:00am"
+      fill_in "lesson_plan[items][2][end]", with: "2:00pm"
+
+      click_on "Save"
+
+      items = LessonPlan.last.items
+      expect(items.first.subject).to eq "First Subject"
+      expect(items.first.start.to_s(:time)).to eq "10:00"
+      expect(items.first.end.to_s(:time)).to eq "22:00"
+
+      expect(items.second.subject).to eq "Second Subject"
+      expect(items.second.start.to_s(:time)).to eq "02:00"
+      expect(items.second.end.to_s(:time)).to eq "14:00"
+    end
+
+    it "preserves item attributes when there are errors with the lesson plan" do
+      visit "/lesson_plans"
+      click_on "New Lesson Plan"
+      fill_in "Date", with: LessonPlan.last.date # Error
+
+      click_on "Add Item"
+      fill_in "lesson_plan[items][1][subject]", with: "First Subject"
+      fill_in "lesson_plan[items][1][start]", with: "10:00am"
+      fill_in "lesson_plan[items][1][end]", with: "10:00pm"
+
+      click_on "Save"
+
+      expect(page).to have_content "Date has already been taken"
+      expect(find_field("lesson_plan[items][1][subject]").value).to eq "First Subject"
+      expect(find_field("lesson_plan[items][1][start]").value).to eq "10:00am"
+      expect(find_field("lesson_plan[items][1][end]").value).to eq "10:00pm"
+    end
+
+
+    it "preserves item attributes when there are errors with the items" do
+      visit "/lesson_plans"
+      click_on "New Lesson Plan"
+      fill_in "Date", with: Faker::Date.forward(100)
+
+      click_on "Add Item"
+      fill_in "lesson_plan[items][1][subject]", with: "First Subject"
+      fill_in "lesson_plan[items][1][start]", with: "" # Error
+      fill_in "lesson_plan[items][1][end]", with: "10:00pm"
+
+      click_on "Save"
+
+      expect(page).to have_content "is invalid"
+      expect(find_field("lesson_plan[items][1][subject]").value).to eq "First Subject"
+      expect(find_field("lesson_plan[items][1][end]").value).to eq "10:00pm"
+    end
+  end
+
   describe "Deletions" do
     it "allows deleting a lesson plan" do
       lesson_plan = LessonPlan.last
