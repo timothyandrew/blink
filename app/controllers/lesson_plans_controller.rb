@@ -57,6 +57,6 @@ class LessonPlansController < ApplicationController
   end
 
   def lesson_plan_items_params
-    params.require(:lesson_plan).permit(items: [:subject, :start, :end])
+    params.require(:lesson_plan).permit(items: [:subject, :start, :end])[:items]
   end
 end

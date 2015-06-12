@@ -32,9 +32,10 @@ class LessonPlan < ActiveRecord::Base
   end
 
   def save_with_children(attributes, children_attributes)
+    children_attributes ||= {}
     transaction do
       self.assign_attributes(attributes)
-      children = children_attributes[:items].map { |_, child_attributes| self.items.build(child_attributes) }
+      children = children_attributes.map { |_, child_attributes| self.items.build(child_attributes) }
 
       self.save!
       children.each(&:save!)
