@@ -26,6 +26,7 @@ gem 'fog'
 gem 'airbrake'
 gem 'roman-numerals'
 gem 'newrelic_rpm'
+gem 'handlebars_assets'
 
 group :development, :test do
   gem 'byebug'
@@ -37,6 +38,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem "codeclimate-test-reporter"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :production do

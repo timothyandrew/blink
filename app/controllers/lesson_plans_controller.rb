@@ -19,8 +19,7 @@ class LessonPlansController < ApplicationController
 
   def create
     @lesson_plan = current_user.lesson_plans.new
-    @lesson_plan.assign_attributes(lesson_plan_params)
-    if @lesson_plan.save
+    if @lesson_plan.save_with_children(lesson_plan_params, lesson_plan_items_params)
       if params[:duplicate_from]
         duplicate_from = current_user.lesson_plans.find(params[:duplicate_from])
         @lesson_plan.duplicate!(duplicate_from)
@@ -55,5 +54,9 @@ class LessonPlansController < ApplicationController
 
   def lesson_plan_params
     params.require(:lesson_plan).permit(:date)
+  end
+
+  def lesson_plan_items_params
+    params.require(:lesson_plan).permit(items: [:subject, :start, :end])
   end
 end

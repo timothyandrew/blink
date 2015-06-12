@@ -1,0 +1,13 @@
+<%= link_to "Add Item", "#", id: "add-item" %>
+
+<div class="lesson-plan-items"></div>
+
+<script type="text/javascript">
+ var index = 1;
+ $("#add-item").click(function() {
+   var template = HandlebarsTemplates['lesson_plan_items/new']({index: index});
+   index++;
+   $(".lesson-plan-items").append(template);
+   initializeTimepicker();
+ });
+</script>

@@ -4,6 +4,8 @@
 
   <% if @duplicate_from %>
     <%= hidden_field_tag :duplicate_from, @duplicate_from %>
+  <% else %>
+    <%= render "lesson_plan_items" %>
   <% end %>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
