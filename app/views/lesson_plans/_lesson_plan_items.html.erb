@@ -17,8 +17,9 @@
  <% items.each do |item| %>
    <%= "var attributes = JSON.parse('#{item.to_json}\');".html_safe %>
    <%= "attributes = _.pick(attributes, 'subject', 'start', 'end');".html_safe %>
-   <%= "if(attributes.start) { attributes.start = moment.utc(attributes.start).format('HH:mma'); }".html_safe %>
-   <%= "if(attributes.end) { attributes.end = moment.utc(attributes.end).format('HH:mma'); }".html_safe %>
+   <%= "if(attributes.start) { attributes.start = moment.utc(attributes.start).format('hh:mma'); }".html_safe %>
+   <%= "if(attributes.end) { attributes.end = moment.utc(attributes.end).format('hh:mma'); }".html_safe %>
+
    <%= "addItem(attributes);".html_safe %>
  <% end %>
 </script>
