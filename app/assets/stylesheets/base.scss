@@ -117,6 +117,12 @@ fieldset label:nth-of-type(2) {
     margin-left: 60px;
 }
 
+fieldset label.condensed {
+    margin-left: 5px;
+    font-size: 14px;
+    width: auto;
+}
+
 .breadcrumb {
     background-color: #fff;
     border: 1px solid #bbb;

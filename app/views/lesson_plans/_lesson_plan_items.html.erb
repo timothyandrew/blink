@@ -1,0 +1,26 @@
+<div>
+  <%= link_to "Add Item", "#", id: "add-item", class: "btn btn-warning" %>
+</div>
+
+<div class="lesson-plan-items"></div>
+
+<script type="text/javascript">
+ var index = 1;
+ var addItem = function(attributes) {
+   var attributes = _.extend((attributes || {}), {index: index})
+     var template = HandlebarsTemplates['lesson_plan_items/new'](attributes);
+   index++;
+   $(".lesson-plan-items").append(template);
+   initializeTimepicker();
+ };
+
+ $("#add-item").click(addItem);
+
+ <% items.each do |item| %>
+ <%= "var attributes = JSON.parse('#{item.to_json}\');".html_safe %>
+ <%= "attributes = _.pick(attributes, 'subject', 'start', 'end');".html_safe %>
+ <%= "if(attributes.start) { attributes.start = moment.utc(attributes.start).format('hh:mma'); }".html_safe %>
+ <%= "if(attributes.end) { attributes.end = moment.utc(attributes.end).format('hh:mma'); }".html_safe %>
+ <%= "addItem(attributes);".html_safe %>
+ <% end %>
+</script>

@@ -30,4 +30,19 @@ class LessonPlan < ActiveRecord::Base
 
     Hash[lesson_plans_grouped_by_month_and_week]
   end
+
+  def save_with_children(attributes, children_attributes)
+    children_attributes ||= {}
+    transaction do
+      self.assign_attributes(attributes)
+      children = children_attributes.map { |_, child_attributes| self.items.build(child_attributes) }
+
+      self.save!
+      children.each(&:save!)
+
+      self
+    end
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
 end
