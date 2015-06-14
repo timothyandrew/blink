@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   get '/bingo', controller: 'bingo', action: 'generate'
+  resource :form_generator
 
   resources :pictures
 end

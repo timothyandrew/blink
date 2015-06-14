@@ -28,6 +28,7 @@ gem 'roman-numerals'
 gem 'newrelic_rpm'
 gem 'handlebars_assets'
 gem 'momentjs-rails'
+gem 'prawn'
 
 group :development, :test do
   gem 'byebug'

@@ -1,0 +1,29 @@
+<h1>Random Form Generator (Beta)</h1>
+
+<%= form_tag "/form_generator", method: :post  %>
+  <%= label_tag "form_generator[title]", "Form Title" %>
+  <%= text_field_tag "form_generator[title]" %>
+
+  <%= label_tag "form_generator[form_count]", "Form Count" %>
+  <%= number_field_tag "form_generator[form_count]", '0' %>
+
+  <%= label_tag "form_generator[copy_count]", "Copy Count" %>
+  <%= number_field_tag "form_generator[copy_count]", '0' %>
+
+  <%= link_to "Add Field", "#", id: "add-field", class: "btn btn-warning" %>
+
+  <div class="form-generator-fields"></div>
+
+  <script type="text/javascript">
+   var index = 1;
+   var addItem = function(attributes) {
+     var template = HandlebarsTemplates['form_generator/field']({index: index});
+     index++;
+     $(".form-generator-fields").append(template);
+   };
+
+   $("#add-field").click(addItem);
+  </script>
+
+  <%= submit_tag "Done", class: "btn btn-primary" %>
+</form>

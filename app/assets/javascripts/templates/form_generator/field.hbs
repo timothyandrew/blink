@@ -1,0 +1,20 @@
+<fieldset class="form-generator-field-{{index}}">
+  <label>{{index}}</label>
+
+  <label for="form_generator[fields][{{index}}][name]" class="condensed">Field Name</label>
+  <input type="text" name="form_generator[fields][{{index}}][name]" />
+
+  <label for="form_generator[fields][{{index}}][type]" class="condensed">Field Type</label>
+  <select name="form_generator[fields][{{index}}][type]">
+    <option value="name">Name</option>
+    <option value="school">School</option>
+  </select>
+
+  <a href="#" class="form-generator-field-{{index}}-delete">Delete</a>
+</fieldset>
+
+<script type="text/javascript">
+  $(".form-generator-field-{{index}}-delete").click(function() {
+    $(".form-generator-field-{{index}}").remove();
+  });
+</script>
