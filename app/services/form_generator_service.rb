@@ -1,18 +1,35 @@
 require 'prawn'
 
+class DataSet
+  def initialize(filenames)
+    @files = filenames.map { |filename| IO.readlines(filename).map(&:strip) }
+  end
+
+  def sample
+    @files.reduce("") do |memo, file|
+      memo << "#{file.sample} "
+    end.strip
+  end
+end
+
 class Field
   def initialize(attrs)
     @name = attrs[:name].presence || "<no field name>"
     @type = attrs[:type].presence || "<no field type>"
+    pick_dataset
+  end
+
+  def pick_dataset
+    case @type
+    when 'name'
+      @dataset = DataSet.new(['resources/datasets/first_names.txt', 'resources/datasets/last_names.txt'])
+    when 'school'
+      @dataset = DataSet.new(['resources/datasets/schools.txt'])
+    end
   end
 
   def render
-    case @type
-    when 'name'
-      "#{@name}: Timothy Andrew"
-    when 'school'
-      "#{@name}: BOS"
-    end
+    "#{@name}: #{@dataset.sample}"
   end
 end
 
