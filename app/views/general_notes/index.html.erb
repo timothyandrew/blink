@@ -1,0 +1,23 @@
+<% breadcrumb :general_notes  %>
+
+<h1>General Notes</h1>
+
+<div class="student-actions pull-right">
+  <%= link_to "New Note", new_note_path, class: "btn btn-primary" %>
+</div>
+
+<% if @notes.present? %>
+
+  <ul class="list-group">
+    <% @notes.each do |note| %>
+      <li class="list-group-item"><%= raw note.text %></li>
+      <%= link_to "Edit", edit_note_path(note) %>
+      <%= link_to "Delete", note_path(note), method: :delete, data: {confirm: "Sure?"} %>
+    <% end %>
+  </ul>
+
+<% else %>
+  <div class="alert alert-warning">
+    You need to add lesson plans before anything shows up here.
+  </div>
+<% end %>
