@@ -1,10 +1,10 @@
 class GeneralNotesController < ApplicationController
   def index
-    @notes = current_user.general_notes
+    @notes = GeneralNoteDecorator.decorate_collection(current_user.general_notes)
   end
 
   def new
-    @note = current_user.general_notes.new
+    @note = current_user.general_notes.new.decorate
   end
 
   def create
@@ -19,11 +19,11 @@ class GeneralNotesController < ApplicationController
   end
 
   def edit
-    @note = current_user.general_notes.find(params[:id])
+    @note = current_user.general_notes.find(params[:id]).decorate
   end
 
   def show
-    @note = current_user.general_notes.find(params[:id])
+    @note = current_user.general_notes.find(params[:id]).decorate
   end
 
   def update
@@ -47,6 +47,6 @@ class GeneralNotesController < ApplicationController
   private
 
   def note_params
-    params.require(:general_note).permit(:text)
+    params.require(:general_note).permit(:text, :title)
   end
 end

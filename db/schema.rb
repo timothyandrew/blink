@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519183344) do
+ActiveRecord::Schema.define(version: 20150616052551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,11 +39,17 @@ ActiveRecord::Schema.define(version: 20150519183344) do
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
+  create_table "foo", id: false, force: :cascade do |t|
+    t.integer "name"
+    t.integer "test"
+  end
+
   create_table "general_notes", force: :cascade do |t|
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.text     "title"
   end
 
   create_table "goals", force: :cascade do |t|

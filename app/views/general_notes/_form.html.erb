@@ -1,9 +1,15 @@
 <% form_action = ["edit", "update"].include?(action_name) ? "update" : "create"  %>
 
-<%= form_for @note, url: {controller: "general_notes", action: form_action} do |f| %>
-  <fieldset>
-    <%= f.cktext_area :text %>
-  </fieldset>
+  <%= form_for @note, url: {controller: "general_notes", action: form_action} do |f| %>
+    <fieldset>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "full-width" %>
+    </fieldset>
 
-  <%= f.submit "Save", class: "btn btn-primary" %>
-<% end %>
+    <fieldset>
+      <%= f.label :text %>
+      <%= f.cktext_area :text %>
+    </fieldset>
+
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>

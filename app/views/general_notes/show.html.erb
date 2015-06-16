@@ -1,8 +1,9 @@
-<% breadcrumb :general_notes %>
+<% breadcrumb :general_note, @note %>
 
-<h1>General Notes</h1>
+<h1><%= @note.title %></h1>
 <div class="actions pull-right">
-  <%= link_to "Edit General Notes", edit_notes_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_note_path(@note), class: "btn btn-primary" %>
+  <%= link_to "Delete", note_path(@note), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger" %>
 </div>
 
 <% if @note.text.present? %>
@@ -11,6 +12,6 @@
   </div>
 <% else %>
   <div class="alert alert-warning">
-    You need to add some general notes before anything shows up here.
+    This note has no text.
   </div>
 <% end %>

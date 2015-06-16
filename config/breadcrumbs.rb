@@ -51,6 +51,11 @@ crumb :general_notes do
   link "General Notes", notes_path
 end
 
+crumb :general_note do |note|
+  link note.title, note_path(note)
+  parent :general_notes
+end
+
 crumb :new_general_note do
   link "New", new_note_path
   parent :general_notes
