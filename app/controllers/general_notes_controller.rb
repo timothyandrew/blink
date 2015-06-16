@@ -1,6 +1,6 @@
 class GeneralNotesController < ApplicationController
   def index
-    @notes = GeneralNoteDecorator.decorate_collection(current_user.general_notes)
+    @notes = GeneralNoteDecorator.decorate_collection(current_user.general_notes.order(updated_at: :desc))
   end
 
   def new

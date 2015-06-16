@@ -9,9 +9,12 @@
 <div class="break"></div>
 
 <% if @notes.present? %>
-  <ul class="list-group">
+  <ul class="list-group general-notes">
     <% @notes.each do |note| %>
-      <li class="list-group-item"><%= link_to note.title, note_path(note) %></li>
+      <li class="list-group-item general-notes-item">
+        <%= link_to note.title, note_path(note) %>
+        <span class="note-updated-at"><%= note.updated_at %></span>
+      </li>
     <% end %>
   </ul>
 
