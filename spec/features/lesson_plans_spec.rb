@@ -28,7 +28,7 @@ describe "Lesson Plans", type: :feature do
     click_on "Save"
 
     expect(page).to have_content "Goals Some Goals"
-    expect(page).to have_content "Subject A Subject"
+    expect(page).to have_content "A Subject"
     expect(page).to have_content "Topic A Topic"
     expect(page).to have_content "Teaching Method Teach a method"
     expect(page).to have_content "Teaching Aids Some aids"
@@ -75,7 +75,7 @@ describe "Lesson Plans", type: :feature do
     expect(new.items).not_to be_empty
 
     expect(page).to have_content "Goals Some Goals"
-    expect(page).to have_content "Subject A Subject"
+    expect(page).to have_content "A Subject"
     expect(page).to have_content "Topic A Topic"
     expect(page).to have_content "Teaching Method Teach a method"
     expect(page).to have_content "Teaching Aids Some aids"
