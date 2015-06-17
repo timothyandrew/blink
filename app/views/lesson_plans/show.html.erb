@@ -21,7 +21,7 @@
     <% @items.each do |item| %>
       <tr>
         <td class="lesson-plan-item-time">
-          <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
+          <%= link_to item.range, lesson_plan_item_path(@lesson_plan, item) %>
         </td>
         <td class="lesson-plan-item-body">
           <%= item.show_html %>

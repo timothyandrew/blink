@@ -14,6 +14,10 @@ class LessonPlanItemsController < ApplicationController
     @lesson_plan_item = @lesson_plan.items.find(params[:id])
   end
 
+  def show
+    @lesson_plan_item = @lesson_plan.items.find(params[:id])
+  end
+
   def create
     @lesson_plan_item = @lesson_plan.items.new
     @lesson_plan_item.assign_attributes(lesson_plan_item_params)

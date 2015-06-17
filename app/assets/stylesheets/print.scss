@@ -88,3 +88,21 @@ a[href]:after {
 .goal-description {
     margin-top: 5px;
 }
+
+.elc-lesson-plan-item {
+    font-size: 12px;
+}
+
+.lesson-plan-show-subheader span:not(:first-child) {
+    margin-left: 10px;
+}
+
+.lesson-plan-show-subheader span {
+    margin-right: 10px;
+}
+
+table.elc-lesson-plan-item {
+    td, th {
+        border: 1.5px solid #333 !important;
+    }
+}

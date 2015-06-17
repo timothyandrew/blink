@@ -15,4 +15,8 @@ class RegularLessonPlanItemDecorator < LessonPlanItemDecorator
 
     html.html_safe
   end
+
+  def display_title
+    model.subject
+  end
 end

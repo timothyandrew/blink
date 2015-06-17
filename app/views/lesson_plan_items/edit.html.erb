@@ -8,9 +8,7 @@
 </div>
 
 <h2 class="new-goal-subheader">
-  <%= lesson_plan_item.range %>
-  —
-  <%= @lesson_plan.date.strftime("%A | %-d %B %Y") %>
+  <span><%= lesson_plan_item.range %></span> |  <span><%= @lesson_plan.date.strftime("%-d %B %Y") %></span>
 </h2>
 
 <%= render "form" %>

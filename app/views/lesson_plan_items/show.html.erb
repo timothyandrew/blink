@@ -1,0 +1,18 @@
+<% breadcrumb :lesson_plan_item, @lesson_plan, lesson_plan_item %>
+
+<h1>Theme: <%= lesson_plan_item.display_title %></h1>
+<div class="student-actions pull-right">
+  <%= link_to "Edit", edit_lesson_plan_item_path(@lesson_plan, lesson_plan_item), class: "btn btn-primary" %>
+  <%= link_to "Delete", lesson_plan_item_path(@lesson_plan, lesson_plan_item), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+</div>
+
+
+<h2 class="new-goal-subheader lesson-plan-show-subheader">
+  <span><%= lesson_plan_item.range %></span> |  <span><%= @lesson_plan.date.strftime("%-d %B %Y") %></span>
+</h2>
+
+<% if lesson_plan_item.elc? %>
+  <%= render partial: "elc_show" %>
+<% else %>
+  <%= render partial: "regular_show" %>
+<% end %>
