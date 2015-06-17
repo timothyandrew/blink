@@ -10,6 +10,8 @@ before_install:
 before_script:
   - cp config/application.yml.sample config/application.yml
   - psql -c 'create database blink_test;' -U postgres
+addons:
+  postgresql: "9.4"
 deploy:
   provider: heroku
   api_key:
