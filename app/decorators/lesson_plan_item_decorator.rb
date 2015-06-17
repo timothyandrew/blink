@@ -13,7 +13,7 @@ class LessonPlanItemDecorator < Draper::Decorator
     html = ""
     if model.send(attr).present?
       html << '<div class="lesson-plan-item-attribute-value">'
-      html << '<span class="lesson-plan-item-attribute">' + model.class.human_attribute_name(attr) + '</span>'
+      html << '<span class="lesson-plan-item-attribute">' + model.class.human_attribute_name(attr).titleize + '</span>'
       html << model.send(attr)
       html << '</div>'
     end
