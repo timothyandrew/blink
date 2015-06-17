@@ -33,7 +33,7 @@ class LessonPlansController < ApplicationController
   end
 
   def update
-    @lesson_plan = current_user.lesson_plans.find(params[:id])
+    @lesson_plan = current_user.lesson_plans.find(params[:id]).decorate
     if @lesson_plan.update_attributes_with_children(lesson_plan_params, lesson_plan_items_params)
       flash[:notice] = "Lesson plan was edited"
       redirect_to lesson_plan_path(@lesson_plan)
@@ -51,7 +51,7 @@ class LessonPlansController < ApplicationController
   end
 
   def quick_edit
-    @lesson_plan = current_user.lesson_plans.find(params[:id])
+    @lesson_plan = current_user.lesson_plans.find(params[:id]).decorate
   end
 
   private
