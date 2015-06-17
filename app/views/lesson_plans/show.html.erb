@@ -27,10 +27,7 @@
             <div class="lesson-plan-subject-span"><%= item.subject %></div>
           <% else %>
             <% if item.subject.present? %>
-              <div class="lesson-plan-item-attribute-value">
-                <span class="lesson-plan-item-attribute">Subject</span>
-                <%= item.subject %>
-              </div>
+              <div class="lesson-plan-subject-span"><%= item.subject %></div>
             <% end %>
 
             <% if item.topic.present? %>
