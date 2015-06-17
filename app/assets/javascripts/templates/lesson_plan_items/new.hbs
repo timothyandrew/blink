@@ -5,8 +5,12 @@
 {{/if}}
 
 
-  <label for="lesson_plan[items][{{index}}][subject]" class="condensed">Subject</label>
+<label for="lesson_plan[items][{{index}}][subject]" class="condensed">Subject</label>
+{{#if elc}}
+  <input type="text" name="lesson_plan[items][{{index}}][subject]" value="ELC" disabled="disabled"></input>
+{{else}}
   <input type="text" name="lesson_plan[items][{{index}}][subject]" value="{{subject}}"></input>
+{{/if}}
 
 <div class="lesson-plan-item-snippet-time">
   <label class="condensed">Time</label>

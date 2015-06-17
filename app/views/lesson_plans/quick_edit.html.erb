@@ -34,6 +34,7 @@
  var json = "<%= j item.to_json.html_safe %>";
  <%= "var attributes = JSON.parse(unescape(json));".html_safe %>
  <%= "attributes = _.pick(attributes, 'subject', 'start', 'end', 'id');".html_safe %>
+ attributes.elc = <%= item.elc? %>;
  <% if item.errors.present? %>
    <%= "attributes.errors = true;" %>
  <% end %>

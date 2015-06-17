@@ -18,4 +18,8 @@ class ELCLessonPlanItem < LessonPlanItem
   def central_2
     self.elc_data[:central_2]
   end
+
+  def elc?
+    true
+  end
 end

@@ -38,10 +38,10 @@
  $("#lesson_plan_item_type_regularlessonplanitem").click(displayRegular);
  $("#lesson_plan_item_type_elclessonplanitem").click(displayELC);
 
- <% if @lesson_plan_item.type == 'RegularLessonPlanItem' %>
- displayRegular();
- <% else %>
+ <% if @lesson_plan_item.elc? %>
  displayELC();
+ <% else %>
+ displayRegular();
  <% end %>
 </script>
 

@@ -10,4 +10,8 @@ class LessonPlanItem < ActiveRecord::Base
       errors.add(:start, "can't be after end time") if self.start > self.end
     end
   end
+
+  def elc?
+    false
+  end
 end
