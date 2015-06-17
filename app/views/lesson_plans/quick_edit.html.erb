@@ -4,6 +4,14 @@
   <%= link_to "Add Item", "#", id: "add-item", class: "btn btn-warning" %>
 </div>
 
+<div class="break"></div>
+
+<% if @lesson_plan.items.empty? %>
+  <div class="alert alert-warning">
+    Add some items to this lesson plan.
+  </div>
+<% end %>
+
 <%= form_for @lesson_plan do |f| %>
   <div class="lesson-plan-items"></div>
   <%= hidden_field_tag "quick_edit", "true" %>
