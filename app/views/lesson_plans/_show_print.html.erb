@@ -1,7 +1,7 @@
 <table class="lesson-plan-print table table-bordered">
   <tr>
     <th>Timing</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <td class="lesson-plan-item-time">
         <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
       </td>
@@ -10,7 +10,7 @@
 
   <tr>
     <th>Subject</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <% if item.span? %>
         <td class="lesson-plan-item-attribute-value span" rowspan="5" %>
           <% item.subject.upcase.split('').each do |letter| %>
@@ -28,7 +28,7 @@
 
   <tr>
     <th>Topic</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <% unless item.span? %>
         <td class="lesson-plan-item-attribute-value">
           <%= item.topic %>
@@ -39,7 +39,7 @@
 
   <tr>
     <th>Goals</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <% unless item.span? %>
         <td class="lesson-plan-item-attribute-value">
           <%= raw item.goals %>
@@ -50,7 +50,7 @@
 
   <tr>
     <th>Teaching Method</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <% unless item.span? %>
         <td class="lesson-plan-item-attribute-value">
           <%= raw item.teaching_method %>
@@ -61,7 +61,7 @@
 
   <tr>
     <th>Teaching Aids</th>
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <% unless item.span? %>
         <td class="lesson-plan-item-attribute-value">
           <%= raw item.teaching_aids %>

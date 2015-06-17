@@ -1,0 +1,2 @@
+class RegularLessonPlanItem < LessonPlanItem
+end

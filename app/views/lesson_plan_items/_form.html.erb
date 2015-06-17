@@ -1,4 +1,10 @@
-<%= form_for [@lesson_plan, @lesson_plan_item], url: @lesson_plan_item.persisted? ? lesson_plan_item_path : lesson_plan_items_path do |f| %>
+<%= form_for [@lesson_plan, @lesson_plan_item.becomes(LessonPlanItem)], url: @lesson_plan_item.persisted? ? lesson_plan_item_path : lesson_plan_items_path , class: "lesson_plan_form" do |f| %>
+  <fieldset>
+    <%= f.label :type, "Type" %>
+    <%= f.radio_button :type, 'RegularLessonPlanItem' %> <span class="radio-button-label">Regular</span>
+    <%= f.radio_button :type, 'ELCLessonPlanItem' %> <span class="radio-button-label">ELC</span>
+  </fieldset>
+
   <fieldset>
     <%= f.label :start, "Start Time" %>
     <%= f.text_field :start, class: "timepicker", value: (@lesson_plan_item.start.strftime("%-l:%M%P") if @lesson_plan_item.start.present?) %>
@@ -7,30 +13,36 @@
     <%= f.text_field :end, class: "timepicker", value: (@lesson_plan_item.end.strftime("%-l:%M%P") if @lesson_plan_item.end.present?) %>
   </fieldset>
 
-  <fieldset>
-    <%= f.label :subject %>
-    <%= f.text_field :subject %>
+  <div class="regular">
+    <%= render partial: "regular_form", locals: {f: f} %>
+  </div>
 
-    <%= f.label :topic %>
-    <%= f.text_field :topic %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :goals %>
-    <%= f.cktext_area :goals %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :teaching_method %>
-    <%= f.cktext_area :teaching_method %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :teaching_aids %>
-    <%= f.cktext_area :teaching_aids %>
-  </fieldset>
+  <div class="elc">
+    <%= render partial: "elc_form", locals: {f: f} %>
+  </div>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
+
+<script type="text/javascript">
+ var displayRegular = function() {
+   $(".elc").hide();
+   $(".regular").show();
+ };
+
+ var displayELC = function() {
+   $(".regular").hide();
+   $(".elc").show();
+ };
+
+ $("#lesson_plan_item_type_regularlessonplanitem").click(displayRegular);
+ $("#lesson_plan_item_type_elclessonplanitem").click(displayELC);
+
+ <% if @lesson_plan_item.is_a?(RegularLessonPlanItem) %>
+ displayRegular();
+ <% else %>
+ displayELC();
+ <% end %>
+</script>
 
 <%= render "dirty_onbeforeunload" %>

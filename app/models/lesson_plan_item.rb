@@ -1,6 +1,6 @@
 class LessonPlanItem < ActiveRecord::Base
   belongs_to :lesson_plan
-  validates_presence_of :start, :end
+  validates_presence_of :start, :end, :lesson_plan
   validate :start_time_before_end_time
 
   audited associated_with: :lesson_plan

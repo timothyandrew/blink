@@ -1,0 +1,81 @@
+<fieldset>
+  <%= f.label :theme %>
+  <%= f.text_field :theme, class: "full-width" %>
+</fieldset>
+
+<%= f.fields_for :elc_data, OpenStruct.new(f.object.elc_data) do |f| %>
+  <%= f.fields_for :central_1, OpenStruct.new(f.object.central_1) do |f| %>
+    <fieldset>
+      <legend>Central Open Area</legend>
+      <div>
+        <%= f.label :activity %>
+        <%= f.cktext_area :activity %>
+      </div>
+
+      <div>
+        <%= f.label :materials %>
+        <%= f.cktext_area :materials %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <%= f.fields_for :reading, OpenStruct.new(f.object.reading) do |f| %>
+    <fieldset>
+      <legend>Reading Corner</legend>
+      <div>
+        <%= f.label :activity %>
+        <%= f.cktext_area :activity %>
+      </div>
+
+      <div>
+        <%= f.label :materials %>
+        <%= f.cktext_area :materials %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <%= f.fields_for :craft, OpenStruct.new(f.object.craft) do |f| %>
+    <fieldset>
+      <legend>Craft Corner</legend>
+      <div>
+        <%= f.label :activity %>
+        <%= f.cktext_area :activity %>
+      </div>
+
+      <div>
+        <%= f.label :materials %>
+        <%= f.cktext_area :materials %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <%= f.fields_for :technology, OpenStruct.new(f.object.technology) do |f| %>
+    <fieldset>
+      <legend>Technology Corner</legend>
+      <div>
+        <%= f.label :activity %>
+        <%= f.cktext_area :activity %>
+      </div>
+
+      <div>
+        <%= f.label :materials %>
+        <%= f.cktext_area :materials %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <%= f.fields_for :central_2, OpenStruct.new(f.object.central_2) do |f| %>
+    <fieldset>
+      <legend>Central Open Area</legend>
+      <div>
+        <%= f.label :activity %>
+        <%= f.cktext_area :activity %>
+      </div>
+
+      <div>
+        <%= f.label :materials %>
+        <%= f.cktext_area :materials %>
+      </div>
+    </fieldset>
+  <% end %>
+<% end %>

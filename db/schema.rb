@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616052551) do
+ActiveRecord::Schema.define(version: 20150617100424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,8 +82,11 @@ ActiveRecord::Schema.define(version: 20150616052551) do
     t.text     "teaching_method"
     t.text     "teaching_aids"
     t.integer  "lesson_plan_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "type",            default: "RegularLessonPlanItem"
+    t.json     "elc_data"
+    t.text     "theme"
   end
 
   add_index "lesson_plan_items", ["lesson_plan_id"], name: "index_lesson_plan_items_on_lesson_plan_id", using: :btree

@@ -18,47 +18,13 @@
 <% if @items.present? %>
 
   <table class="lesson-plan-display table table-hover table-bordered">
-    <% @items.decorate.each do |item| %>
+    <% @items.each do |item| %>
       <tr>
         <td class="lesson-plan-item-time">
           <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
         </td>
         <td class="lesson-plan-item-body">
-          <% if item.span? %>
-            <div class="lesson-plan-subject-span"><%= item.subject %></div>
-          <% else %>
-            <% if item.subject.present? %>
-              <div class="lesson-plan-subject-span"><%= item.subject %></div>
-            <% end %>
-
-            <% if item.topic.present? %>
-              <div class="lesson-plan-item-attribute-value">
-                <span class="lesson-plan-item-attribute">Topic</span>
-                <%= item.topic %>
-              </div>
-            <% end %>
-
-            <% if item.goals.present? %>
-              <div class="lesson-plan-item-attribute-value">
-                <span class="lesson-plan-item-attribute">Goals</span>
-                <%= raw item.goals %>
-              </div>
-            <% end %>
-
-            <% if item.teaching_method.present? %>
-              <div class="lesson-plan-item-attribute-value">
-                <span class="lesson-plan-item-attribute">Teaching Method</span>
-                <%= raw item.teaching_method %>
-              </div>
-            <% end %>
-
-            <% if item.teaching_aids.present? %>
-              <div class="lesson-plan-item-attribute-value">
-                <span class="lesson-plan-item-attribute">Teaching Aids</span>
-                <%= raw item.teaching_aids %>
-              </div>
-            <% end %>
-          <% end %>
+          <%= item.show_html %>
         </td>
       </tr>
     <% end %>

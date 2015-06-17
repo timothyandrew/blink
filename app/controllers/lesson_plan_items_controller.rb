@@ -51,7 +51,11 @@ class LessonPlanItemsController < ApplicationController
   end
 
   def lesson_plan_item_params
-    params.require(:lesson_plan_item).permit(:start, :end, :subject, :topic,
-                                             :goals, :teaching_method, :teaching_aids)
+    elc_data_item_schema = [:activity, :materials]
+    elc_data_schema = {craft: elc_data_item_schema, central_1: elc_data_item_schema, central_2: elc_data_item_schema,
+                       technology: elc_data_item_schema, reading: elc_data_item_schema}
+    params.require(:lesson_plan_item).permit(:start, :end, :subject, :topic, :type, :theme,
+                                             :goals, :teaching_method, :teaching_aids,
+                                             elc_data: elc_data_schema)
   end
 end

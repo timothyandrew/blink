@@ -1,7 +1,7 @@
 class LessonPlan < ActiveRecord::Base
-  belongs_to :student
+  belongs_to :user
   validates_uniqueness_of :date, scope: :user_id
-  validates_presence_of :date
+  validates_presence_of :date, :user
   has_many :items, class_name: LessonPlanItem, dependent: :destroy
 
   audited
