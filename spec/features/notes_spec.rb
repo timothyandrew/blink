@@ -40,7 +40,7 @@ describe "Notes", :type => :feature do
       expect(page).to have_content "Some Note Text"
     end
 
-    it "allows deleting notes", focus: true do
+    it "allows deleting notes" do
       title = Faker::Company.catch_phrase
       notes = Faker::Lorem.paragraph
       click_on "General Notes"

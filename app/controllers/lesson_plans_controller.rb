@@ -38,7 +38,7 @@ class LessonPlansController < ApplicationController
       flash[:notice] = "Lesson plan was edited"
       redirect_to lesson_plan_path(@lesson_plan)
     else
-      flash[:alert] = @lesson_plan.errors.full_messages.to_sentence
+      flash[:alert] = @lesson_plan.errors.full_messages.to_sentence + @lesson_plan.items.map(&:errors).map(&:full_messages).flatten.to_sentence
       render_with_update_errors
     end
   end
