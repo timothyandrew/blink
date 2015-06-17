@@ -1,4 +1,8 @@
-<fieldset>
+{{#if errors}}
+  <fieldset id="lesson-plan-item-snippet-{{index}}" class="lesson-plan-quick-edit-errors">
+{{else}}
+  <fieldset id="lesson-plan-item-snippet-{{index}}">
+{{/if}}
   <label>{{index}}</label>
 
   <label for="lesson_plan[items][{{index}}][subject]" class="condensed">Subject</label>
@@ -9,4 +13,14 @@
 
   <label for="lesson_plan[items][{{index}}][end]" class="condensed">End Time</label>
   <input type="text" name="lesson_plan[items][{{index}}][end]" class="timepicker" value="{{end}}"></input>
+
+  <a href="#" id="lesson-plan-item-snippet-delete-{{index}}">Delete</a>
+
+  <script type="text/javascript">
+   $("#lesson-plan-item-snippet-delete-{{index}}").click(function() {
+     if(confirm("Sure?")) {
+       $("#lesson-plan-item-snippet-{{index}}").remove();
+     }
+   });
+  </script>
 </fieldset>

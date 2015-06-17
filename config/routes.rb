@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :goals, controller: "goals_summary"
   resources :notes, controller: "general_notes"
   resources :lesson_plans do
+    member do
+      get :quick_edit
+    end
     resources :items, controller: "lesson_plan_items"
   end
 

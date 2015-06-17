@@ -4,10 +4,6 @@
 
   <% if @duplicate_from %>
     <%= hidden_field_tag :duplicate_from, @duplicate_from %>
-  <% else %>
-    <% if action_name == 'new' || action_name == 'create' %>
-      <%= render partial: "lesson_plan_items", locals: {items: @lesson_plan.items} %>
-    <% end %>
   <% end %>
 
   <%= f.submit "Save", class: "btn btn-primary" %>

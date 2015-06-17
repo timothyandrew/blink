@@ -1,0 +1,2 @@
+<h1>Quick Edit Items</h1>
+<%= render partial: "lesson_plan_items", locals: {items: @lesson_plan.items.sort_by { |item| item.start || Time.now }} %>
