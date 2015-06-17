@@ -21,8 +21,9 @@
  $("#add-item").click(addItem);
 
  <% items.each do |item| %>
- <%= "var attributes = JSON.parse('#{item.to_json}\');".html_safe %>
- <%= "attributes = _.pick(attributes, 'subject', 'start', 'end');".html_safe %>
+ var json = "<%= j item.to_json.html_safe %>";
+ <%= "var attributes = JSON.parse(unescape(json));".html_safe %>
+ <%= "attributes = _.pick(attributes, 'subject', 'start', 'end', 'id');".html_safe %>
  <% if item.errors.present? %>
    <%= "attributes.errors = true;" %>
  <% end %>

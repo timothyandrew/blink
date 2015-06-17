@@ -33,18 +33,25 @@ class LessonPlan < ActiveRecord::Base
 
   def update_attributes_with_children(attributes, children_attributes)
     children_attributes ||= {}
+    children_to_delete = self.items.where.not(id: children_attributes.map { |_, child| child[:id] })
     transaction do
-      self.items.destroy_all
+      children_to_delete.destroy_all
 
       self.assign_attributes(attributes)
-      children = children_attributes.map { |_, child_attributes| self.items.build(child_attributes) }
-
       self.save!
-      children.each(&:save!)
+
+      children_attributes.each do |_, child_attributes|
+        if child_attributes[:id].present? # Update
+          self.items.find_by_id(child_attributes[:id]).update!(child_attributes)
+        else
+          self.items.build(child_attributes).save!
+        end
+      end
 
       self
     end
   rescue ActiveRecord::RecordInvalid
+    self.items = self.items.reject { |item| children_to_delete.pluck(:id).include?(item.id) }
     false
   end
 end

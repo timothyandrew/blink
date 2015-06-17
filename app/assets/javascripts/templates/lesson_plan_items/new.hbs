@@ -14,6 +14,10 @@
   <label for="lesson_plan[items][{{index}}][end]" class="condensed">End Time</label>
   <input type="text" name="lesson_plan[items][{{index}}][end]" class="timepicker" value="{{end}}"></input>
 
+  {{#if id}}
+    <input type="hidden" name="lesson_plan[items][{{index}}][id]" class="hidden" value="{{id}}"></input>
+  {{/if}}
+
   <a href="#" id="lesson-plan-item-snippet-delete-{{index}}">Delete</a>
 
   <script type="text/javascript">
