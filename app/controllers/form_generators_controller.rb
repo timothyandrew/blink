@@ -4,7 +4,7 @@ class FormGeneratorsController < ApplicationController
 
   def create
     service = FormGeneratorService.new(form_generator_params)
-    send_data service.generate, filename: "form #{DateTime.now.strftime('%d %b %Y')}.pdf", type: "application/pdf"
+    send_data service.generate, filename: "form #{DateTime.now.strftime('%d %b %Y')}.pdf", type: :pdf
   end
 
   private

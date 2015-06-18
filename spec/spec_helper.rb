@@ -4,18 +4,34 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'capybara/rails'
 require 'capybara/rspec'
 require './spec/integration_test_helpers'
+require './spec/download_helper'
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-Capybara.default_driver = :selenium
 Capybara.run_server = true
 Capybara.default_selector = :css
 Capybara.default_wait_time = 5
+Capybara.register_driver :chrome do |app|
+  prefs = {"download" => {"default_directory" => DownloadHelper::PATH.to_s, "directory_upgrade" => true, "extensions_to_open" => ""}}
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome
+  caps['chromeOptions'] = {'prefs' => prefs}
+  Capybara::Selenium::Driver.new(app, :browser => :chrome, :desired_capabilities => caps)
+end
 
+Capybara.default_driver = Capybara.javascript_driver = :chrome
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include IntegrationTest::Helpers
+  config.include DownloadHelper
+
+  config.before(:each) do
+    clear_downloads
+  end
+
+  config.after(:each) do
+    clear_downloads
+  end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -42,8 +58,8 @@ RSpec.configure do |config|
 
   config.formatter = :documentation
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
