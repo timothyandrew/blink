@@ -25,6 +25,10 @@ class Field
       @dataset = DataSet.new(['resources/datasets/first_names.txt', 'resources/datasets/last_names.txt'])
     when 'school'
       @dataset = DataSet.new(['resources/datasets/schools.txt'])
+    when 'address'
+      @dataset = DataSet.new(['resources/datasets/addresses.txt'])
+    when 'blank'
+      @dataset = DataSet.new(['resources/datasets/blank.txt'])
     end
   end
 
