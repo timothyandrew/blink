@@ -53,6 +53,22 @@ describe "Lesson Plans", type: :feature do
     expect(LessonPlan.last.date).to eq(date)
   end
 
+  it "allows editing a lesson plan item" do
+    click_on "Add Item"
+    fill_in_lesson_plan_item
+    click_on "Save"
+    click_on "1:00pm - 2:00pm"
+    click_on "Edit"
+    fill_in_lesson_plan_item(start: "1:00pm", end: "2:00pm", goals: "New Goals", subject: "New Subject", aids: "New aids", method: "New method", topic: "New Topic")
+    click_on "Save"
+
+    expect(page).to have_content "New Goals"
+    expect(page).to have_content "New Subject"
+    expect(page).to have_content "New Topic"
+    expect(page).to have_content "New method"
+    expect(page).to have_content "New aids"
+  end
+
   it "does not allow two lesson plans on the same day" do
     date = LessonPlan.last.date
     create_lesson_plan(date)
@@ -151,6 +167,7 @@ describe "Lesson Plans", type: :feature do
       create_lesson_plan_with_items
 
       click_on "10:00am - 10:00pm"
+      click_on "Edit"
       fill_in_ckeditor "lesson_plan_item_goals", with: "Some Goals"
       click_on "Save"
 
