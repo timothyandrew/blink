@@ -5,7 +5,7 @@ describe "Random Form Generator", :type => :feature do
     click_on "Random Form"
   end
 
-  it "generates a random form PDF", focus: true do
+  it "generates a random form PDF" do
     fill_in "Form Title", with: Faker::Company.catch_phrase
     fill_in "Form Count", with: 2
     fill_in "Copy Count", with: 2
