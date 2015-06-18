@@ -1,6 +1,6 @@
 <% breadcrumb :lesson_plan_item, @lesson_plan, lesson_plan_item %>
 
-<h1>Theme: <%= lesson_plan_item.display_title %></h1>
+<h1><%= lesson_plan_item.display_title %></h1>
 <div class="student-actions pull-right">
   <%= link_to "Edit", edit_lesson_plan_item_path(@lesson_plan, lesson_plan_item), class: "btn btn-primary" %>
   <%= link_to "Delete", lesson_plan_item_path(@lesson_plan, lesson_plan_item), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>

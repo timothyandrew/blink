@@ -2,15 +2,19 @@ class ELCLessonPlanItemDecorator < LessonPlanItemDecorator
   delegate_all
 
   def show_html
-    if model.theme.present?
-      ('<div class="lesson-plan-subject-span">ELC: ' + model.theme + '</div>').html_safe
-    else
-      '<div class="lesson-plan-subject-span">ELC</div>'.html_safe
-    end
+    ('<div class="lesson-plan-subject-span">' +  display_title + '</div>').html_safe
+  end
+
+  def span?
+    true
   end
 
   def display_title
-    model.theme
+    if model.theme.present?
+      "ELC - #{model.theme}"
+    else
+      "ELC"
+    end
   end
 
   def central_1_activity

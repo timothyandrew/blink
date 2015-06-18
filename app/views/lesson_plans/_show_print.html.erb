@@ -13,13 +13,13 @@
     <% @items.each do |item| %>
       <% if item.span? %>
         <td class="lesson-plan-item-attribute-value span" rowspan="5" %>
-          <% item.subject.upcase.split('').each do |letter| %>
-            <span class="letter"><%= letter %></span>
+          <% item.display_title.upcase.split('').each do |letter| %>
+            <div class="letter"><%= letter %></div>
           <% end %>
         </td>
       <% else %>
         <td class="lesson-plan-item-attribute-value">
-          <%= item.subject %>
+          <%= item.display_title %>
         </td>
       <% end %>
 
