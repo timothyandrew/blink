@@ -3,9 +3,10 @@
 <h1>Creating a Lesson Plan Item for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
 
 <% if @duplicate_from %>
+  <div class="break"></div>
   <%= form_for @lesson_plan_item, url: duplicate_lesson_plan_items_path(@lesson_plan) do |f| %>
     <%= f.label :lesson_plan_id, "New Lesson Plan" %>
-    <%= f.collection_select :lesson_plan_id, current_user.lesson_plans, :id, :long_date %>
+    <%= f.collection_select :lesson_plan_id, current_user.lesson_plans.order(date: :desc), :id, :long_date %>
 
     <%= hidden_field_tag :duplicate_from, @duplicate_from %>
     <%= f.submit "Save", class: "btn btn-primary" %>
