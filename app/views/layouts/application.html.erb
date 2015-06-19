@@ -11,7 +11,8 @@
     <script src="//use.typekit.net/rru0vth.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= stylesheet_link_tag    'print', media: 'print', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'print', media: 'print', 'data-turbolinks-track' => true, 'class' => 'print' %>
+    <%= stylesheet_link_tag    'print_mode', media: 'print', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -60,6 +61,7 @@
      initializeTimepicker();
     </script>
 
+    <%= render "bootstrap_table" %>
     <%= render "disable_autocomplete" %>
     <%= render "garlic" %>
 

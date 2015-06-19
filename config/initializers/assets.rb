@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.autoload_paths += %W(#{Rails.application.config.root}/app/models/ckeditor)
 Rails.application.config.assets.precompile += %w( print.css )
+Rails.application.config.assets.precompile += %w( print_mode.css )

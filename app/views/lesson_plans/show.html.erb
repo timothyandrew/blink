@@ -2,6 +2,7 @@
 
 <h1>Lesson Plan</h1>
 <div class="student-actions pull-right">
+  <%= link_to "Print", "#", class: "btn btn-warning print-mode" %>
   <%= link_to "Quick Edit", quick_edit_lesson_plan_path(@lesson_plan), class: "btn btn-success" %>
   <%= link_to "Add Item", new_lesson_plan_item_path(@lesson_plan), class: "btn btn-info" %>
   <%= link_to "Edit Date", edit_lesson_plan_path(@lesson_plan), class: "btn btn-primary" %>
@@ -37,3 +38,17 @@
 <% end %>
 
 <%= render "show_print" %>
+
+<script type="text/javascript">
+ var printModeStatus = 'print';
+ $(".print-mode").click(function() {
+   if(printModeStatus == 'all') {
+     $('link.print').attr('media', 'print');
+     printModeStatus = 'print';
+   } else {
+     $('link.print').attr('media', 'all');
+     printModeStatus = 'all';
+   }
+   initializeBootstrapTable();
+ });
+</script>

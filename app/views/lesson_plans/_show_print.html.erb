@@ -1,73 +1,73 @@
-<table class="lesson-plan-print table table-bordered">
-  <tr>
-    <th>Timing</th>
-    <% @items.each do |item| %>
-      <td class="lesson-plan-item-time">
-        <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
-      </td>
-    <% end %>
-  </tr>
+<table class="lesson-plan-print table table-bordered resizable">
+  <thead>
+    <tr>
+      <th>Timing</th>
+      <% @items.each do |item| %>
+        <th class="lesson-plan-item-time">
+          <%= link_to item.range, edit_lesson_plan_item_path(@lesson_plan, item) %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
 
-  <tr>
-    <th>Subject</th>
-    <% @items.each do |item| %>
-      <% if item.span? %>
-        <td class="lesson-plan-item-attribute-value span" rowspan="5" %>
-          <% item.display_title.upcase.split('').each do |letter| %>
-            <div class="letter"><%= letter %></div>
-          <% end %>
-        </td>
-      <% else %>
-        <td class="lesson-plan-item-attribute-value">
-          <%= item.display_title %>
-        </td>
+  <tbody>
+    <tr>
+      <td class="table-header">Subject</td>
+      <% @items.each do |item| %>
+        <% if item.span? %>
+          <td class="lesson-plan-item-attribute-value span" %>
+            <% item.display_title.upcase.split('').each do |letter| %>
+              <div class="letter"><%= letter %></div>
+            <% end %>
+          </td>
+        <% else %>
+          <td class="lesson-plan-item-attribute-value">
+            <%= item.display_title %>
+          </td>
+        <% end %>
+
+      <% end %>
+    </tr>
+
+    <tr>
+      <td class="table-header">Goals</td>
+      <% @items.each do |item| %>
+        <% if item.span? %>
+          <td>Test</td>
+        <% else %>
+          <td class="lesson-plan-item-attribute-value">
+            <%= raw item.goals %>
+          </td>
+        <% end %>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td class="table-header">Teaching Method</td>
+      <% @items.each do |item| %>
+        <% if item.span? %>
+          <td>Test</td>
+        <% else %>
+          <td class="lesson-plan-item-attribute-value">
+            <%= raw item.teaching_method %>
+          </td>
+        <% end %>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td class="table-header">Teaching Aids</td>
+      <% @items.each do |item| %>
+        <% if item.span? %>
+          <td>Test</td>
+        <% else %>
+          <td class="lesson-plan-item-attribute-value">
+            <%= raw item.teaching_aids %>
+          </td>
+        <% end %>
       <% end %>
 
-    <% end %>
-  </tr>
+    </tr>
 
-  <tr>
-    <th>Topic</th>
-    <% @items.each do |item| %>
-      <% unless item.span? %>
-        <td class="lesson-plan-item-attribute-value">
-          <%= item.topic %>
-        </td>
-      <% end %>
-    <% end %>
-  </tr>
-
-  <tr>
-    <th>Goals</th>
-    <% @items.each do |item| %>
-      <% unless item.span? %>
-        <td class="lesson-plan-item-attribute-value">
-          <%= raw item.goals %>
-        </td>
-      <% end %>
-    <% end %>
-  </tr>
-
-  <tr>
-    <th>Teaching Method</th>
-    <% @items.each do |item| %>
-      <% unless item.span? %>
-        <td class="lesson-plan-item-attribute-value">
-          <%= raw item.teaching_method %>
-        </td>
-      <% end %>
-    <% end %>
-  </tr>
-
-  <tr>
-    <th>Teaching Aids</th>
-    <% @items.each do |item| %>
-      <% unless item.span? %>
-        <td class="lesson-plan-item-attribute-value">
-          <%= raw item.teaching_aids %>
-        </td>
-      <% end %>
-    <% end %>
-
-  </tr>
+  </tbody>
 </table>

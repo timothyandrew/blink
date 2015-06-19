@@ -39,8 +39,12 @@ a[href]:after {
     display: none;
 }
 
-.student-actions {
+.student-actions a {
     display: none;
+}
+
+a.print-mode {
+    display: block;
 }
 
 .lesson-plan-item-attribute-value.span {
