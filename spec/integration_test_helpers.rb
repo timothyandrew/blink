@@ -37,5 +37,38 @@ module IntegrationTest
         $('textarea##{locator}').text(#{content});
       SCRIPT
     end
+
+    def create_lesson_plan_item(type, options = {})
+      click_on "Add Item"
+      fill_in "Start Time", with: options[:start] || "1:00pm"
+      fill_in "End Time", with: options[:end] || "2:00pm"
+
+      if type == :elc
+        choose "lesson_plan_item_type_elclessonplanitem"
+        fill_in "Theme", with: Faker::Company.catch_phrase
+        fill_in_ckeditor "lesson_plan_item_elc_data_central_1_activity", with: Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_elc_data_central_1_materials", with: Faker::Lorem.paragraph
+
+        fill_in_ckeditor "lesson_plan_item_elc_data_central_2_activity", with: Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_elc_data_central_2_materials", with: Faker::Lorem.paragraph
+
+        fill_in_ckeditor "lesson_plan_item_elc_data_reading_activity", with: Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_elc_data_reading_materials", with: Faker::Lorem.paragraph
+
+        fill_in_ckeditor "lesson_plan_item_elc_data_technology_activity", with: Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_elc_data_technology_materials", with: Faker::Lorem.paragraph
+
+        fill_in_ckeditor "lesson_plan_item_elc_data_craft_activity", with: Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_elc_data_craft_materials", with: Faker::Lorem.paragraph
+      else
+        fill_in "Subject", with: options[:subject] || Faker::Company.bs
+        fill_in "Topic", with: options[:topic] || Faker::Company.bs
+        fill_in_ckeditor "lesson_plan_item_goals", with: options[:goals] || Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_teaching_method", with: options[:method] || Faker::Lorem.paragraph
+        fill_in_ckeditor "lesson_plan_item_teaching_aids", with: options[:aids] || Faker::Lorem.paragraph
+      end
+
+      click_on "Save"
+    end
   end
 end

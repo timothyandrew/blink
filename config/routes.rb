@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     member do
       get :quick_edit
     end
-    resources :items, controller: "lesson_plan_items"
+    resources :items, controller: "lesson_plan_items" do
+      collection do
+        post :duplicate
+      end
+    end
   end
 
   get '/bingo', controller: 'bingo', action: 'generate'

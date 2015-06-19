@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
+require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
 require './spec/integration_test_helpers'
@@ -25,12 +26,19 @@ RSpec.configure do |config|
   config.include IntegrationTest::Helpers
   config.include DownloadHelper
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.before(:each) do
+    DatabaseCleaner.start
     clear_downloads
   end
 
   config.after(:each) do
     clear_downloads
+    DatabaseCleaner.clean
   end
 
   # rspec-expectations config goes here. You can use an alternate

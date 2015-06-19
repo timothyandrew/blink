@@ -7,6 +7,7 @@ class LessonPlanItemsController < ApplicationController
   end
 
   def new
+    @duplicate_from = params[:duplicate_from]
     @lesson_plan_item = @lesson_plan.items.new
   end
 
@@ -16,6 +17,13 @@ class LessonPlanItemsController < ApplicationController
 
   def show
     @lesson_plan_item = @lesson_plan.items.find(params[:id])
+  end
+
+  def duplicate
+    duplicate_from = @lesson_plan.items.find(params[:duplicate_from])
+    target = current_user.lesson_plans.find(params[:lesson_plan_item][:lesson_plan_id])
+    target.add_duplicate_item!(duplicate_from)
+    redirect_to lesson_plan_path(target), notice: "Duplicated successfully"
   end
 
   def create

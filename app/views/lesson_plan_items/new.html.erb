@@ -2,4 +2,14 @@
 
 <h1>Creating a Lesson Plan Item for <%= @lesson_plan.date.strftime("%A - %-d %B %Y") %></h1>
 
-<%= render "form" %>
+<% if @duplicate_from %>
+  <%= form_for @lesson_plan_item, url: duplicate_lesson_plan_items_path(@lesson_plan) do |f| %>
+    <%= f.label :lesson_plan_id, "New Lesson Plan" %>
+    <%= f.collection_select :lesson_plan_id, current_user.lesson_plans, :id, :long_date %>
+
+    <%= hidden_field_tag :duplicate_from, @duplicate_from %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= render "form" %>
+<% end %>

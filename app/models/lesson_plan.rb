@@ -18,6 +18,15 @@ class LessonPlan < ActiveRecord::Base
     end
   end
 
+  def add_duplicate_item!(from)
+    transaction do
+      new_item = from.dup
+      new_item.save
+      self.items << new_item
+      self
+    end
+  end
+
   def long_date
     self.date.strftime("%A - %-d %B %Y")
   end
