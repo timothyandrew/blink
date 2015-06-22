@@ -25,12 +25,15 @@
 <% end %>
 
 <script type="text/javascript">
+ var current;
  var displayRegular = function() {
+   current = "regular";
    $(".elc").hide();
    $(".regular").show();
  };
 
  var displayELC = function() {
+   current = "elc";
    $(".regular").hide();
    $(".elc").show();
  };
@@ -40,9 +43,20 @@
 
  <% if @lesson_plan_item.elc? %>
  displayELC();
+ current = "elc";
  <% else %>
  displayRegular();
+ current = "regular";
  <% end %>
+
+ $("form").submit(function() {
+   if(current == "elc") {
+     $(".regular").remove();
+   } else {
+     $(".elc").remove();
+   };
+ });
+
 </script>
 
 <%= render "dirty_onbeforeunload" %>
