@@ -1,6 +1,9 @@
 <fieldset>
   <%= f.label :theme %>
-  <%= f.text_field :theme, class: "full-width" %>
+  <%= f.text_field :theme %>
+
+  <%= f.label :topic %>
+  <%= f.text_field :topic  %>
 </fieldset>
 
 <%= f.fields_for :elc_data, OpenStruct.new(f.object.elc_data) do |f| %>

@@ -5,6 +5,10 @@ class LessonPlanItemDecorator < Draper::Decorator
     "#{model.start.strftime('%-l:%M%P')} - #{model.end.strftime('%-l:%M%P')}"
   end
 
+  def display_subtitle
+    "#{range} | #{model.lesson_plan.date.strftime('%-d %B %Y')}"
+  end
+
   def show_html_attr(attr)
     html = ""
     if model.send(attr).present?
