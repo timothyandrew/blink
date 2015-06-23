@@ -8,7 +8,7 @@ class DuplicateGoalsController < ApplicationController
   def create
     target = current_user.students.find(params[:target])
     from = @student.goals.find(params[:id])
-    if @goal = Goal.duplicate_from(from, target)
+    if @goal = from.duplicate_tree!(target)
       redirect_to student_goal_path(target, @goal), notice: "Duplicated sucessfully."
     else
       flash[:alert] = @goal.errors.full_messages.to_sentence
