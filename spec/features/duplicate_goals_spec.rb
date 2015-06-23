@@ -57,7 +57,7 @@ describe "Goal duplication", :type => :feature do
     click_on "IEP"
     click_on @student_name
     click_on subject
-    click_on "Duplicate"
+    accept_confirm { click_on "Save As" }
 
     select(new_student, from: "target")
     click_on "Save As"
