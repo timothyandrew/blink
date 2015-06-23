@@ -45,7 +45,7 @@ describe "Goal duplication", :type => :feature do
     goals
   end
 
-  it "allows duplicating a tree of goals", focus: true do
+  it "allows duplicating a tree of goals" do
     new_student = create_student
 
     click_on "IEP"
