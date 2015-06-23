@@ -21,43 +21,7 @@ describe "A student and his/her goals", :type => :feature do
   end
 
   it "allows creating a tree of goals" do
-    goals = []
-
-    click_on "Add Subject"
-    goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
-    goals << goal_name
-    click_on goal_name
-    expect(page).to have_content goal_name
-
-    click_on "Add Long Term Goal"
-    goal_name = fill_in_goal("Jan 01, 2015", "Dec 01, 2015")
-    goals << goal_name
-    click_on "Show All"
-    click_on goal_name
-    expect(page).to have_content goal_name
-
-    click_on "Add Short Term Goal"
-    goal_name = fill_in_goal("Jan 01, 2015", "Jan 21, 2015")
-    goals << goal_name
-    click_on "Show All"
-    click_on goal_name
-
-    click_on "Add Monthly Objective"
-    goal_name = fill_in_goal("Jan 02, 2015", "Jan 12, 2015")
-    goals << goal_name
-    click_on "Show All"
-    click_on goal_name
-
-    click_on "Add Weekly Objective"
-    goal_name = fill_in_goal("Jan 05, 2015", "Jan 10, 2015")
-    goals << goal_name
-    click_on "Show All"
-    click_on goal_name
-
-    click_on "Add Activity"
-    goal_name = fill_in_goal("Jan 6, 2015", "Jan 6, 2015")
-    goals << goal_name
-
+    goals = create_goal_tree
     visit("/students")
     click_on "Goals for All Students"
     goals.each { |goal| expect(page).to have_content(goal) }
