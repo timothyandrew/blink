@@ -25,6 +25,7 @@ module IntegrationTest
       fill_in "Start Date", with: start_date
       fill_in "End Date", with: end_date
       click_on "Save"
+      click_on "Goals"
       name
     end
 
