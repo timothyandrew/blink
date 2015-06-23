@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :notes, controller: "student_notes"
     resources :goals do
       member do
+        resource :duplicate, controller: "duplicate_goals", as: :duplicate_goal
         put :complete
         put :uncomplete
       end

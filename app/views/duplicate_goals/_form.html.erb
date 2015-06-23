@@ -1,0 +1,29 @@
+<%= form_for [@student, @goal] do |f| %>
+  <fieldset>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "full-width" %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :description %>
+    <%= f.cktext_area :description %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :start, "Start Date" %>
+    <%= f.text_field :start, value: (@goal.start.strftime("%b %-d, %Y") if @goal.start.present?), class: "datepicker" %>
+
+    <%= f.label :end, "End Date" %>
+    <%= f.text_field :end, value: (@goal.end.strftime("%b %-d, %Y") if @goal.end.present?), class: "datepicker" %>
+  </fieldset>
+
+  <% if @parent && @parent.start && @parent.end %>
+  <span class="help-block">The parent goal duration is <%= parent.decorate.expanded_date_range %>.</span>
+<% end %>
+
+<%= hidden_field_tag :parent_id, params[:parent_id] %>
+
+<%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+
+<%= render "dirty_onbeforeunload" %>

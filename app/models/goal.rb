@@ -2,9 +2,8 @@ class Goal < ActiveRecord::Base
   belongs_to :student
 
   acts_as_nested_set dependent: :destroy
-  validates_presence_of :title
-  validate :start_date_before_end_date
-
+  #validates_presence_of :title
+  #validate :start_date_before_end_date
 
   audited associated_with: :student
 
@@ -29,6 +28,36 @@ class Goal < ActiveRecord::Base
 
   def sorted_children
     GoalDecorator.decorate_collection(Goal.sort(self.children))
+  end
+
+  def self.duplicate_from(from, student)
+    transaction do
+      goal = from.dup.tap(&:save)
+      student.goals << goal
+
+      from.children.each do |child|
+        goal.add_duplicate_child!(child, student)
+      end
+
+      goal.save
+      goal
+    end
+  end
+
+  def add_duplicate_child!(child, student)
+    transaction do
+      new_child = child.dup
+      new_child[:student_id] = student.id
+      new_child.save
+      self.children << new_child
+
+      child.children.each do |nested_child|
+        new_child.add_duplicate_child!(nested_child, student)
+      end
+
+      self.save
+      self
+    end
   end
 
   def complete!

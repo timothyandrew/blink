@@ -27,6 +27,10 @@ class GoalDecorator < Draper::Decorator
     "#{start} - #{e}"
   end
 
+  def allow_duplication?
+    model.depth == 0
+  end
+
   def expanded_date_range
     "#{model.start.strftime("%d %b %Y")} - #{model.end.strftime("%d %b %Y")}"
   end

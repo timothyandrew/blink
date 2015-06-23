@@ -1,0 +1,7 @@
+<h1 class="new-goal-header">Duplicating <%= @goal.title %></h1>
+
+<%= form_tag student_duplicate_goal_path(@student, @goal), method: :post %>
+  <%= label_tag :student, "Target Student" %>
+  <%= select_tag :target, options_for_select(current_user.students.map { |student| [student.name, student.id] }) %>
+  <%= submit_tag "Save As", class: "btn btn-primary" %>
+</form>

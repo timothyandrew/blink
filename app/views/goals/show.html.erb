@@ -15,6 +15,10 @@
     data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 
   <div class="second-row">
+    <% if goal.allow_duplication? %>
+      <%= link_to "Duplicate", new_student_duplicate_goal_path(@student, @goal), class: "btn btn-danger" %>
+    <% end %>
+
     <% if @goal.not_final_level? && !@goal.completed? %>
       <%= link_to "Add #{goal_name_for_depth(@goal.depth.next)}", new_student_goal_path(@student, parent_id: @goal.id), class: "btn btn-secondary" %>
     <% end %>

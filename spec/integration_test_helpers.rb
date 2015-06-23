@@ -10,6 +10,7 @@ module IntegrationTest
     end
 
     def create_student
+      click_on "IEP"
       name = Faker::Name.name
       click_on "New Student"
       fill_in "Name", with: name
