@@ -25,7 +25,7 @@ class GoalsController < ApplicationController
     if @goal.save
       @goal.move_to_child_of(@parent) if @parent
       flash[:notice] = "Goal was created"
-      redirect_to student_path(@student)
+      redirect_to student_goal_path(@student, @goal)
     else
       flash[:alert] = @goal.errors.full_messages.to_sentence
       render :new
