@@ -1,7 +1,7 @@
-require 'dataset'
-
 module FormGenerator
   class Field
+    attr_reader :name
+
     def initialize(attrs)
       @name = attrs[:name].presence || "<no field name>"
       @type = attrs[:type].presence || "<no field type>"
@@ -21,8 +21,8 @@ module FormGenerator
       end
     end
 
-    def render
-      "#{@name}: #{@dataset.sample}"
+    def value
+      @dataset.sample
     end
   end
 end

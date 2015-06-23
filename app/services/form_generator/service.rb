@@ -1,4 +1,5 @@
 require 'prawn'
+require 'font_collection'
 
 module FormGenerator
   class Service
@@ -9,6 +10,12 @@ module FormGenerator
       @title = params[:title].presence || "<no title>"
       @handwritten = params[:handwritten].present?
       @pdf = Prawn::Document.new
+      register_font
+    end
+
+    def register_font
+      @font = FontCollection.new(@handwritten).fonts.sample
+      @pdf.font_families.update(@font.name => { normal: @font.path })
     end
 
     def render_title
@@ -34,7 +41,12 @@ module FormGenerator
           @pdf.move_down(10)
 
           @fields.each do |field|
-            @pdf.pad_bottom(5) { @pdf.text field.render, size: 12 }
+            @pdf.pad_bottom(5) do
+              @pdf.formatted_text [
+                {text: "#{field.name}: ", size: 12},
+                {text: field.value, size: 22, font: @font.name}
+              ]
+            end
           end
           @pdf.move_down(15)
 
