@@ -16,7 +16,8 @@
 
   <div class="second-row">
     <% if goal.allow_duplication? %>
-      <%= link_to "Duplicate", new_student_duplicate_goal_path(@student, @goal), class: "btn btn-danger" %>
+      <%= link_to "Save As", new_student_duplicate_goal_path(@student, @goal), class: "btn btn-danger",
+        data: {confirm: "Are you sure?"}%>
     <% end %>
 
     <% if @goal.not_final_level? && !@goal.completed? %>
