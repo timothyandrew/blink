@@ -8,7 +8,7 @@ module FormGenerator
       @copy_count = params[:copy_count].to_i || 0
       @fields = params[:fields].map { |_, field| Field.new(field) } || []
       @title = params[:title].presence || "<no title>"
-      @handwritten = params[:handwritten].present?
+      @handwritten = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:handwritten])
       @pdf = Prawn::Document.new
       register_font
     end
@@ -44,7 +44,7 @@ module FormGenerator
             @pdf.pad_bottom(5) do
               @pdf.formatted_text [
                 {text: "#{field.name}: ", size: 12},
-                {text: field.value, size: 22, font: @font.name}
+                {text: field.value, size: 18, font: @font.name}
               ]
             end
           end

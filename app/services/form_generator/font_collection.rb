@@ -8,7 +8,7 @@ module FormGenerator
       if @handwritten
         [Font.new("Tim", "#{Rails.root}/resources/fonts/handwritten/Tim.ttf")]
       else
-        []
+        [Font.new("Tim", "#{Rails.root}/resources/fonts/handwritten/OpenSans.ttf")]
       end
     end
   end

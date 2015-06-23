@@ -1,7 +1,7 @@
 {{#if errors}}
-  <fieldset id="lesson-plan-item-snippet-{{index}}" class="lesson-plan-quick-edit-errors lesson-plan-item-snippet">
+  <fieldset id="lesson-plan-item-snippet-{{index}}" class="lesson-plan-quick-edit-errors lesson-plan-item-snippet nested-item">
 {{else}}
-    <fieldset id="lesson-plan-item-snippet-{{index}}" class="lesson-plan-item-snippet">
+    <fieldset id="lesson-plan-item-snippet-{{index}}" class="lesson-plan-item-snippet nested-item">
 {{/if}}
 
 
@@ -23,7 +23,7 @@
   <input type="hidden" name="lesson_plan[items][{{index}}][id]" class="hidden" value="{{id}}"></input>
 {{/if}}
 
-<a href="#" id="lesson-plan-item-snippet-delete-{{index}}" class="lesson-plan-item-snippet-delete btn btn-danger">Delete</a>
+<a href="#" id="lesson-plan-item-snippet-delete-{{index}}" class="lesson-plan-item-snippet-delete nested-item-delete btn btn-danger">Delete</a>
 
 <script type="text/javascript">
  $("#lesson-plan-item-snippet-delete-{{index}}").click(function() {

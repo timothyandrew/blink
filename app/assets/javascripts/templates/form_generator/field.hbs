@@ -1,6 +1,4 @@
-<fieldset class="form-generator-field-{{index}}">
-  <label>{{index}}</label>
-
+<fieldset class="form-generator-field-{{index}} nested-item">
   <label for="form_generator[fields][{{index}}][name]" class="condensed">Field Name</label>
   <input type="text" name="form_generator[fields][{{index}}][name]" />
 
@@ -12,7 +10,7 @@
     <option value="blank">Blank</option>
   </select>
 
-  <a href="#" class="form-generator-field-{{index}}-delete">Delete</a>
+  <a href="#" class="form-generator-field-{{index}}-delete btn btn-danger nested-item-delete">Delete</a>
 </fieldset>
 
 <script type="text/javascript">

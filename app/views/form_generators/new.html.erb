@@ -1,16 +1,30 @@
 <h1>Random Form Generator (Beta)</h1>
 
-<%= form_tag "/form_generator", method: :post  %>
-  <%= label_tag "form_generator[title]", "Form Title" %>
-  <%= text_field_tag "form_generator[title]" %>
-
-  <%= label_tag "form_generator[form_count]", "Form Count" %>
-  <%= number_field_tag "form_generator[form_count]", '0' %>
-
-  <%= label_tag "form_generator[copy_count]", "Copy Count" %>
-  <%= number_field_tag "form_generator[copy_count]", '0' %>
-
+<div class="student-actions pull-right">
   <%= link_to "Add Field", "#", id: "add-field", class: "btn btn-warning" %>
+</div>
+
+<%= form_tag "/form_generator", method: :post  %>
+  <fieldset>
+    <%= label_tag "form_generator[title]", "Form Title" %>
+    <%= text_field_tag "form_generator[title]" %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag "form_generator[form_count]", "Form Count" %>
+    <%= number_field_tag "form_generator[form_count]", '0' %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag "form_generator[copy_count]", "Copy Count" %>
+    <%= number_field_tag "form_generator[copy_count]", '0' %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag "form_generator[handwritten]", "Handwritten?" %>
+    <%= radio_button_tag "form_generator[handwritten]", '1' %> <span class="radio-button-label">Yes</span>
+    <%= radio_button_tag "form_generator[handwritten]", '0' %> <span class="radio-button-label">No</span>
+  </fieldset>
 
   <div class="form-generator-fields"></div>
 
