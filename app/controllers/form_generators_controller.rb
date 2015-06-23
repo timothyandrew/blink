@@ -3,13 +3,13 @@ class FormGeneratorsController < ApplicationController
   end
 
   def create
-    service = FormGeneratorService.new(form_generator_params)
+    service = FormGenerator::Service.new(form_generator_params)
     send_data service.generate, filename: "form #{DateTime.now.strftime('%d %b %Y')}.pdf", type: :pdf
   end
 
   private
 
   def form_generator_params
-    params.require(:form_generator).permit(:form_count, :copy_count, :title, fields: [:name, :type])
+    params.require(:form_generator).permit(:form_count, :copy_count, :handwritten, :title, fields: [:name, :type])
   end
 end
