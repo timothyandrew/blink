@@ -1,0 +1,35 @@
+<h1>Bingo Generator (BETA)</h1>
+
+<div class="student-actions pull-right">
+  <%= link_to "Add Word", "#", id: "add-field", class: "btn btn-warning" %>
+  <%= link_to "Add 25 Words", "#", id: "add-25-fields", class: "btn btn-warning" %>
+</div>
+
+<%= form_tag "/bingo_cards", method: :post  %>
+  <div class="bingo-fields"></div>
+
+  <script type="text/javascript">
+   var index = 1;
+   var addItem = function(attributes) {
+     var template = HandlebarsTemplates['bingo/field'](_.extend({index: index}, attributes));
+     index++;
+     $(".bingo-fields").append(template);
+   };
+
+   $("#add-field").click(function() {
+     addItem();
+   });
+
+   $("#add-25-fields").click(function() {
+     _(25).times(function() {
+       addItem();
+     });
+   });
+
+   <% @words.each do |word| %>
+    addItem({word: "<%= word %>"});
+  <% end %>
+  </script>
+
+  <%= submit_tag "Done", class: "btn btn-primary" %>
+</form>

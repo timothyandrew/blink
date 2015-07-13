@@ -1,0 +1,11 @@
+<fieldset class="bingo-field-{{index}} nested-item">
+  <label for="bingo[words][{{index}}][word]" class="condensed">Word</label>
+  <input type="text" name="bingo[words][{{index}}][word]" value="{{word}}" />
+  <a href="#" class="bingo-field-{{index}}-delete btn btn-danger nested-item-delete">Delete</a>
+</fieldset>
+
+<script type="text/javascript">
+  $(".bingo-field-{{index}}-delete").click(function() {
+    $(".bingo-field-{{index}}").remove();
+  });
+</script>

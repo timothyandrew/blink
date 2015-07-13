@@ -3,6 +3,7 @@ require 'RMagick'
 
 class BingoService
   include Magick
+  include ActiveModel::Validations
 
   class Coordinate
     attr_accessor :x, :y
@@ -13,6 +14,19 @@ class BingoService
     end
   end
 
+  attr_reader :words
+
+  validates_each :words do |record, attr, value|
+    record.errors.add(attr, "not enough words") if value.size < 25
+  end
+
+  def initialize(words = nil)
+    @words = words || %w(blind blend bless black blow blood bleed blaze blink blue blur block clam
+                         clap clash clip class claw clay clean clear climb click clock close cloth cloud clot clownclue
+                         plant plan play planet plug plus please plot pluck plow plate plane place slab slack slam
+                         slag slap slant slate sleep slice slide sling slip slit slope slow slush)
+  end
+
   def generate
     text = Draw.new
     text.font_family = "Helvetica"
@@ -21,11 +35,6 @@ class BingoService
     text.gravity = CenterGravity
     text.align = CenterAlign
     text.pointsize = 85
-
-    bl_words = %w(blind blend bless black blow blood bleed blaze blink blue blur block)
-    cl_words = %w(clam clap clash clip class claw clay clean clear climb click clock close cloth cloud clot clown clue)
-    pl_words = %w(plant plan play planet plug plus please plot pluck plow plate plane place)
-    sl_words = %w(slab slack slam slag slap slant slate sleep slice slide sling slip slit slope slow slush)
 
     coordinates = []
 
@@ -38,7 +47,7 @@ class BingoService
       end
     end
 
-    words = (bl_words.shuffle.first(10) + cl_words.shuffle.first(10) + pl_words.shuffle.first(5)).first(25)
+    words = @words.shuffle.first(25)
 
     5.times.map do
       image = Image.read(Rails.root + "app/assets/images/bingo.png").first
