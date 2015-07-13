@@ -38,14 +38,18 @@ class BingoService
       end
     end
 
-    image = Image.read(Rails.root + "app/assets/images/bingo.png").first
+    words = (bl_words.shuffle.first(10) + cl_words.shuffle.first(10) + pl_words.shuffle.first(5)).first(25)
 
-    words = (bl_words.shuffle.first(10) + cl_words.shuffle.first(10) + pl_words.shuffle.first(5)).shuffle
+    5.times.map do
+      image = Image.read(Rails.root + "app/assets/images/bingo.png").first
 
-    coordinates.each_with_index do |coordinate, i|
-      text.annotate(image, 150, 150, coordinate.x, coordinate.y, words[i])
+      words.shuffle!
+
+      coordinates.each_with_index do |coordinate, i|
+        text.annotate(image, 150, 150, coordinate.x, coordinate.y, words[i])
+      end
+
+      image.to_blob
     end
-
-    image.to_blob
   end
 end

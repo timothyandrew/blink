@@ -1,5 +1,6 @@
 class BingoController < ApplicationController
   def generate
-    send_data BingoService.new.generate, filename: "bingo #{DateTime.now.strftime('%d %b %Y')}.png", type: "image/png"
+    images = BingoService.new.generate
+    send_data ZipService.new(images).zip, filename: "bingo #{DateTime.now.strftime('%d %b %Y')}.zip", type: "application/zip"
   end
 end

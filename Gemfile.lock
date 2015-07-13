@@ -442,6 +442,7 @@ DEPENDENCIES
   rmagick
   roman-numerals
   rspec-rails (~> 3.0)
+  rubyzip
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

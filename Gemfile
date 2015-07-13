@@ -29,6 +29,7 @@ gem 'newrelic_rpm'
 gem 'handlebars_assets'
 gem 'momentjs-rails'
 gem 'prawn'
+gem 'rubyzip'
 
 group :development, :test do
   gem 'byebug'
