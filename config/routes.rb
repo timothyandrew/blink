@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :students do
     resources :audits, controller: "student_audits"
     resource :notes, controller: "student_notes"
+    member do
+      get 'generate_iep_template', controller: 'iep_templates', action: 'generate'
+    end
     resources :goals do
       member do
         resource :duplicate, controller: "duplicate_goals", as: :duplicate_goal

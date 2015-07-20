@@ -30,6 +30,7 @@ gem 'handlebars_assets'
 gem 'momentjs-rails'
 gem 'prawn'
 gem 'rubyzip'
+gem 'sablon'
 
 group :development, :test do
   gem 'byebug'
