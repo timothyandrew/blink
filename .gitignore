@@ -15,3 +15,13 @@
 completer.hist
 # Ignore application configuration
 /config/application.yml
+*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
