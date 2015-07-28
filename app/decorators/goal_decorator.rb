@@ -27,6 +27,10 @@ class GoalDecorator < Draper::Decorator
     "#{start} - #{e}"
   end
 
+  def description
+    ""
+  end
+
   def allow_duplication?
     model.depth == 0
   end
