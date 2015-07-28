@@ -1,0 +1,12 @@
+<!-- Tree segment for `tree.html.erb` -->
+
+<% if goals.present? %>
+  <ul>
+    <% goals.each_with_index do |goal, index| %>
+      <li>
+        <%= link_to goal.title, student_goal_path(@student, goal) %>
+        <%= render partial: "tree_segment", locals: { goals: goal.sorted_children } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

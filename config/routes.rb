@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       get 'generate_iep_template', controller: 'iep_templates', action: 'generate'
     end
     resources :goals do
+      collection do
+        get :tree
+      end
+
       member do
         resource :duplicate, controller: "duplicate_goals", as: :duplicate_goal
         put :complete

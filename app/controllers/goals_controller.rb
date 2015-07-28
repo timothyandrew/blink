@@ -62,6 +62,9 @@ class GoalsController < ApplicationController
     redirect_to student_goal_path(@student, @goal), notice: "Goal was completed!"
   end
 
+  def tree
+  end
+
   private
 
   def goal_params
