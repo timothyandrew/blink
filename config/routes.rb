@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root to: "students#index"
+  ActiveAdmin.routes(self)
   devise_for :users
+  root to: "students#index"
 
   resources :students do
     resources :audits, controller: "student_audits"

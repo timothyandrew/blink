@@ -3,9 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  alias_method :devise_current_user, :current_user
   def current_user
-    devise_current_user.decorate if devise_current_user
+    super.decorate if super
   end
 
   def assign_student

@@ -31,6 +31,7 @@ gem 'momentjs-rails'
 gem 'prawn'
 gem 'rubyzip'
 gem 'sablon'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 group :development, :test do
   gem 'byebug'
