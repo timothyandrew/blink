@@ -32,7 +32,7 @@ gem 'prawn'
 gem 'rubyzip'
 gem 'sablon'
 gem 'activeadmin', '~> 1.0.0.pre1'
-gem "active_admin_import" , '2.1.2'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'byebug'

@@ -10,14 +10,10 @@ class FormGeneratorDataSet < ActiveRecord::Base
 
   def import_items(text_lines)
     lines = text_lines.split(/\r?\n/)
-    transaction do
-      lines.each do |line|
-        self.items.create!(text: line)
-      end
+    items = lines.map do |line|
+      self.items.new(text: line)
     end
-    true
-  rescue ActiveRecord::RecordInvalid
-    false
+    FormGeneratorDataSetItem.import(items)
   end
 
   def sample
