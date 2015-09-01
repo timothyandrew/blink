@@ -1,0 +1,7 @@
+<%= form_tag import_admin_form_generator_data_set_items_path, method: :post %>
+  <fieldset>
+    <legend>One item per line: </legend>
+    <%= text_area_tag "items[text_lines]", @items[:text_lines] %>
+  </fieldset>
+  <%= submit_tag "Submit" %>
+</form>

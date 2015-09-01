@@ -21,6 +21,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_admin_import (2.1.2)
+      activeadmin (>= 0.6.0)
+      activerecord-import (~> 0.4, >= 0.4.1)
+      rubyzip (~> 1.0, >= 1.0.0)
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
       bourbon
@@ -44,6 +48,8 @@ GEM
       activemodel (= 4.2.1)
       activesupport (= 4.2.1)
       arel (~> 6.0)
+    activerecord-import (0.10.0)
+      activerecord (>= 3.0)
     activesupport (4.2.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -455,6 +461,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_import (= 2.1.2)
   activeadmin (~> 1.0.0.pre1)
   airbrake
   audited-activerecord (~> 4.0)

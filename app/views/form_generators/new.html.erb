@@ -31,7 +31,8 @@
   <script type="text/javascript">
    var index = 1;
    var addItem = function(attributes) {
-     var template = HandlebarsTemplates['form_generator/field']({index: index});
+     var dataSets = JSON.parse('<%= @data_sets.to_json.html_safe  %>');
+     var template = HandlebarsTemplates['form_generator/field']({index: index, data_sets: dataSets});
      index++;
      $(".form-generator-fields").append(template);
    };

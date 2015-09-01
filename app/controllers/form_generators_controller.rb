@@ -1,5 +1,6 @@
 class FormGeneratorsController < ApplicationController
   def new
+    @data_sets = FormGeneratorDataSet.pluck(:title)
   end
 
   def create

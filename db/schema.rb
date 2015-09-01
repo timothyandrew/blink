@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831113702) do
+ActiveRecord::Schema.define(version: 20150831120018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,17 +54,17 @@ ActiveRecord::Schema.define(version: 20150831113702) do
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
-  create_table "bingo_settings", force: :cascade do |t|
-    t.integer  "page_count", default: 5
-    t.text     "words",      default: [],              array: true
-    t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "form_generator_data_set_items", force: :cascade do |t|
+    t.integer  "form_generator_data_set_id"
+    t.text     "text"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  create_table "foo", id: false, force: :cascade do |t|
-    t.integer "name"
-    t.integer "test"
+  create_table "form_generator_data_sets", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "general_notes", force: :cascade do |t|
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20150831113702) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "form_generator_data_set_items", "form_generator_data_sets"
   add_foreign_key "goals", "students"
   add_foreign_key "lesson_plan_items", "lesson_plans"
   add_foreign_key "lesson_plans", "users"
