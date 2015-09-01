@@ -9,7 +9,12 @@ module FormGenerator
     end
 
     def value
-      @dataset.sample.text
+      item = @dataset.sample
+      if item
+        item.text
+      else
+        ""
+      end
     end
   end
 end
