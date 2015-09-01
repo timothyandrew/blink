@@ -17,7 +17,9 @@ class FormGeneratorDataSet < ActiveRecord::Base
   end
 
   def sample
-    items.order("RANDOM()").first
+    self.class.uncached do
+      items.order("RANDOM()").first
+    end
   end
 
   scope :with_title, ->(title) { where("title ILIKE ?", title).first }
