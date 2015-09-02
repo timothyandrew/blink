@@ -6,10 +6,12 @@ module FormGenerator
 
     def fonts
       if @handwritten
-        [Font.new("Tim", "#{Rails.root}/resources/fonts/handwritten/Tim.ttf"),
-         Font.new("Rakshitha", "#{Rails.root}/resources/fonts/handwritten/Rakshitha.ttf")]
+        Dir["#{Rails.root}/resources/fonts/handwritten/*ttf"].map do |font_path|
+          font_name = File.basename(font_path, ".*")
+          Font.new(font_name, font_path)
+        end
       else
-        [Font.new("Tim", "#{Rails.root}/resources/fonts/handwritten/OpenSans.ttf")]
+        [Font.new("Tim", "#{Rails.root}/resources/fonts/OpenSans.ttf")]
       end
     end
   end
