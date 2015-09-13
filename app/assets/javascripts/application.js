@@ -21,5 +21,7 @@
 //= require jquery.timepicker.js
 //= require ckeditor/init
 //= require garlic
+//= require sortable
+//= require ajaxq
 //= require underscore
 //= require_tree .

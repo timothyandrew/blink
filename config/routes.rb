@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     member do
       get 'generate_iep_template', controller: 'iep_templates', action: 'generate'
     end
+
+    collection do
+      put 'reorder'
+    end
+
     resources :goals do
       collection do
         get :tree
@@ -37,6 +42,5 @@ Rails.application.routes.draw do
 
   resources :bingo_cards, controller: 'bingo'
   resource :form_generator
-
   resources :pictures
 end

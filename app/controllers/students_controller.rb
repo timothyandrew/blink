@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   decorates_assigned :student
 
   def index
-    @students = current_user.students.order(:name).all
+    @students = current_user.students.order(:position).all
   end
 
   def new
@@ -43,6 +43,14 @@ class StudentsController < ApplicationController
     @student = current_user.students.find(params[:id])
     @student.destroy
     redirect_to students_path, notice: "Student deleted."
+  end
+
+  def reorder
+    Student.order_sequentially!(current_user.students.all, params[:student_ids])
+    respond_to do |format|
+      format.json { render json: {status: :success} }
+      format.html { render :index }
+    end
   end
 
   private
