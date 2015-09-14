@@ -35,7 +35,9 @@
 
 <script type="text/javascript">
  $(".student_goals").each(function(i, elem) {
+   var parent_id = elem.dataset.parentId;
    new ReorderableList(elem, '<%= "/students/#{@student.id}/goals/reorder" %>',
-                       {ajaxQueue: "goalReorder", paramName: "goal_ids"}).setup();
+                       {ajaxQueue: "goalReorder", paramName: "goal_ids",
+                       defaultParams: {parent_id: parent_id}}).setup();
  });
 </script>

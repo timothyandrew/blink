@@ -4,14 +4,16 @@ class ReorderableList {
     this.url = url;
     this.ajaxQueue = options.ajaxQueue || "GenericAjaxQueue";
     this.paramName = options.paramName || "ids";
-    console.log(this.url);
+    this.defaultParams = options.defaultParams || {};
   }
 
   setup() {
     Sortable.create(this.element, {
       store: {
+        get: (sortable) => { return []; },
+
         set: (sortable) => {
-          var data = {};
+          var data = this.defaultParams;
           data[this.paramName] = sortable.toArray();
 
           sortable.option('disabled', true);

@@ -1,34 +1,38 @@
 <% if goals.present? %>
-  <ul class="student_goals list-group">
-    <% unless local_assigns[:skip_header] %>
-      <h4 class="goal-type-title depth-<%= depth %>">
-        <%= goal_name_for_depth(depth).pluralize %>
-      </h4>
-    <% end %>
+  <% if local_assigns[:parent_id] %>
+    <ul class="student_goals list-group" data-parent-id="<%= parent_id %>">
+  <% else %>
+    <ul class="student_goals list-group">
+  <% end %>
+  <% unless local_assigns[:skip_header] %>
+    <h4 class="goal-type-title depth-<%= depth %>">
+      <%= goal_name_for_depth(depth).pluralize %>
+    </h4>
+  <% end %>
 
-    <% goals.each_with_index do |goal, index| %>
-      <li data-id="<%= goal.id %>" class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %> depth-<%= depth %>">
+  <% goals.each_with_index do |goal, index| %>
+    <li data-id="<%= goal.id %>" class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %> depth-<%= depth %>">
 
-        <div>
-          <h3 class="goal-tree-goal-title">
-            <a class="disclosure glyphicon glyphicon-triangle-right" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
-            <%= link_to "#{bullet_for_goal(goal, index)} #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
-          </h3>
-          <span class="goal-date"><%= goal.decorate.date_range %></span>
-        </div>
+      <div>
+        <h3 class="goal-tree-goal-title">
+          <a class="disclosure glyphicon glyphicon-triangle-right" data-toggle="collapse" href=<%= "#goal-body-#{goal.id}" %>></a>
+          <%= link_to "#{bullet_for_goal(goal, index)} #{goal.title}", student_goal_path(@student, goal), class: "goal-name #{'complete' if goal.completed?}" %>
+        </h3>
+        <span class="goal-date"><%= goal.decorate.date_range %></span>
+      </div>
 
 
-        <div class="collapse goal-body" id=<%= "goal-body-#{goal.id}" %>>
-          <div class="goal-description"><%= goal.description.html_safe %></div>
+      <div class="collapse goal-body" id=<%= "goal-body-#{goal.id}" %>>
+        <div class="goal-description"><%= goal.description.html_safe %></div>
 
-          <% if goal.not_final_level? %>
-            <%= render partial: "goals", locals: { goals: goal.sorted_children, depth: depth.next, parent_id: goal.id } %>
-          <% end %>
-        </div>
+        <% if goal.not_final_level? %>
+          <%= render partial: "goals", locals: { goals: goal.sorted_children, depth: depth.next, parent_id: goal.id } %>
+        <% end %>
+      </div>
 
-        <%= render partial: "disclosure_js", locals: { id: "goal-body-#{goal.id}" } %>
+      <%= render partial: "disclosure_js", locals: { id: "goal-body-#{goal.id}" } %>
 
-      </li>
-    <% end %>
-  </ul>
+    </li>
+  <% end %>
+      </ul>
 <% end %>
