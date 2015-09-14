@@ -65,6 +65,20 @@ class GoalsController < ApplicationController
   def tree
   end
 
+  def reorder
+    if params[:parent_id]
+      parent = @student.goals.find_by_id(params[:parent_id])
+      goals = parent.children.all
+    else
+      goals = @student.goals.roots.all
+    end
+    Goal.order_sequentially!(goals, params[:goal_ids])
+    respond_to do |format|
+      format.json { render json: {status: :success} }
+      format.html { render :index }
+    end
+  end
+
   private
 
   def goal_params

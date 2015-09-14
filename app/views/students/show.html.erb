@@ -31,3 +31,33 @@
     You need to add some goals before you see anything here.
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+ $(".student_goals").each(function(i, elem) {
+   console.log(elem);
+   Sortable.create(elem, {
+     store: {
+       set: function(sortable) {
+         sortable.option('disabled', true);
+         $.ajaxq ("StudentsListReorder", {
+           url: '<%= "/students/#{@student.id}/goals/reorder" %>',
+           type: 'put',
+           dataType: 'json',
+           data: {
+             goal_ids: sortable.toArray()
+           },
+           success: function() {
+             sortable.option('disabled', false);
+             console.info("Reordered successfully.");
+           },
+           error: function() {
+             console.error("Reordered successfully.");
+             alert("Reorder failed. Refresh and try again.");
+           }
+         });
+       }
+     }
+   });
+ });
+</script>

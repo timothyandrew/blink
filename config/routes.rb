@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :goals do
       collection do
         get :tree
+        put :reorder
       end
 
       member do

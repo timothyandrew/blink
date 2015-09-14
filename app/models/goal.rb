@@ -1,4 +1,6 @@
 class Goal < ActiveRecord::Base
+  include OrderSequentially
+
   belongs_to :student
 
   acts_as_nested_set dependent: :destroy
@@ -22,7 +24,7 @@ class Goal < ActiveRecord::Base
     return if goals.nil?
     goals.sort_by do |goal|
       # Doing `to_s` here because ruby refuses to sort booleans
-      [goal.completed?.to_s, (goal.start || Date.new), goal.title]
+      [goal.completed?.to_s, goal.position, goal.title]
     end
   end
 

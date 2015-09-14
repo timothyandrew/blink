@@ -7,7 +7,7 @@
     <% end %>
 
     <% goals.each_with_index do |goal, index| %>
-      <li class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %> depth-<%= depth %>">
+      <li data-id="<%= goal.id %>" class="student_goal list-group-item <%= (depth % 2 == 0) ? "odd" : "even" %> depth-<%= depth %>">
 
         <div>
           <h3 class="goal-tree-goal-title">
