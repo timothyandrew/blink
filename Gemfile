@@ -33,6 +33,7 @@ gem 'rubyzip'
 gem 'sablon'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'activerecord-import'
+gem 'sprockets-es6', require: 'sprockets/es6'
 
 group :development, :test do
   gem 'byebug'
