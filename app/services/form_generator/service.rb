@@ -44,7 +44,7 @@ module FormGenerator
             @pdf.pad_bottom(5) do
               @pdf.formatted_text [
                 {text: "#{field.name}: ", size: 12},
-                {text: field.value, size: 18, font: @font.name}
+                {text: field.value, size: 14, font: @font.name}
               ]
             end
           end
