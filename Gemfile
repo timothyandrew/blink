@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.2.2"
 
 gem 'rails', '4.2.1'
 gem 'pg'
@@ -11,7 +10,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'draper'
-gem 'thin'
 gem 'bootstrap-datepicker-rails'
 gem "gretel"
 gem 'awesome_nested_set'
@@ -30,6 +28,7 @@ gem 'handlebars_assets'
 gem 'momentjs-rails'
 gem 'prawn'
 gem 'rubyzip'
+gem 'passenger'
 gem 'sablon'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'activerecord-import'
