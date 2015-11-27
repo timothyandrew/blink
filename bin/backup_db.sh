@@ -16,6 +16,6 @@ execute() {
 }
 
 file=/tmp/`date "+%Y-%m-%dT%H:%M:%S"`.dump
-execute "/usr/local/bin/dokku postgresql:dump blink blink_production > $file"
+execute "PGPASSWORD=$BLINK_DATABASE_PASSWORD pg_dump -U blink -Fc blink_production > $file"
 execute "s3cmd put $file s3://blink-prod/pgbackups/production/"
 execute "curl https://nosnch.in/c77b6062f2"
