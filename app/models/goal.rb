@@ -9,6 +9,9 @@ class Goal < ActiveRecord::Base
 
   audited associated_with: :student
 
+  belongs_to :category, class_name: GoalCategory
+  delegate :name, to: :category, allow_nil: true, prefix: true
+
   # Return true if this is not the final level (Activity)
   def not_final_level?
     self.depth < 5
@@ -17,6 +20,15 @@ class Goal < ActiveRecord::Base
   def start_date_before_end_date
     if self.start.present? && self.end.present?
       errors.add(:start, "can't be after end date") if self.start > self.end
+    end
+  end
+
+  def save_with_category(params, parent, category_name)
+    transaction do
+      self.parent = @parent if parent
+      self..assign_attributes(params)
+      self.category = GoalCategory.find_or_create_by!(name: category_name) if category_name.present?
+      self.save!
     end
   end
 

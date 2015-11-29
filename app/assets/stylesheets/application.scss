@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require selectize
+ *= require selectize.default
  *= stub print
  *= stub print_mode
  *= stub active_admin

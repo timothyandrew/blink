@@ -20,9 +20,7 @@ class GoalsController < ApplicationController
   def create
     @parent = @student.goals.find_by_id(params[:parent_id])  if params[:parent_id]
     @goal = @student.goals.new
-    @goal.parent = @parent if @parent
-    @goal.assign_attributes(goal_params)
-    if @goal.save
+    if @goal.save_with_category(goal_params, @parent, params[:category_name])
       @goal.move_to_child_of(@parent) if @parent
       flash[:notice] = "Goal was created"
       redirect_to student_goal_path(@student, @goal)
@@ -34,7 +32,7 @@ class GoalsController < ApplicationController
 
   def update
     @goal = @student.goals.find(params[:id])
-    if @goal.update_attributes(goal_params)
+    if @goal.save_with_category(goal_params, nil, params[:category_name])
       flash[:notice] = "Goal was edited"
       redirect_to student_goal_path(@student, @goal)
     else
