@@ -35,6 +35,7 @@ module IntegrationTest
 
     def fill_in_ckeditor(locator, opts)
       expect(page).to have_css "#cke_#{locator}"
+      sleep 0.5
       content = opts.fetch(:with).to_json
       page.execute_script <<-SCRIPT
         CKEDITOR.instances['#{locator}'].setData(#{content});

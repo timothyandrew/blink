@@ -5,11 +5,14 @@ describe "Lesson Plans", type: :feature do
     create_lesson_plan
   end
 
-  def create_lesson_plan(date = nil)
+  def create_lesson_plan(date = nil, verify = true)
     visit "/lesson_plans"
     click_on "New Lesson Plan"
     fill_in "Date", with: date || Faker::Date.forward(50)
     click_on "Save"
+    if verify
+      expect(page).to have_content "Lesson plan was created"
+    end
   end
 
   def fill_in_lesson_plan_item(options = {})
@@ -50,6 +53,7 @@ describe "Lesson Plans", type: :feature do
     click_on "Edit Date"
     fill_in "Date", with: date
     click_on "Save"
+    expect(page).to have_content('Lesson plan was edited')
     expect(LessonPlan.last.date).to eq(date)
   end
 
@@ -70,8 +74,10 @@ describe "Lesson Plans", type: :feature do
   end
 
   it "does not allow two lesson plans on the same day" do
-    date = LessonPlan.last.date
-    create_lesson_plan(date)
+    date = Faker::Date.forward(50)
+    create_lesson_plan(date, false)
+    expect(page).to have_content "Lesson plan was created"
+    create_lesson_plan(date, false)
     expect(page).to have_content "Date has already been taken"
   end
 
@@ -85,6 +91,7 @@ describe "Lesson Plans", type: :feature do
     click_on "Save As"
     fill_in "Date", with: Faker::Date.between(original.date + 15.days, original.date + 90.days)
     click_on "Save"
+    expect(page).to have_content("Lesson plan was created")
 
     new = LessonPlan.last
     expect(new.id).not_to eq(original.id)
@@ -105,6 +112,7 @@ describe "Lesson Plans", type: :feature do
       fill_in "Date", with: Faker::Date.forward(50)
 
       click_on "Save"
+      expect(page).to have_content "Lesson plan was created"
       click_on "Quick Edit"
 
       2.times { click_on "Add Item" }
@@ -163,7 +171,7 @@ describe "Lesson Plans", type: :feature do
       expect(LessonPlan.last.items.count).to eq(1)
     end
 
-    it "does not clear other fields in the lesson plan items" do
+    it "does not clear other fields in the lesson plan items", focus: true do
       create_lesson_plan_with_items
 
       click_on "10:00am - 10:00pm"
@@ -222,6 +230,7 @@ describe "Lesson Plans", type: :feature do
       click_on "Add Item"
       fill_in_lesson_plan_item(start: "2:00pm", end: "5:00pm")
       click_on "Save"
+      expect(page).to have_content "Lesson plan item was created"
 
       item = LessonPlan.last.items.last
       click_on "2:00pm - 5:00pm"

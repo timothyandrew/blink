@@ -27,3 +27,4 @@ completer.hist
 *.xlk
 
 .vagrant
+coverage

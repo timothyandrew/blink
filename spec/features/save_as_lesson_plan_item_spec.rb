@@ -9,6 +9,7 @@ describe "Duplicating a Lesson Plan Item", type: :feature do
     click_on "New Lesson Plan"
     fill_in "Date", with: date || Faker::Date.forward(50)
     click_on "Save"
+    expect(page).to have_content "Lesson plan was created"
   end
 
   [:elc, :regular].each do |type|

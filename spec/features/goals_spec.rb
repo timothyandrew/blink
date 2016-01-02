@@ -59,11 +59,14 @@ describe "A student and his/her goals", :type => :feature do
     click_on "Show All"
     click_on long_term_goal
     click_on "Complete"
+    expect(page).to have_content('Goal was completed')
 
     expect(Goal.find_by_title!(long_term_goal)).to be_completed
     expect(Goal.find_by_title!(short_term_goal)).to be_completed
 
     click_on "Uncomplete"
+    expect(page).to have_content('Goal was uncompleted')
+
     expect(Goal.find_by_title!(long_term_goal)).not_to be_completed
     expect(Goal.find_by_title!(short_term_goal)).not_to be_completed
   end

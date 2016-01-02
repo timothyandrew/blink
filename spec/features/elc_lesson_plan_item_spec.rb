@@ -10,6 +10,7 @@ describe "ELC Lesson Plan Items", type: :feature do
     click_on "New Lesson Plan"
     fill_in "Date", with: date || Faker::Date.forward(50)
     click_on "Save"
+    expect(page).to have_content('Lesson plan was created')
   end
 
   it "allows creating an ELC type lesson plan item" do
