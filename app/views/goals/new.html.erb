@@ -1,4 +1,22 @@
 <% breadcrumb :new_goal, @student, @parent %>
 
 <%= render "header" %>
-<%= render "form" %>
+
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="<%= 'active' unless @quick_goals %>"><a href="#default" aria-controls="default" role="tab" data-toggle="tab">Default</a></li>
+        <li role="presentation" class=<%= 'active' if @quick_goals %>><a href="#quick" aria-controls="quick" role="tab" data-toggle="tab">Quick (Experimental)</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane <%= 'active' unless @quick_goals %>" id="default">
+            <%= render "form" %>
+        </div>
+        <div role="tabpanel" class="tab-pane <%= 'active' if @quick_goals %>" id="quick">
+            <%= render "quick_form" %>
+        </div>
+    </div>
+
+</div>

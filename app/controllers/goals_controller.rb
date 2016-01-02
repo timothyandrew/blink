@@ -60,6 +60,24 @@ class GoalsController < ApplicationController
     redirect_to student_goal_path(@student, @goal), notice: "Goal was completed!"
   end
 
+  def quick_create
+    @parent = @student.goals.find_by_id(params[:parent_id]) if params[:parent_id]
+    parsed_goals = GoalParsing::Service.parse(params[:goals].strip)
+    if parsed_goals && Goal.save_many_with_category(parsed_goals, @student, @parent)
+      flash[:notice] = "Goals were created."
+      if @parent
+        redirect_to student_goal_path(@student, @parent)
+      else
+        redirect_to student_path(@student)
+      end
+    else
+      flash[:error] = "Couldn't quick save goals. Check your syntax!"
+      @quick_goals = params[:goals]
+      @goal = @student.goals.new
+      render :new
+    end
+  end
+
   def tree
   end
 

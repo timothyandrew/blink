@@ -1,0 +1,13 @@
+<div class="alert alert-info">
+    One goal per line. Specify categories with <em>[&lt;category&gt;]</em>.
+</div>
+
+<%= form_tag quick_create_student_goals_path(@student), method: :post  %>
+    <div class="lesson-plan-items"></div>
+    <%= text_area_tag "goals", @quick_goals, class: "form-control", rows: 6, placeholder: "Add goals here." %>
+
+    <%= hidden_field_tag "quick_edit", "true" %>
+    <%= hidden_field_tag :parent_id, params[:parent_id] %>
+
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+</form>

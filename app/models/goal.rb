@@ -25,10 +25,20 @@ class Goal < ActiveRecord::Base
 
   def save_with_category(params, parent, category_name)
     transaction do
-      self.parent = @parent if parent
-      self..assign_attributes(params)
+      self.parent = parent if parent
+      self.assign_attributes(params)
       self.category = GoalCategory.find_or_create_by!(name: category_name) if category_name.present?
       self.save!
+    end
+  end
+
+  def self.save_many_with_category(params, student, parent)
+    transaction do
+      params.each do |goal_params|
+        title = goal_params[:goal]
+        goal = student.goals.new
+        goal.save_with_category({title: title}, parent, goal_params[:category])
+      end
     end
   end
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     resources :goals do
       collection do
+        post :quick_create
         get :tree
         put :reorder
       end
