@@ -7,6 +7,7 @@ module IntegrationTest
         fill_in 'Password', :with => 'password'
       end
       click_button 'Log in'
+      expect(page).to have_content('Signed in')
     end
 
     def create_student
@@ -26,6 +27,7 @@ module IntegrationTest
       fill_in "Start Date", with: start_date
       fill_in "End Date", with: end_date
       click_on "Save"
+      expect(page).to have_content("Goal was created")
       click_on "Goals"
       name
     end
@@ -71,6 +73,7 @@ module IntegrationTest
       end
 
       click_on "Save"
+      expect(page).to have_content('Lesson plan item was created')
     end
 
     def create_goal_tree
