@@ -25,3 +25,5 @@ completer.hist
 
 # Excel Backup File
 *.xlk
+
+.vagrant
