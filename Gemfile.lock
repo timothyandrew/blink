@@ -482,6 +482,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selectize-rails
   selenium-webdriver
+  simplecov
   spring
   sprockets-es6
   turbolinks
