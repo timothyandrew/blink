@@ -1,20 +1,31 @@
-<%= form_tag '/goals', method: :get, class: "student-goals-summary-filters" %>
-  Filter goals starting after
-  <%= text_field_tag "start", params[:start], placeholder: "Start Date", class: "datepicker" %>
-  and ending before
-  <%= text_field_tag "end", params[:end], placeholder: "End Date", class: "datepicker" %>
-  <%= submit_tag "Apply", class: "btn btn-primary inline" %>
+<h1>Goals for All Students</h1>
+
+<div class="student-goals-summary-filters">
+    <div class="btn-group">
+        <%= link_to "Show All", "#", class: "show-all btn btn-success" %>
+        <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
+    </div>
+
+    <%= form_tag '/goals', method: :get %>
+    Filter goals starting after
+    <%= text_field_tag "start", params[:start], placeholder: "Start Date", class: "datepicker" %>
+    and ending before
+    <%= text_field_tag "end", params[:end], placeholder: "End Date", class: "datepicker" %>
+    <%= submit_tag "Apply", class: "btn btn-primary inline" %>
 </form>
+</div>
 
 <table class="student-goals-summary-wrapper">
-  <tr>
-    <% @students.each do |student| %>
-      <td class="student-goals-summary">
-        <div>
-          <div class="header"><%= link_to student.name, student_path(student) %></div>
-          <%= render partial: "goals", locals: {goals: @goals.find_all { |goal, children| goal.student_id == student.id }, student: student, depth: 0} %>
-        </div>
-      </td>
-    <% end %>
-  </tr>
+    <tr>
+        <% @students.each do |student| %>
+            <td class="student-goals-summary">
+                <div>
+                    <div class="header"><%= link_to student.name, student_path(student) %></div>
+                    <%= render partial: "goals", locals: {goals: @goals.find_all { |goal, children| goal.student_id == student.id }, student: student, depth: 0} %>
+                </div>
+            </td>
+        <% end %>
+    </tr>
 </table>
+
+<%= render "show_hide_all_js" %>

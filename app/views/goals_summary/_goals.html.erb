@@ -1,25 +1,30 @@
 <ul>
-  <% goals.each do |goal, children| %>
-    <li>
-      <% if (goal.not_final_level?) && children.present? %>
-        <a href="#goal-<%= goal.id %>" data-toggle="collapse" class="disclosure glyphicon glyphicon-triangle-bottom"></a>
-      <% end %>
-
-      <%= link_to goal.title, student_goal_path(student, goal),
-                  class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
-                  title: "Date: #{goal.decorate.date_range}" %>
-
-      <div id="goal-<%= goal.id %>" class="collapse in">
-
-        <% if(goal.not_final_level?) && children.present? %>
-          <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
+    <% category_count = goals.map {|goal,_| goal.category_id}.uniq.count %>
+    <% goals.group_by {|goal,_| goal.category_name}.each do |category, goals_by_category| %>
+        <% if category_count > 1 %>
+            <h6><%= category || "<No Category>" %></h6>
         <% end %>
+        <% goals_by_category.each do |goal, children| %>
+            <li>
+                <% if (goal.not_final_level?) && children.present? %>
+                    <a href="#goal-<%= goal.id %>" data-toggle="collapse" class="disclosure glyphicon glyphicon-triangle-bottom"></a>
+                <% end %>
 
-      </div>
+                <%= link_to goal.title, student_goal_path(student, goal),
+                class: "goal-name #{'complete' if goal.completed?} #{'highlight' if @goals_matching_filter && goal.in?(@goals_matching_filter)}",
+                    title: "Date: #{goal.decorate.date_range}" %>
 
-    </li>
+                <div id="goal-<%= goal.id %>" class="collapse in">
 
-    <%= render partial: "disclosure_js", locals: { id: "goal-#{goal.id}" } %>
+                    <% if(goal.not_final_level?) && children.present? %>
+                        <%= render partial: "goals", locals: { goals: children, depth: depth.next, student: student } %>
+                    <% end %>
 
-  <% end %>
+                </div>
+
+            </li>
+
+            <%= render partial: "disclosure_js", locals: { id: "goal-#{goal.id}" } %>
+        <% end %>
+    <% end %>
 </ul>
