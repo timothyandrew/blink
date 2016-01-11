@@ -1,5 +1,5 @@
 class PictureComprehensionExercise < ActiveRecord::Base
-  has_many :images, class: PictureComprehensionImage
+  has_many :images, class: PictureComprehensionImage, dependent: :destroy
   belongs_to :user
   validates_presence_of :user_id
 

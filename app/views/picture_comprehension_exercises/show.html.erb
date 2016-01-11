@@ -3,7 +3,7 @@
 <h1><%= @picture_comprehension_exercise.name %></h1>
 
 <div class="student-actions pull-right">
-    <%= link_to "Play", play_picture_comprehension_exercise_path(@picture_comprehension_exercise), class: "btn btn-success" %>
+    <%= link_to "Play", play_picture_comprehension_exercise_path(@picture_comprehension_exercise), class: "btn btn-success", data: {'no-turbolink' => true} %>
     <%= link_to "Edit", edit_picture_comprehension_exercise_path(@picture_comprehension_exercise), class: "btn btn-primary" %>
 </div>
 
