@@ -20,7 +20,7 @@
     <h3>Pieces</h3>
     <ul class="base-list" id="base-list">
         <% @images.each do |image| %>
-            <li data-position="<%= image.position %>"><%= image_tag(image.image_url, width: 300) %></li>
+            <li data-position="<%= image.position %>"><%= image_tag(image.image_url, height: 300) %></li>
         <% end %>
     </ul>
 
