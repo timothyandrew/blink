@@ -14,33 +14,38 @@
 }
 
 .picture-comprehension-play ul {
-    text-align: center;
 }
 
-.picture-comprehension-play li, .picture-comprehension-play li:hover {
+.picture-comprehension-play li {
+
     list-style-type: none;
 }
 
 .picture-comprehension-play .base-list {
+    text-align: center;
     margin: 0 auto;
     border: 1px dashed black;
-    width: 45%;
-    float: left;
-    min-height: 600px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 10px;
+    li {
+        display: inline-block;
+    }
 }
 
 .picture-comprehension-play .target-list {
-    margin: 0 auto;
     border: 1px dashed black;
-    width: 45%;
-    float: right;
-    min-height: 600px;
+    min-height: 300px;
+    li {
+        display: inline;
+    }
 }
 
-.picture-comprehension-play img, .picture-comprehension-play img:hover {
+.picture-comprehension-play img {
+    max-height: 300px;
     max-width: 300px;
-    margin: 25px;
-    padding: 10px;
+    margin: 10px;
+    padding: 5px;
     border: 1px solid black;
 }
 

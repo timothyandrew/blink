@@ -7,8 +7,8 @@ class PictureComprehensionExercise < ActiveRecord::Base
     transaction do
       self.images.destroy_all
       self.save!
-      images.each do |image|
-        self.images.create!(image: image)
+      images.each_with_index do |image, i|
+        self.images.create!(image: image, position: i)
       end
     end
   end

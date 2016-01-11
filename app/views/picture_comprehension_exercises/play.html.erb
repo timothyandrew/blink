@@ -17,12 +17,14 @@
 </div>
 
 <div class="picture-comprehension-play">
+    <h3>Pieces</h3>
     <ul class="base-list" id="base-list">
         <% @images.each do |image| %>
             <li data-position="<%= image.position %>"><%= image_tag(image.image_url, width: 300) %></li>
         <% end %>
     </ul>
 
+    <h3>Story</h3>
     <ul class="target-list" id="target-list">
     </ul>
 </div>
