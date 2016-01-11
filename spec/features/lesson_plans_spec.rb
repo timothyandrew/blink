@@ -29,6 +29,7 @@ describe "Lesson Plans", type: :feature do
     click_on "Add Item"
     fill_in_lesson_plan_item(start: "1:00pm", end: "2:00pm", goals: "Some Goals", subject: "A Subject", aids: "Some aids", method: "Teach a method", topic: "A Topic")
     click_on "Save"
+    expect(page).to have_content "Lesson plan item was created"
 
     expect(page).to have_content "Goals Some Goals"
     expect(page).to have_content "A Subject"

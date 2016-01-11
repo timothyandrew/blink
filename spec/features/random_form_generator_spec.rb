@@ -4,6 +4,7 @@ describe "Random Form Generator", :type => :feature do
     login(@user)
     create(:form_generator_data_set, title: "Names")
     create(:form_generator_data_set, title: "Schools")
+    click_on "Utilities"
     click_on "Random Form"
   end
 

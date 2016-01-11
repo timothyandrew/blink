@@ -2,6 +2,7 @@ describe "Housie", :type => :feature do
   before(:each) do
     @user = create(:user)
     login(@user)
+    click_on "Utilities"
     click_on "Housie"
   end
 
