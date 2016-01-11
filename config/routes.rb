@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   resources :picture_comprehension_exercises do
     member do
       put :reorder
+      get :play
     end
   end
 end

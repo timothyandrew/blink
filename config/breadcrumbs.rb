@@ -45,6 +45,11 @@ crumb :picture_comprehension_exercise do |pc|
   parent :picture_comprehension_exercises
 end
 
+crumb :picture_comprehension_exercise_play do |pc|
+  link "Playing"
+  parent :picture_comprehension_exercise, pc
+end
+
 crumb :student_notes do |student|
   link "Notes", student_notes_path(student)
   parent :student, student

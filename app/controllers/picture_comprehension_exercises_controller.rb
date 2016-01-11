@@ -55,6 +55,10 @@ class PictureComprehensionExercisesController < ApplicationController
     end
   end
 
+  def play
+    @picture_comprehension_exercise = current_user.picture_comprehension_exercises.find(params[:id])
+    @images = @picture_comprehension_exercise.images.shuffle
+  end
 
   private
 

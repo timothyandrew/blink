@@ -15,7 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require col_resizable
 //= require bootstrap-sprockets
 //= require jquery.timepicker.js
