@@ -75,7 +75,7 @@ describe "Lesson Plans", type: :feature do
   end
 
   it "does not allow two lesson plans on the same day" do
-    date = Faker::Date.forward(50)
+    date = Faker::Date.forward(90)
     create_lesson_plan(date, false)
     expect(page).to have_content "Lesson plan was created"
     create_lesson_plan(date, false)
