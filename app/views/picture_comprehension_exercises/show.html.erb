@@ -1,0 +1,22 @@
+<% breadcrumb :picture_comprehension_exercise, @picture_comprehension_exercise %>
+
+<h1><%= @picture_comprehension_exercise.name %></h1>
+
+<div class="student-actions pull-right">
+    <%= link_to "Edit", edit_picture_comprehension_exercise_path(@picture_comprehension_exercise), class: "btn btn-primary" %>
+</div>
+
+<div class="picture-comprehension-gallery">
+    <ol id="picture-comprehension-images-list" class="list-group sortable">
+        <% @picture_comprehension_exercise.images.order(:position).each do |image| %>
+            <li data-id="<%= image.id %>"><%= link_to(image_tag(image.image), image.image_url, target: "_blank") %></li>
+        <% end %>
+    </ol>
+</div>
+
+
+<script type="text/javascript">
+ var list = document.getElementById('picture-comprehension-images-list');
+ new ReorderableList(list, '<%= reorder_picture_comprehension_exercise_path(@picture_comprehension_exercise) %>',
+                     {ajaxQueue: "PictureComprehensionReorder", paramName: "image_ids"}).setup();
+</script>

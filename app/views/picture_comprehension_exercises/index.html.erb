@@ -1,0 +1,19 @@
+<% breadcrumb :picture_comprehension_exercises %>
+
+<h1>Picture Comprehensions</h1>
+
+<div class="student-actions pull-right">
+    <%= link_to "New", new_picture_comprehension_exercise_path, class: "btn btn-primary" %>
+</div>
+
+<% if @picture_comprehension_exercises.present? %>
+    <ul class="students-list list-group">
+        <% @picture_comprehension_exercises.each do |pc| %>
+            <li class="list-group-item"><%= link_to pc.name, picture_comprehension_exercise_path(pc) %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <div class="alert alert-warning">
+        You need to add picture comprehensions before anything shows up here.
+    </div>
+<% end %>

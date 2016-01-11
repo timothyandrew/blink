@@ -1,0 +1,11 @@
+<%= form_for @picture_comprehension_exercise do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <fieldset>
+        <%= f.label :images %>
+        <%= f.file_field :images, multiple: true, name: '[images][]' %>
+    </fieldset>
+
+    <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>

@@ -46,4 +46,9 @@ Rails.application.routes.draw do
   resource :form_generator
   resource :housie, controller: 'housie'
   resources :pictures
+  resources :picture_comprehension_exercises do
+    member do
+      put :reorder
+    end
+  end
 end

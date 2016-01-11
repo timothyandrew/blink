@@ -36,6 +36,14 @@ crumb :new_goal do |student, parent_goal|
   end
 end
 
+crumb :picture_comprehension_exercises do
+  link "Picture Comprehension", picture_comprehension_exercises_path
+end
+
+crumb :picture_comprehension_exercise do |pc|
+  link pc.name, picture_comprehension_exercise_path(pc)
+  parent :picture_comprehension_exercises
+end
 
 crumb :student_notes do |student|
   link "Notes", student_notes_path(student)

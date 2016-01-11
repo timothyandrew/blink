@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129125712) do
+ActiveRecord::Schema.define(version: 20160111092416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,25 @@ ActiveRecord::Schema.define(version: 20151129125712) do
 
   add_index "long_term_goals", ["student_id"], name: "index_long_term_goals_on_student_id", using: :btree
 
+  create_table "picture_comprehension_exercises", force: :cascade do |t|
+    t.text     "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "picture_comprehension_exercises", ["user_id"], name: "index_picture_comprehension_exercises_on_user_id", using: :btree
+
+  create_table "picture_comprehension_images", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "picture_comprehension_exercise_id"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "position",                          default: 0
+  end
+
+  add_index "picture_comprehension_images", ["picture_comprehension_exercise_id"], name: "picture_comp_index", using: :btree
+
   create_table "short_term_goals", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -189,5 +208,7 @@ ActiveRecord::Schema.define(version: 20151129125712) do
   add_foreign_key "lesson_plan_items", "lesson_plans"
   add_foreign_key "lesson_plans", "users"
   add_foreign_key "long_term_goals", "students"
+  add_foreign_key "picture_comprehension_exercises", "users"
+  add_foreign_key "picture_comprehension_images", "picture_comprehension_exercises"
   add_foreign_key "short_term_goals", "long_term_goals"
 end
