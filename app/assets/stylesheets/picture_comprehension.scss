@@ -1,12 +1,16 @@
+.picture-comprehension-gallery ol {
+    margin-left: 50px;
+}
+
 .picture-comprehension-gallery li {
-    //display: inline;
+    font-size: 50px;
 }
 
 .picture-comprehension-gallery img {
     margin: 25px;
     padding: 10px;
     border: 1px solid black;
-    max-width: 600px;
+    max-width: 400px;
 }
 
 .picture-comprehension-play ul {
