@@ -44,5 +44,6 @@ Rails.application.routes.draw do
 
   resources :bingo_cards, controller: 'bingo'
   resource :form_generator
+  resource :housie, controller: 'housie'
   resources :pictures
 end

@@ -1,0 +1,10 @@
+<h1>Housie Generator</h1>
+
+<%= form_tag "/housie", method: :post  %>
+  <fieldset>
+    <%= label_tag "housie[player_count]", "Number of Players" %>
+    <%= text_field_tag "housie[player_count]" %>
+  </fieldset>
+
+  <%= submit_tag "Done", class: "btn btn-primary" %>
+</form>
