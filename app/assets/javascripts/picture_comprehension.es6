@@ -1,3 +1,5 @@
+// -*- mode: Javascript; -*-
+
 class PictureComprehension {
   constructor(base, target, banner) {
     this.base = base;

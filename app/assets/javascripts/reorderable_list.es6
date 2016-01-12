@@ -1,3 +1,5 @@
+// -*- mode: Javascript; -*-
+
 class ReorderableList {
   constructor(element, url, options) {
     this.element = element;

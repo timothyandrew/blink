@@ -29,15 +29,8 @@
   <div class="form-generator-fields"></div>
 
   <script type="text/javascript">
-   var index = 1;
-   var addItem = function(attributes) {
-     var dataSets = JSON.parse('<%= @data_sets.to_json.html_safe  %>');
-     var template = HandlebarsTemplates['form_generator/field']({index: index, data_sets: dataSets});
-     index++;
-     $(".form-generator-fields").append(template);
-   };
-
-   $("#add-field").click(addItem);
+   var dataSets = JSON.parse('<%= @data_sets.to_json.html_safe  %>');
+   new TemplateFields(".form-generator-fields", "#add-field", 'form_generator/field', {data_sets: dataSets}).setup();
   </script>
 
   <%= submit_tag "Done", class: "btn btn-primary" %>
