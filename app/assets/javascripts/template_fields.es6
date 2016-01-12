@@ -10,13 +10,25 @@ class TemplateFields {
   }
 
   addItem(attributes) {
-    var template = HandlebarsTemplates[this.template](_.extend({index: this.index}, this.data, attributes));
+    var context = _.extend({index: this.index}, this.data, attributes);
+
+    // Hack to accomodate Rails setting `errors` to `{}` when there are no errors.
+    // Handlebars can't look for `empty`, so we need to null it out.
+    if(_.isEmpty(context.errors)) {
+      context.errors = null;
+    }
+
+    var template = HandlebarsTemplates[this.template](context);
     this.index++;
     $(this.fields).append(template);
   }
 
   addItems(items) {
     _.each(items, _.bind(this.addItem, this));
+  }
+
+  removeAll() {
+    $(this.fields).html("");
   }
 
   setup() {

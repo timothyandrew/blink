@@ -1,0 +1,28 @@
+<fieldset class="housie-field-{{index}} nested-item">
+    {{#if errors}}
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Error</h3>
+            </div>
+            <div class="panel-body">
+                {{#each errors}}
+                    {{this}}
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+
+    <label for="housie[columns][{{index}}][lower]" class="condensed">Lower Limit</label>
+    <input type="text" name="housie[columns][{{index}}][lower]" value="{{lower}}" />
+
+    <label for="housie[columns][{{index}}][higher]" class="condensed">Higher Limit</label>
+    <input type="text" name="housie[columns][{{index}}][higher]" value="{{higher}}" />
+
+    <a href="#" class="housie-field-{{index}}-delete btn btn-danger nested-item-delete">Delete</a>
+</fieldset>
+
+<script type="text/javascript">
+ $(".housie-field-{{index}}-delete").click(function() {
+     $(".housie-field-{{index}}").remove();
+ });
+</script>

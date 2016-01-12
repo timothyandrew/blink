@@ -1,12 +1,12 @@
 module Housie
   class CallerSheet
-    COLUMNS = 15
-    ROWS = 6
-    START = [12, 150]
+    ROW_SIZE = 15
+    START = [0, 400]
     SQUARE_SIDE = 50
 
-    def initialize(pdf)
+    def initialize(pdf, columns)
       @pdf = pdf
+      @columns = columns
     end
 
     def generate
@@ -15,18 +15,24 @@ module Housie
 
       x,y = *START
       number = 1
-      COLUMNS.times do |c|
-        ROWS.times do |r|
+
+      row_count = 0
+      @columns.each do |column|
+        (column.lower..column.higher).each do |number|
           @pdf.stroke_rectangle [x,y], SQUARE_SIDE, SQUARE_SIDE
           @pdf.bounding_box([x,y], width: SQUARE_SIDE, height: SQUARE_SIDE) do
-            number = (c + 1 + ((ROWS - r - 1) * COLUMNS))
             @pdf.text number.to_s, align: :center, valign: :center
           end
-          number += 1
-          y += SQUARE_SIDE
+
+          x += SQUARE_SIDE
+          row_count += 1
+
+          if row_count == ROW_SIZE
+            row_count = 0
+            x, _ = *START
+            y -= SQUARE_SIDE
+          end
         end
-        x += SQUARE_SIDE
-        y = START.last
       end
     end
   end
