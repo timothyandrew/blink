@@ -8,6 +8,7 @@ describe "Housie", :type => :feature do
 
   it "generates a housie PDF" do
     fill_in "Number of Players", with: 10
+    click_on "Default"
     click_on "Done"
     expect(download_content).to_not be_nil
   end
