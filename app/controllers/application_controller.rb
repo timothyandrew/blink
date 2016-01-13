@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
+  def authenticate_admin_user!
+    redirect_to :back, notice: "Not allowed" unless current_user.admin?
+  end
 end
