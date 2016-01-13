@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_user!
-    if current_user.admin?
+    unless current_user.admin?
       redirect_to :back, notice: "Not allowed"
     end
   end
