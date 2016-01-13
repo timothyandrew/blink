@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def current_user
-    super.decorate if super
+    user = super || User.new
+    user.decorate
   end
 
   def assign_student
@@ -16,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_user!
-    if current_user && !current_user.admin?
+    if current_user.admin?
       redirect_to :back, notice: "Not allowed"
     end
   end
