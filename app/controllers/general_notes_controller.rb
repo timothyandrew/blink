@@ -30,7 +30,7 @@ class GeneralNotesController < ApplicationController
     @note = current_user.general_notes.find(params[:id])
     if @note.update_attributes(note_params)
       flash[:notice] = "Updated note."
-      redirect_to notes_path
+      redirect_to note_path(@note)
     else
       flash[:alert] = @note.errors.full_messages.to_sentence
       render :edit
