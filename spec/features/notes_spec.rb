@@ -36,7 +36,6 @@ describe "Notes", :type => :feature do
       fill_in_ckeditor "general_note_text", with: "Some Note Text"
       click_on "Save"
 
-      click_on "Title"
       expect(page).to have_content "Some Note Text"
     end
 
