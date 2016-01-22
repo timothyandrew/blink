@@ -37,6 +37,7 @@ gem "selectize-rails"
 gem "parslet"
 
 group :development, :test do
+  gem "quiet_assets"
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'

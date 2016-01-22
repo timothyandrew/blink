@@ -28,3 +28,4 @@ completer.hist
 
 .vagrant
 coverage
+.idea
