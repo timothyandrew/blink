@@ -1,12 +1,13 @@
 module Housie
   class PlayerSheet
-    ROWS = 3
     START = [40, 200]
-    SQUARE_SIDE = 75
+    SQUARE_SIDE = 45
 
-    def initialize(pdf, columns)
+    def initialize(pdf, columns, row_count, numbers_per_row)
       @pdf = pdf
       @columns = columns
+      @row_count = row_count
+      @numbers_per_row = numbers_per_row
     end
 
     # Random numbers keyed by row and column; 5 per row, ascending order in column
@@ -17,13 +18,10 @@ module Housie
       # Random number for each [row,column] combination
       final = {}
 
-      # How many random numbers per row
-      numbers_per_row = @columns.size / 2
-
       # Randomly select (non-blank) columns for each row, and store
       # them in `selected_rows`.
-      ROWS.times.each do |row|
-        selected_columns = Utils::Rand.rand_n(numbers_per_row, 0...@columns.size).sort
+      @row_count.times.each do |row|
+        selected_columns = Utils::Rand.rand_n(@numbers_per_row, 0...@columns.size).sort
         selected_columns.each do |column|
           selected_rows[column] ||= []
           selected_rows[column] << row
@@ -51,13 +49,13 @@ module Housie
       numbers = random_numbers
 
       @columns.size.times do |c|
-        ROWS.times do |r|
+        @row_count.times do |r|
           @pdf.stroke_rectangle [x,y], SQUARE_SIDE, SQUARE_SIDE
 
-          row = ROWS - r - 1
+          row = @row_count - r - 1
           if number = numbers[[row, c]]
             @pdf.bounding_box([x,y], width: SQUARE_SIDE, height: SQUARE_SIDE) do
-              @pdf.text number.to_s, align: :center, valign: :center, size: 20
+              @pdf.text number.to_s, align: :center, valign: :center, size: 18
             end
           end
 

@@ -24,5 +24,6 @@
 //= require sortable
 //= require ajaxq
 //= require underscore
+//= require underscore.string
 //= require selectize
 //= require_tree .

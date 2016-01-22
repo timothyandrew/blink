@@ -16,6 +16,8 @@ class TemplateFields {
     // Handlebars can't look for `empty`, so we need to null it out.
     if(_.isEmpty(context.errors)) {
       context.errors = null;
+    } else {
+      context.errors = this.transformErrors(context.errors);
     }
 
     var template = HandlebarsTemplates[this.template](context);
@@ -34,5 +36,12 @@ class TemplateFields {
   setup() {
     $(this.addField).click(_.bind(this.addItem, this));
     return this;
+  }
+
+  // TODO: Make errors it's own entity.
+  transformErrors(errors) {
+    return _.mapObject(errors, (error_messages, attr) => {
+      return "" + _.titleize(attr) + ": " + error_messages.join(", ");
+    });
   }
 }

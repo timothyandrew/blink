@@ -16,6 +16,6 @@ class HousieController < ApplicationController
   private
 
   def housie_params
-    params.require(:housie).permit(:player_count, columns: [:lower, :higher])
+    params.require(:housie).permit(:player_count, :row_count, :numbers_per_row, columns: [:lower, :higher])
   end
 end

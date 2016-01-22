@@ -1,43 +1,50 @@
 <h1>Housie Generator</h1>
 
 <div class="student-actions pull-right">
-    <%= link_to "Add Column", "#", id: "add-field", class: "btn btn-warning" %>
-    <%= link_to "Default", "#", id: "default", class: "btn btn-primary" %>
-    <%= link_to "Delete All", "#", id: "delete-all", class: "btn btn-danger" %>
+  <%= link_to "Add Column", "#", id: "add-field", class: "btn btn-warning" %>
+  <%= link_to "Default", "#", id: "default", class: "btn btn-primary" %>
+  <%= link_to "Delete All", "#", id: "delete-all", class: "btn btn-danger" %>
 </div>
 
 <%= form_tag "/housie", method: :post  %>
 <fieldset>
-    <%= label_tag "housie[player_count]", "Number of Players" %>
-    <%= text_field_tag "housie[player_count]", @service.player_count %>
+  <%= label_tag "housie[player_count]", "Number of Players" %>
+  <%= number_field_tag "housie[player_count]", @service.player_count %>
+</fieldset>
+
+<fieldset>
+  <%= label_tag "housie[row_count]", "Number of Rows" %>
+  <%= number_field_tag "housie[row_count]", @service.row_count %>
+
+  <%= label_tag "housie[numbers_per_row]", "Numbers Per Row" %>
+  <%= number_field_tag "housie[numbers_per_row]", @service.numbers_per_row %>
 </fieldset>
 
 <%= content_tag "div", id: "housie-fields", data: {columns: @service.columns} do %>
 <% end %>
 
 <script type="text/javascript">
- console.log($("#housie-fields").data("columns"));
  var templateFields = new TemplateFields("#housie-fields", "#add-field", "housie/column", {}).setup();
 
  templateFields.addItems($("#housie-fields").data("columns"));
 
  $("#delete-all").click(function() {
-     templateFields.removeAll();
+   templateFields.removeAll();
  });
 
  $("#default").click(function(){
-     templateFields.removeAll();
-     templateFields.addItems([
-         {lower: 1, higher: 9},
-         {lower: 10, higher: 19},
-         {lower: 20, higher: 29},
-         {lower: 30, higher: 39},
-         {lower: 40, higher: 49},
-         {lower: 50, higher: 59},
-         {lower: 60, higher: 69},
-         {lower: 70, higher: 79},
-         {lower: 80, higher: 90}
-     ]);
+   templateFields.removeAll();
+   templateFields.addItems([
+     {lower: 1, higher: 9},
+     {lower: 10, higher: 19},
+     {lower: 20, higher: 29},
+     {lower: 30, higher: 39},
+     {lower: 40, higher: 49},
+     {lower: 50, higher: 59},
+     {lower: 60, higher: 69},
+     {lower: 70, higher: 79},
+     {lower: 80, higher: 90}
+   ]);
  });
 </script>
 
