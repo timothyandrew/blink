@@ -12,4 +12,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def title(s)
+    content_for :title, "#{s} | Blink"
+  end
 end
