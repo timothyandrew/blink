@@ -1,4 +1,6 @@
 class LessonPlansController < ApplicationController
+  decorates_assigned :lesson_plan
+
   def index
     @grouped_lesson_plans = current_user.lesson_plans.order(date: :desc).grouped_by_month_and_week
   end

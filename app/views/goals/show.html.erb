@@ -1,4 +1,5 @@
 <% breadcrumb :goal, @student, @goal %>
+<% title "Goal \"#{@goal.title}\"" %>
 
 <h1 class="new-goal-header"> <span class="new-goal-parent-name <%= 'complete' if goal.completed? %>"><%= @goal.title %></span> </h1>
 <div class="student-actions pull-right">

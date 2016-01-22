@@ -1,3 +1,5 @@
+<% title "Duplicating \"#{@goal.title}\"" %>
+
 <h1 class="new-goal-header">Duplicating <%= @goal.title %></h1>
 
 <%= form_tag student_duplicate_goal_path(@student, @goal), method: :post %>
