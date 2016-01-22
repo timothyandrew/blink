@@ -8,15 +8,15 @@
 
 <%= form_tag "/housie", method: :post  %>
 <fieldset>
-  <%= label_tag "housie[player_count]", "Number of Players" %>
+  <%= label_with_popover "housie[player_count]", "Number of Players", "Number of player sheets to create. Each player gets one sheet." %>
   <%= number_field_tag "housie[player_count]", @service.player_count %>
 </fieldset>
 
 <fieldset>
-  <%= label_tag "housie[row_count]", "Number of Rows" %>
+  <%= label_with_popover "housie[row_count]", "Number of Rows", "Number of rows in each player sheet. Since there are no repetitions, this number can't be larger than the range of any given column." %>
   <%= number_field_tag "housie[row_count]", @service.row_count %>
 
-  <%= label_tag "housie[numbers_per_row]", "Numbers Per Row" %>
+  <%= label_with_popover "housie[numbers_per_row]", "Numbers Per Row", "How many numbers to generate for each row." %>
   <%= number_field_tag "housie[numbers_per_row]", @service.numbers_per_row %>
 </fieldset>
 
