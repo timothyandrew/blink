@@ -11,6 +11,7 @@ class FormGeneratorsController < ApplicationController
   private
 
   def form_generator_params
-    params.require(:form_generator).permit(:form_count, :copy_count, :handwritten, :title, fields: [:name, :type])
+    params.require(:form_generator).permit(:form_count, :copy_count, :handwritten, :title,
+                                           :student_name, fields: [:name, :type])
   end
 end

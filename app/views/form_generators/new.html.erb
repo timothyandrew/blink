@@ -6,22 +6,23 @@
 
 <%= form_tag "/form_generator", method: :post  %>
   <fieldset>
-    <%= label_tag "form_generator[title]", "Form Title" %>
+    <%= label_with_popover "form_generator[title]", "Form Title", "The title at the top of every form." %>
     <%= text_field_tag "form_generator[title]" %>
+
+    <%= label_with_popover "form_generator[student_name]", "Student Name", "Display a student name in the top-right side. Leave this blank if you want to fill it yourself later." %>
+    <%= text_field_tag "form_generator[student_name]" %>
   </fieldset>
 
   <fieldset>
-    <%= label_tag "form_generator[form_count]", "Form Count" %>
+    <%= label_with_popover "form_generator[form_count]", "Form Count", "The number of responses for each survey/form." %>
     <%= number_field_tag "form_generator[form_count]", '0' %>
-  </fieldset>
-
-  <fieldset>
-    <%= label_tag "form_generator[copy_count]", "Copy Count" %>
+  
+    <%= label_with_popover "form_generator[copy_count]", "Copy Count", "The number of copies for each set of responses (one for each student)." %>
     <%= number_field_tag "form_generator[copy_count]", '0' %>
   </fieldset>
 
   <fieldset>
-    <%= label_tag "form_generator[handwritten]", "Handwritten?" %>
+    <%= label_with_popover "form_generator[handwritten]", "Handwritten?", "If yes, a handwritten font is picked at random" %>
     <%= radio_button_tag "form_generator[handwritten]", '1' %> <span class="radio-button-label">Yes</span>
     <%= radio_button_tag "form_generator[handwritten]", '0' %> <span class="radio-button-label">No</span>
   </fieldset>
