@@ -61,7 +61,7 @@ module FormGenerator
           @pdf.text "#{j+1}.", size: 14
           @pdf.move_down(10)
 
-          font_size = @handwritten ? 28 : 14
+          font_size = @handwritten ? 22 : 14
 
           @fields.each do |field|
             @pdf.pad_bottom(5) do
