@@ -4,12 +4,29 @@
   "repository": "https://github.com/timothyandrew/blink",
   "keywords": ["rails", "teachers"],
   "scripts": {
-    "postdeploy": "bundle exec db:setup"
+    "postdeploy": "bundle exec rake db:create db:migrate db:seed"
   },
   "env": {
     "SECRET_TOKEN": {
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
+    },
+    "AWS_ACCESS_KEY": {
+      "description": "Access key for AWS S3",
+      "required": true
+    },
+    "AWS_SECRET_KEY": {
+      "description": "Secret key for AWS S3",
+      "required": true
+    },
+    "AWS_REGION": {
+      "description": "Region for AWS S3",
+      "required": true,
+      "value": "us-west-2"
+    },
+    "AWS_CARRIERWAVE_BUCKET": {
+      "description": "Bucket for AWS S3 assets",
+      "required": true
     }
   },
   "image": "heroku/ruby",
