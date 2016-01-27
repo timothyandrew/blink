@@ -13,9 +13,7 @@
     }
   },
   "image": "heroku/ruby",
-  {
-    "addons": [
-      "heroku-postgresql:hobby-dev"
-    ]
-  }
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ]
 }
