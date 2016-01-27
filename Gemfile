@@ -35,13 +35,13 @@ gem 'activerecord-import'
 gem 'sprockets-es6', require: 'sprockets/es6'
 gem "selectize-rails"
 gem "parslet"
+gem 'faker'
 
 group :development, :test do
   gem "quiet_assets"
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'faker'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'factory_girl_rails'
