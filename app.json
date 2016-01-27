@@ -1,0 +1,21 @@
+{
+  "name": "Blink",
+  "description": "An app for teachers.",
+  "repository": "https://github.com/timothyandrew/blink",
+  "keywords": ["rails", "teachers"],
+  "scripts": {
+    "postdeploy": "bundle exec db:setup"
+  },
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
+  },
+  "image": "heroku/ruby",
+  {
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ]
+  }
+}
