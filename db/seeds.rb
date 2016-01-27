@@ -14,7 +14,7 @@ def random_time(ordinal)
   "#{hour}:#{minute}#{ordinal}"
 end
 
-user = User.create(email: "test@example.com", password: "testtest")
+user = User.create(email: "test@example.com", password: "testtest", admin: true)
 1.times { Student.create(name: Faker::Name.name, user: user) }
 
 if Goal.all.empty?
