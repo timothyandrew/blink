@@ -110,7 +110,7 @@ describe "Lesson Plans", type: :feature do
     def create_lesson_plan_with_items
       visit "/lesson_plans"
       click_on "New Lesson Plan"
-      fill_in "Date", with: Faker::Date.forward(50)
+      fill_in "Date", with: Faker::Date.forward(500)
 
       click_on "Save"
       expect(page).to have_content "Lesson plan was created"
