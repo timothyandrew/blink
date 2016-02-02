@@ -30,7 +30,7 @@ gem 'prawn'
 gem 'rubyzip'
 gem 'passenger'
 gem 'sablon'
-gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'activerecord-import'
 gem 'sprockets-es6', require: 'sprockets/es6'
 gem "selectize-rails"
