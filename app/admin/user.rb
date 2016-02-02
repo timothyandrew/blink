@@ -1,3 +1,3 @@
 ActiveAdmin.register User do
-  actions :all, except: [:new, :edit, :destroy]
+  actions :all, except: [:destroy]
 end
