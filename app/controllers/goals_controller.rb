@@ -44,7 +44,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = @student.goals.find(params[:id])
     @goal.destroy
-    flash[:notice] = "Goal was destroyed! Take that, Rakshitha!"
+    flash[:notice] = "Goal was destroyed!"
     redirect_to student_path(@student)
   end
 

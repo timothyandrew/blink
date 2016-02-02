@@ -52,7 +52,7 @@ class LessonPlanItemsController < ApplicationController
   def destroy
     @lesson_plan_item = @lesson_plan.items.find(params[:id])
     @lesson_plan_item.destroy
-    flash[:notice] = "Lesson plan item was destroyed! Take that, Rakshitha!"
+    flash[:notice] = "Lesson plan item was destroyed!"
     redirect_to lesson_plan_path(@lesson_plan)
   end
 

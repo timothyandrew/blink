@@ -40,7 +40,7 @@ class GeneralNotesController < ApplicationController
   def destroy
     @note = current_user.general_notes.find(params[:id])
     @note.destroy
-    flash[:notice] = "Note was destroyed! Take that, Rakshitha!"
+    flash[:notice] = "Note was destroyed!"
     redirect_to notes_path
   end
 

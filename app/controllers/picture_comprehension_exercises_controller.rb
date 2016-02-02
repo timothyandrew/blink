@@ -42,7 +42,7 @@ class PictureComprehensionExercisesController < ApplicationController
   def destroy
     @picture_comprehension_exercise = current_user.picture_comprehension_exercises.find(params[:id])
     @picture_comprehension_exercise.destroy
-    flash[:notice] = "Picture comprehension was destroyed! Take that, Rakshitha!"
+    flash[:notice] = "Picture comprehension was destroyed!"
     redirect_to picture_comprehension_exercises_path
   end
 

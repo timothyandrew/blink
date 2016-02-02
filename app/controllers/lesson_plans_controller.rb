@@ -48,7 +48,7 @@ class LessonPlansController < ApplicationController
   def destroy
     @lesson_plan = current_user.lesson_plans.find(params[:id])
     @lesson_plan.destroy
-    flash[:notice] = "Lesson plan was destroyed! Take that, Rakshitha!"
+    flash[:notice] = "Lesson plan was destroyed!"
     redirect_to lesson_plans_path
   end
 
