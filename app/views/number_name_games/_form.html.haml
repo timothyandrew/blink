@@ -1,0 +1,11 @@
+= form_for @number_name_game do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :numbers
+  = f.text_field :numbers
+  %span#numbers-help.help-block
+  = submit_tag "Submit", class: "btn btn-primary"
+
+:javascript
+  var parser = new NumberParser($("#number_name_game_numbers"), $("#numbers-help"))

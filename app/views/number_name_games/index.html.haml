@@ -1,0 +1,16 @@
+- breadcrumb :number_name_games
+- title "Number Name Games"
+
+<h1>Number Name Games</h1>
+
+.student-actions.pull-right
+  = link_to "New", new_number_name_game_path, class: "btn btn-primary"
+
+- if @number_name_games.present?
+  %ul.students-list.list-group
+    - @number_name_games.each do |game|
+      %li.list-group-item= link_to game.name, number_name_game_path(game)
+- else
+  .alert.alert-warning
+    You need to add some games before anything shows up here.
+

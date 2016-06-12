@@ -117,3 +117,17 @@ crumb :audit_log do |student|
   link "Audit Log", student_audits_path(student)
   parent :student, student
 end
+
+crumb :number_name_games do
+  link "Number Name Games", number_name_games_path
+end
+
+crumb :number_name_game do |game|
+  link game.name , number_name_game_path(game)
+  parent :number_name_games
+end
+
+crumb :play_number_name_game do |game|
+  link "Play" , play_number_name_game_path(game)
+  parent :number_name_game, game
+end

@@ -1,0 +1,11 @@
+- breadcrumb @number_name_game
+- title "Number Name Game: #{@number_name_game.name}"
+
+%h1= @number_name_game.name
+
+.student-actions.pull-right
+  = link_to "Play", play_number_name_game_path(@number_name_game), class: "btn btn-success", data: {'no-turbolink' => true}
+  = link_to "Delete", number_name_game_path(@number_name_game), method: :delete, class: "btn btn-warning", data: {confirm: "Are you sure? There is no undo."}
+
+%div
+  %pre= @number_name_game.numbers

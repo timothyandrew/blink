@@ -36,8 +36,10 @@ gem 'sprockets-es6', require: 'sprockets/es6'
 gem "selectize-rails"
 gem "parslet"
 gem 'faker'
+gem 'haml-rails'
 
 group :development, :test do
+  gem 'thin'
   gem "quiet_assets"
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -51,6 +53,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+  gem 'teaspoon'
 end
 
 group :production do
