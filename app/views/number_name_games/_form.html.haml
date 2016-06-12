@@ -1,5 +1,5 @@
 = form_for @number_name_game do |f|
-  - if @number_name_game.errors
+  - if @number_name_game.errors.present?
     .panel.panel-danger
       .panel-heading Error
       .panel-body Couldn't save your game. #{@number_name_game.errors.full_messages.to_sentence}
