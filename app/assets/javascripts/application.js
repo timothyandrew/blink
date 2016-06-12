@@ -26,4 +26,5 @@
 //= require underscore
 //= require underscore.string
 //= require selectize
+//= require numbers2words
 //= require_tree .

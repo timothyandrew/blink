@@ -37,6 +37,8 @@ gem "selectize-rails"
 gem "parslet"
 gem 'faker'
 gem 'haml-rails'
+gem 'gon'
+
 
 group :development, :test do
   gem 'thin'

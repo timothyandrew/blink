@@ -12,4 +12,14 @@ class NumberNameGame < ActiveRecord::Base
       end
     end
   end
+
+  def create_parsing_number_string(params)
+    self.name = params[:name]
+    self.numbers = NumberNameGame.parse_number_string(params[:numbers])
+    unless self.numbers
+      errors.add(:numbers, "not in the right format")
+      return
+    end
+    self.save
+  end
 end

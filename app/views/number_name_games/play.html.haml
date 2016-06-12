@@ -1,2 +1,20 @@
 - breadcrumb :play_number_name_game, @number_name_game
-- title "Number Name Game: #{@number_name_game.name}"
+- title "Play Number Name Game: #{@number_name_game.name}"
+
+%h1 Play #{@number_name_game.name}
+
+%div.number-name-game
+  .row.display-area
+    .col-md-6.numbers
+    .col-md-6.number-names
+
+  .row.staging-area
+    .col-md-3.col-md-offset-3.staging-numbers
+    .col-md-3.col-md-offset-0.staging-number-names
+
+  .row.result
+
+
+:javascript
+  new NumberNameGame($(".number-name-game"), gon.numbers)
+

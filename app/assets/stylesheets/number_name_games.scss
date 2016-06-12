@@ -1,3 +1,51 @@
 #numbers-help {
   display: inline-block;
 }
+
+.number-name-game .number {
+  display: inline-block;
+  margin: 20px;
+  width: 80px;
+  font-size: 24px;
+  background-color: green;
+  color: white;
+}
+
+.number-name-game .number-name {
+  display: inline-block;
+  margin: 10px 5px;
+  min-width: 80px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+}
+
+
+.number-name-game .heading {
+  text-align: center;
+}
+
+.number-name-game .display-area {
+  min-height: 500px;
+}
+
+.number-name-game .staging-area {
+  margin-top: 50px;
+}
+
+.number-name-game .staging-numbers {
+  text-align: right;
+}
+
+.number-name-game .staging-number-names {
+  text-align: left;
+  a {
+    font-size: 24px;
+    margin: 20px;
+  }
+}
+
+.number-name-game .result {
+  text-align: center;
+  font-size: 60px;
+}
