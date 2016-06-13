@@ -38,6 +38,7 @@ gem "parslet"
 gem 'faker'
 gem 'haml-rails'
 gem 'gon'
+gem 'font-awesome-rails'
 
 
 group :development, :test do

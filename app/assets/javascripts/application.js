@@ -26,5 +26,7 @@
 //= require underscore
 //= require underscore.string
 //= require selectize
+//= require jquery.ui.position
+//= require jquery-contextmenu
 //= require numbers2words
 //= require_tree .

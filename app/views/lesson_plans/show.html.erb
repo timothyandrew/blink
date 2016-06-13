@@ -25,7 +25,7 @@
         <td class="lesson-plan-item-time">
           <%= link_to item.range, lesson_plan_item_path(@lesson_plan, item) %>
         </td>
-        <td class="lesson-plan-item-body">
+        <td class="lesson-plan-item-body" data-id="<%= item.id %>">
           <%= item.show_html %>
         </td>
       </tr>
@@ -36,6 +36,9 @@
   <div class="alert alert-warning">
     Add some items to this lesson plan.
   </div>
+<% end %>
+
+<%= form_tag '', method: 'delete', class: "lesson-plan-item-delete" do %>
 <% end %>
 
 <%= render "show_print" %>
@@ -51,5 +54,28 @@
      printModeStatus = 'all';
    }
    initializeBootstrapTable();
+ });
+</script>
+
+
+<script type="text/javascript">
+ // Right click menu for lesson plan items
+ $.contextMenu({
+   selector: ".lesson-plan-item-body",
+   items: {
+     delete: {name: "Delete",
+              icon: "fa-trash",
+              callback: function(key, opt){
+                if(confirm("Are you sure? No undo!")) {
+                  var id = opt.$trigger.data('id');
+                  var url = window.location + "/items/" + id;
+                  var form = $(".lesson-plan-item-delete");
+                  form.attr('action', url);
+                  form.submit();
+                }
+              }
+     }
+   }
+   // there's more, have a look at the demos and docs...
  });
 </script>
