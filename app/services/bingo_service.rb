@@ -49,7 +49,7 @@ class BingoService
 
     words = @words.shuffle.first(25)
 
-    5.times.map do
+    8.times.map do
       image = Image.read(Rails.root + "app/assets/images/bingo.png").first
 
       words.shuffle!
