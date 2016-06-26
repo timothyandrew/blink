@@ -1,0 +1,18 @@
+= form_for @worksheet do |f|
+  %fieldset
+    = f.label :date
+    = f.text_field :date, class: "datepicker-bottom", value: (@worksheet.date.strftime("%b %-d, %Y") if @worksheet.date.present?)
+
+  %fieldset
+    = f.label :topic
+    = f.text_field :topic
+
+  %fieldset
+    = f.label :description
+    = f.cktext_area :description
+
+  %fieldset
+    = f.label :attachment
+    = f.file_field :attachment
+
+  = f.submit class: "btn btn-primary"

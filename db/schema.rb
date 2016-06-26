@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612064855) do
+ActiveRecord::Schema.define(version: 20160626171158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,6 +213,18 @@ ActiveRecord::Schema.define(version: 20160612064855) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "worksheets", force: :cascade do |t|
+    t.date     "date"
+    t.text     "topic"
+    t.text     "description"
+    t.string   "attachment"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "worksheets", ["user_id"], name: "index_worksheets_on_user_id", using: :btree
+
   add_foreign_key "form_generator_data_set_items", "form_generator_data_sets"
   add_foreign_key "goals", "goal_categories", column: "category_id"
   add_foreign_key "goals", "students"
@@ -223,4 +235,5 @@ ActiveRecord::Schema.define(version: 20160612064855) do
   add_foreign_key "picture_comprehension_exercises", "users"
   add_foreign_key "picture_comprehension_images", "picture_comprehension_exercises"
   add_foreign_key "short_term_goals", "long_term_goals"
+  add_foreign_key "worksheets", "users"
 end

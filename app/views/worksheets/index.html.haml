@@ -1,0 +1,31 @@
+- title "Worksheets"
+
+%h1 Worksheets
+
+.student-actions.pull-right
+  = link_to "New Worksheet", new_worksheet_path, class: "btn btn-primary"
+
+- if @worksheets.present?
+
+  %table.table.table-striped.table-bordered.table-hover.worksheets
+    %tr
+      %th Date
+      %th Topic
+      %th Description
+      %th Actions
+    - @worksheets.each do |worksheet|
+      %tr
+        %td= worksheet.date
+        %td= worksheet.topic
+        %td= worksheet.description.html_safe
+        %td
+          .actions.pull-right
+            - if worksheet.attachment.present?
+              = link_to "Download", worksheet.attachment_url, class: "btn btn-primary"
+            = link_to "Edit", edit_worksheet_path(worksheet), class: "btn btn-info"
+            = link_to "Delete", worksheet_path(worksheet), method: :delete, class: "btn btn-danger", confirm: "Sure? No undo!"
+
+- else
+  .alert.alert-warning
+    You need to add some worksheets.
+

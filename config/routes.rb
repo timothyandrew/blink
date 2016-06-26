@@ -59,4 +59,6 @@ Rails.application.routes.draw do
       get :play
     end
   end
+
+  resources :worksheets
 end
