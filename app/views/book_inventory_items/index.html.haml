@@ -1,0 +1,25 @@
+%h1 Add Book
+
+= render "form"
+
+%h1 Books in Inventory
+
+- if @items.present?
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Author
+        %th Categories
+        %th
+    %tbody
+      - @items.each do |item|
+        %tr
+          %td= item.name
+          %td= item.author
+          %td= item.categories.presence ? item.categories.to_sentence : "<no categories>"
+          %td.pull-right
+            = link_to "Edit", edit_book_inventory_item_path(item), confirm: "Are you sure?", class: "btn btn-sm btn-info"
+            = link_to "Delete", book_inventory_item_path(item), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "Are you sure?" }
+- else
+  .alert.alert-warning You need to add books before anything shows up here.

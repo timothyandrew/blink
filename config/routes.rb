@@ -61,4 +61,5 @@ Rails.application.routes.draw do
   end
 
   resources :worksheets
+  resources :book_inventory_items
 end

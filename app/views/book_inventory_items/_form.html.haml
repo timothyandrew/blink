@@ -1,0 +1,18 @@
+= form_for @item do |f|
+  %fieldset
+    = f.label :name
+    = f.text_field :name
+
+  %fieldset
+    = f.label :author
+    = f.text_field :author
+
+  %fieldset
+    = label_tag "Category"
+    = text_field_tag 'book_inventory_item[categories][0]', @item.categories.try(:first)
+
+    = label_tag "Category"
+    = text_field_tag 'book_inventory_item[categories][1]', @item.categories.try(:second)
+
+  %fieldset
+    = f.submit "Save Book", class: "btn btn-primary"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626171158) do
+ActiveRecord::Schema.define(version: 20161026023223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20160626171158) do
   add_index "audits", ["created_at"], name: "index_audits_on_created_at", using: :btree
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
+
+  create_table "book_inventory_items", force: :cascade do |t|
+    t.text     "name"
+    t.text     "author"
+    t.text     "categories",              array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "form_generator_data_set_items", force: :cascade do |t|
     t.integer  "form_generator_data_set_id"
