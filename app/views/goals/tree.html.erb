@@ -1,3 +1,0 @@
-<div class="tree">
-  <%= render partial: "tree_segment", locals: {goals: Goal.sort(Goal.roots.where(student_id: @student.id).decorate)} %>
-</div>

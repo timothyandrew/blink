@@ -22,22 +22,46 @@ class GoalsController < ApplicationController
     @goal = @student.goals.new
     if @goal.save_with_category(goal_params, @parent, params[:category_name])
       @goal.move_to_child_of(@parent) if @parent
-      flash[:notice] = "Goal was created"
-      redirect_to student_goal_path(@student, @goal)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Goal was created"
+          redirect_to student_goal_path(@student, @goal)
+        end
+
+        format.json
+      end
     else
-      flash[:alert] = @goal.errors.full_messages.to_sentence
-      render :new
+      respond_to do |format|
+        format.html do
+          flash[:alert] = @goal.errors.full_messages.to_sentence
+          render :new
+        end
+
+        format.json
+      end
     end
   end
 
   def update
     @goal = @student.goals.find(params[:id])
     if @goal.save_with_category(goal_params, nil, params[:category_name])
-      flash[:notice] = "Goal was edited"
-      redirect_to student_goal_path(@student, @goal)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Goal was edited"
+          redirect_to student_goal_path(@student, @goal)
+        end
+
+        format.json { render json: {updated: true} }
+      end
     else
-      flash[:alert] = @goal.errors.full_messages.to_sentence
-      render :edit
+      respond_to do |format|
+        format.html do
+          flash[:alert] = @goal.errors.full_messages.to_sentence
+          render :edit
+        end
+
+        format.json { render json: {errors: @goal.errors} }
+      end
     end
   end
 
@@ -79,6 +103,11 @@ class GoalsController < ApplicationController
   end
 
   def tree
+    if params[:goal_id]
+      @parent = @student.goals.find(params[:goal_id])
+    else
+      @parent = current_user.students.find(params[:student_id]).decorate
+    end
   end
 
   def reorder

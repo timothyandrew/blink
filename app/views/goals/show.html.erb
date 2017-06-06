@@ -12,6 +12,8 @@
     <%= link_to "Hide All", "#", class: "hide-all btn btn-warning" %>
   </div>
 
+  <%= link_to "Tree Edit", tree_student_goals_path(@student, goal_id: @goal), class: "btn btn-info" %>
+
   <%= link_to "Delete", student_goal_path(@student, @goal), method: :delete, class: "btn btn-danger",
     data: {confirm: "Are you sure? This will destroy this goal and all sub-goals, and there's no undo!"} %>
 

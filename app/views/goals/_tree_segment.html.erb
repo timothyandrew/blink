@@ -3,7 +3,7 @@
 <% if goals.present? %>
   <ul>
     <% goals.each_with_index do |goal, index| %>
-      <li>
+      <li data-student-id="<%= @student.id %>" data-id="<%= goal.id %>">
         <%= link_to goal.title, student_goal_path(@student, goal) %>
         <%= render partial: "tree_segment", locals: { goals: goal.sorted_children } %>
       </li>

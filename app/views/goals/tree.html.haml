@@ -1,0 +1,8 @@
+.goals-tree
+  %ul
+    %li
+      = @parent.title
+      = render partial: "tree_segment", locals: {goals: @parent.sorted_children}
+
+:javascript
+  var tree = new GoalsTree($(".goals-tree"))

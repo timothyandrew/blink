@@ -29,4 +29,5 @@
 //= require jquery.ui.position
 //= require jquery-contextmenu
 //= require numbers2words
+//= require jstree
 //= require_tree .

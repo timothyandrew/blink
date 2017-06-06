@@ -13,6 +13,7 @@
 
   <div class="second-row">
 
+    <%= link_to "Tree Edit", tree_student_goals_path(@student), class: "btn btn-warning" %>
     <%= link_to "Template", generate_iep_template_student_path(@student), class: "btn btn-info" %>
     <%= link_to "Log", student_audits_path(@student), class: "btn btn-secondary" %>
     <%= link_to "Delete", student_path(@student), method: :delete, class: "btn btn-danger",
