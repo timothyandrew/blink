@@ -1,3 +1,13 @@
+- if @student == @parent
+  - breadcrumb :student_goal_tree, @student
+- else
+  - breadcrumb :goal_tree, @student, @parent
+
+- title "Goal Tree for #{@parent.title}"
+
+%h1.new-goal-header Goal Tree for #{@parent.title} (Experimental)
+%h2.new-goal-subheader
+
 .goals-tree
   %ul
     %li

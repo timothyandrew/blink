@@ -7,6 +7,16 @@ crumb :student do |student|
   parent :students
 end
 
+crumb :student_goal_tree do |student|
+  link "Goal Tree", tree_student_goals_path(student)
+  parent :student, student
+end
+
+crumb :goal_tree do |student, goal|
+  link "Goal Tree", tree_student_goals_path(student, goal_id: goal)
+  parent :goal, student, goal
+end
+
 crumb :goals do |student|
   link "Goals", student_path(student)
   parent :student, student
