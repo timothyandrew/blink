@@ -29,3 +29,5 @@ completer.hist
 .vagrant
 coverage
 .idea
+
+.ruby-version
