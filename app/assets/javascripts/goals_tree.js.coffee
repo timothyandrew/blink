@@ -13,7 +13,12 @@ class @GoalsTree
     @treeview.on('ready.jstree', => @treeview.jstree("open_all"))
 
   rename: (event) =>
-    name = prompt("New name?")
+    name = prompt("New name?", event.reference.text())
+    name = $.trim(name)
+
+    if _.isEmpty(name)
+      return
+
     data = $(event.reference).parent('li').data()
     @treeview.jstree('rename_node', event.reference, "(saving)")
     $.ajax(
